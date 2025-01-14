@@ -25,7 +25,7 @@ jobs:
           fi
           
           # First, create a list of files to rename, including internal wp- instances
-          git ls-files | grep -i "wp" | grep -v "^\.github/" | grep -v "^README\.md$" > files_to_rename.txt
+          git ls-files | grep -i "wp" | grep -v "^\.github/" | grep -v "^readme\.md$" > files_to_rename.txt
           
           # Process content replacements first, excluding .github directory and README.md
           git ls-files | grep -v "^\.github/" | grep -v "^README\.md$" | while read -r file; do
