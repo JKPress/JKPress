@@ -2,7 +2,7 @@ name: Replace WP Prefixes
 on:
   push:
     branches:
-      - main
+      - actions
   workflow_dispatch:
 
 permissions:
@@ -17,20 +17,20 @@ jobs:
         
       - name: Run Replacement Script
         run: |
-          # Delete hello dolly
+          # Delete hello.php plugin
           if [ -f "jk-content/plugins/hello.php" ]; then
             git rm "jk-content/plugins/hello.php"
           elif [ -f "wp-content/plugins/hello.php" ]; then
             git rm "wp-content/plugins/hello.php"
           fi
           
-          # First, create a list of files to rename
-          git ls-files | grep -i "wp" | grep -v "^\.github/" > files_to_rename.txt
+          # First, create a list of files to rename, including internal wp- instances
+          git ls-files | grep -i "wp" | grep -v "^\.github/" | grep -v "^README\.md$" > files_to_rename.txt
           
-          # Process content replacements
-          git ls-files | grep -v "^\.github/" | while read -r file; do
+          # Process content replacements first, excluding .github directory and README.md
+          git ls-files | grep -v "^\.github/" | grep -v "^README\.md$" | while read -r file; do
             if [ -f "$file" ] && file "$file" | grep -q "text"; then
-              # Handle specific WordPress text replacement
+              # Handle specific WordPress text replacement (case sensitive)
               sed -i 's/WordPress/JKPress/g' "$file"
               
               # Handle PHP variables and functions
@@ -43,7 +43,7 @@ jobs:
               # Handle specific prefixes
               sed -i 's/_wpnonce/_jknonce/g' "$file"
               sed -i 's/_wpmejs/_jkmejs/g' "$file"
-              sed -i 's/\bwpmu_/jkmu_/g' "$file"  # Added WPMU pattern
+              sed -i 's/\bwpmu_/jkmu_/g' "$file"
               
               # Handle JavaScript patterns
               if [[ "$file" =~ \.(js|jsx|ts|tsx|php)$ ]]; then
@@ -72,7 +72,7 @@ jobs:
               # Handle wp_ prefix cases
               sed -i 's/\bwp_/jk_/g' "$file"
               
-              # Handle _wp suffixes
+              # Handle _wp and _WP suffixes
               sed -i 's/_wp\b/_jk/g' "$file"
               sed -i 's/_WP\b/_JK/g' "$file"
               
@@ -102,4 +102,4 @@ jobs:
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add .
           git diff-index --quiet HEAD || git commit -m "Replace wp- prefixes with jk- prefixes"
-          git push origin main
+          git push origin actions
