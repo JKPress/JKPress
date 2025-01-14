@@ -1,0 +1,105 @@
+name: Replace WP Prefixes
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  replace-wp-prefix:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        
+      - name: Run Replacement Script
+        run: |
+          # Delete hello dolly
+          if [ -f "jk-content/plugins/hello.php" ]; then
+            git rm "jk-content/plugins/hello.php"
+          elif [ -f "wp-content/plugins/hello.php" ]; then
+            git rm "wp-content/plugins/hello.php"
+          fi
+          
+          # First, create a list of files to rename
+          git ls-files | grep -i "wp" | grep -v "^\.github/" > files_to_rename.txt
+          
+          # Process content replacements
+          git ls-files | grep -v "^\.github/" | while read -r file; do
+            if [ -f "$file" ] && file "$file" | grep -q "text"; then
+              # Handle specific WordPress text replacement
+              sed -i 's/WordPress/JKPress/g' "$file"
+              
+              # Handle PHP variables and functions
+              sed -i 's/\$wpdb\b/\$jkdb/g' "$file"
+              sed -i 's/\bwpdb\b/jkdb/g' "$file"
+              sed -i 's/\$wp\b/\$jk/g' "$file"
+              sed -i 's/\bfunction wp(/function jk(/g' "$file"
+              sed -i "s/\\\$GLOBALS\\['wp'\\]/\\\$GLOBALS['jk']/g" "$file"
+              
+              # Handle specific prefixes
+              sed -i 's/_wpnonce/_jknonce/g' "$file"
+              sed -i 's/_wpmejs/_jkmejs/g' "$file"
+              sed -i 's/\bwpmu_/jkmu_/g' "$file"  # Added WPMU pattern
+              
+              # Handle JavaScript patterns
+              if [[ "$file" =~ \.(js|jsx|ts|tsx|php)$ ]]; then
+                sed -i 's/\bwp\b/jk/g' "$file"
+                sed -i 's/\b\([a-zA-Z]*\)wp\([A-Z][a-zA-Z0-9]*\)/\1jk\2/g' "$file"
+                sed -i 's/\b_wp\([A-Z][a-zA-Z0-9]*\)/_jk\1/g' "$file"
+                sed -i 's/\bwindow\.wp\b/window.jk/g' "$file"
+                sed -i 's/\bconst wp\b/const jk/g' "$file"
+                sed -i 's/\bvar wp\b/var jk/g' "$file"
+                sed -i 's/\blet wp\b/let jk/g' "$file"
+              fi
+              
+              # Handle wp. and wp: notations
+              sed -i 's/\bwp\./jk./g' "$file"
+              sed -i 's/\bwp:/jk:/g' "$file"
+              
+              # Handle /wp/ in paths
+              sed -i 's|/wp/|/jk/|g' "$file"
+              
+              # Original wp- replacements
+              sed -i 's/\bwp-/jk-/g' "$file"
+              
+              # Handle _wp_ cases in the middle of function names
+              sed -i 's/_wp_/_jk_/g' "$file"
+              
+              # Handle wp_ prefix cases
+              sed -i 's/\bwp_/jk_/g' "$file"
+              
+              # Handle _wp suffixes
+              sed -i 's/_wp\b/_jk/g' "$file"
+              sed -i 's/_WP\b/_JK/g' "$file"
+              
+              # Handle WP class prefix
+              sed -i 's/\bWP\([A-Za-z0-9_]*\)/JK\1/g' "$file"
+            fi
+          done
+          
+          # Then handle file renames using the saved list
+          while read -r file; do
+            # Handle specific class files and other patterns
+            new_file=$(echo "$file" | \
+              sed -e 's/class-wp\.php$/class-jk.php/' \
+                  -e 's/class-wpdb\.php$/class-jkdb.php/' \
+                  -e 's/\bwp-/jk-/g')
+            if [ "$file" != "$new_file" ]; then
+              mkdir -p "$(dirname "$new_file")"
+              git mv "$file" "$new_file"
+            fi
+          done < files_to_rename.txt
+          
+          rm files_to_rename.txt
+      
+      - name: Push Changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add .
+          git diff-index --quiet HEAD || git commit -m "Replace wp- prefixes with jk- prefixes"
+          git push origin main
