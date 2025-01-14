@@ -25,10 +25,10 @@ jobs:
           fi
           
           # First, create a list of files to rename
-          git ls-files | grep -i "wp" | grep -v "^\.github/" | grep -v "^readme\.md$" > files_to_rename.txt
+          git ls-files | grep -i "wp" | grep -v "^\.github/" | grep -iv "^readme\.md$" > files_to_rename.txt
           
           # Process content replacements first
-          git ls-files | grep -v "^\.github/" | grep -v "^README\.md$" | while read -r file; do
+          git ls-files | grep -v "^\.github/" | grep -iv "^readme\.md$" | while read -r file; do
             if [ -f "$file" ] && file "$file" | grep -q "text"; then
               # Handle specific WordPress text replacement
               sed -i 's/WordPress/JKPress/g' "$file"
