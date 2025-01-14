@@ -1,0 +1,448 @@
+/*
+Theme Name: Twenty Eleven
+Description: Used to style blocks.
+*/
+
+/*--------------------------------------------------------------
+>>> TABLE OF CONTENTS:
+----------------------------------------------------------------
+1.0 General Block Styles
+2.0 Blocks - Common Blocks
+3.0 Blocks - Formatting
+4.0 Blocks - Layout Elements
+5.0 Blocks - Widgets
+6.0 Blocks - Colors
+--------------------------------------------------------------*/
+
+/*--------------------------------------------------------------
+1.0 General Block Styles
+--------------------------------------------------------------*/
+
+figure[class^="jk-block-"] {
+	margin-left: 0;
+	margin-right: 0;
+}
+
+/* Captions */
+
+[class^="jk-block-"] figcaption {
+	font-family: Georgia, serif;
+	font-size: 12px;
+}
+
+[class^="jk-block-"]:not(.jk-block-gallery) > figcaption {
+	color: #666;
+	margin-bottom: 1.625em;
+	max-width: 96%;
+	max-width: calc( 100% - 18px );
+	padding: 3px 0 5px 40px;
+	position: relative;
+	text-align: left;
+}
+
+[class^="jk-block-"]:not(.jk-block-gallery) > figcaption:before {
+	color: #666;
+	content: '\2014';
+	font-size: 14px;
+	font-style: normal;
+	font-weight: bold;
+	margin-right: 5px;
+	position: absolute;
+	left: 10px;
+	top: 0;
+}
+
+.rtl [class^="jk-block-"]:not(.jk-block-gallery) > figcaption {
+	padding-left: 0;
+	padding-right: 40px;
+	text-align: right;
+}
+
+.rtl [class^="jk-block-"]:not(.jk-block-gallery) > figcaption:before {
+	left: 0;
+	margin-left: 5px;
+	margin-right: 0;
+	right: 10px;
+}
+
+/*--------------------------------------------------------------
+2.0 Blocks - Common Blocks
+--------------------------------------------------------------*/
+
+/* Paragraph */
+
+p.has-drop-cap:not(:focus)::first-letter {
+	font-size: 5em;
+	margin-top: 0.1em;
+}
+
+/* Gallery */
+
+.jk-block-gallery {
+	margin: 0 0 1.625em;
+}
+
+.jk-block-gallery .blocks-gallery-item figcaption {
+	margin-bottom: 0;
+	padding-left: 0;
+	padding-right: 0;
+}
+
+.jk-block-gallery .blocks-gallery-item img {
+	border: 0;
+	padding: 0;
+}
+
+/* Quote */
+
+.jk-block-quote {
+	margin: 0 3em;
+}
+
+.jk-block-quote:not(.is-large):not(.is-style-large) {
+	border: 0;
+	padding-left: 0;
+	padding-right: 0;
+}
+
+.jk-block-quote.is-large p,
+.jk-block-quote.is-style-large p {
+	font-size: 20px;
+}
+
+.jk-block-quote cite {
+	color: #666;
+	font: 12px "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-weight: 300;
+	letter-spacing: 0.05em;
+	text-transform: uppercase;
+}
+
+.jk-block-quote.is-large cite,
+.jk-block-quote.is-style-large cite {
+	font-size: 16px;
+}
+
+.jk-block-quote[style*="font-weight"] blockquote,
+.jk-block-quote[style*="font-weight"] p,
+.jk-block-quote[style*="font-weight"] cite {
+	font-weight: inherit;
+}
+
+.jk-block-quote[style*="font-style"] blockquote,
+.jk-block-quote[style*="font-style"] p,
+.jk-block-quote[style*="font-style"] cite {
+	font-style: inherit;
+}
+
+/* Audio */
+
+.jk-block-audio audio {
+	display: block;
+	width: 100%;
+}
+
+/* Cover */
+
+.jk-block-cover-image.aligncenter,
+.jk-block-cover.aligncenter {
+	clear: both;
+	display: flex;
+}
+
+.jk-block-cover-image.alignleft,
+.jk-block-cover.alignleft {
+	margin-right: 1.625em;
+}
+
+.jk-block-cover-image.alignright,
+.jk-block-cover.alignright {
+	margin-left: 1.625em;
+}
+
+/* File */
+
+.jk-block-file .jk-block-file__button {
+	background: #222;
+	border: none;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+	-webkit-box-shadow: 0 1px 2px rgba(0,0,0,0.3);
+	-moz-box-shadow: 0 1px 2px rgba(0,0,0,0.3);
+	box-shadow: 0 1px 2px rgba(0,0,0,0.3);
+	color: #eee;
+	cursor: pointer;
+	font-size: 15px;
+	padding: 5px 22px;
+	text-shadow: 0 -1px 0 rgba(0,0,0,0.3);
+}
+
+.jk-block-file .jk-block-file__button:active {
+	background: #1982d1;
+	color: #bfddf3;
+}
+
+.rtl .jk-block-file * + .jk-block-file__button {
+	margin-left: 0.75em;
+	margin-right: 0;
+}
+
+/*--------------------------------------------------------------
+3.0 Blocks - Formatting
+--------------------------------------------------------------*/
+
+/* Code */
+
+.jk-block-code {
+	background-color: transparent;
+	border: 0;
+	padding: 0;
+}
+
+/* Pullquote */
+
+.jk-block-pullquote__citation,
+.jk-block-pullquote cite,
+.jk-block-pullquote footer {
+	color: inherit;
+}
+
+.jk-block-pullquote.alignleft {
+	margin-right: 1.625em;
+}
+
+.jk-block-pullquote.alignright {
+	margin-left: 1.625em;
+}
+
+.jk-block-pullquote[style*="font-weight"] blockquote,
+.jk-block-pullquote[style*="font-weight"] p,
+.jk-block-pullquote[style*="font-weight"] cite {
+	font-weight: inherit;
+}
+
+.jk-block-pullquote[style*="font-style"] blockquote,
+.jk-block-pullquote[style*="font-style"] p,
+.jk-block-pullquote[style*="font-style"] cite {
+	font-style: inherit;
+}
+
+/* Table */
+
+.jk-block-table {
+	border-bottom: 1px solid #ddd;
+	border-collapse: collapse;
+	border-spacing: 0;
+	width: 100%;
+}
+
+.jk-block-table th {
+	border: 0;
+	font-weight: bold;
+	padding: 6px 10px 6px 0;
+	text-transform: uppercase;
+}
+
+.rtl .jk-block-table th {
+	padding: 6px 0 6px 10px;
+}
+
+.jk-block-table .has-text-color th {
+	color: currentColor;
+}
+
+.jk-block-table td {
+	border: 0;
+	border-top: 1px solid #ddd;
+	padding: 6px 10px 6px 0;
+}
+
+/*--------------------------------------------------------------
+4.0 Blocks - Layout Elements
+--------------------------------------------------------------*/
+
+/* Buttons */
+
+.jk-block-button .jk-block-button__link {
+	-webkit-box-shadow: 0 1px 2px rgba(0,0,0,0.3);
+	-moz-box-shadow: 0 1px 2px rgba(0,0,0,0.3);
+	box-shadow: 0 1px 2px rgba(0,0,0,0.3);
+	cursor: pointer;
+	font-size: 15px;
+	margin: 20px 0;
+	padding: 5px 22px;
+	text-decoration: none;
+	text-shadow: 0 -1px 0 rgba(0,0,0,0.3);
+}
+
+.is-style-outline .jk-block-button__link:not(.has-text-color) {
+	color: #222;
+	text-shadow: none;
+}
+
+.jk-block-button__link,
+.jk-block-button .jk-block-button__link:hover,
+.jk-block-button .is-style-outline .jk-block-button__link:hover {
+	background: #222;
+	color: #eee;
+}
+
+.jk-block-button__link:active {
+	background: #1982d1;
+	color: #bfddf3;
+}
+
+/* Separator */
+
+.jk-block-separator {
+	border: 0;
+	max-width: 100px;
+}
+
+.jk-block-separator.is-style-wide,
+.jk-block-separator.is-style-dots {
+	max-width: 100%;
+}
+
+/* Media & Text */
+
+.jk-block-media-text {
+	margin-bottom: 1.625em;
+}
+
+.jk-block-media-text *:first-child {
+	margin-top: 0;
+}
+
+.jk-block-media-text *:last-child {
+	margin-bottom: 0;
+}
+
+.jk-block-media-text .jk-block-media-text__content {
+	padding-top: 1.5em;
+	padding-bottom: 1.5em;
+}
+
+/*--------------------------------------------------------------
+5.0 Blocks - Widgets
+--------------------------------------------------------------*/
+
+/* Archives, Categories & Latest Posts */
+
+.jk-block-archives.aligncenter,
+.jk-block-categories.aligncenter,
+.jk-block-latest-posts.aligncenter {
+	list-style-position: inside;
+	margin-left: 2.5em;
+	text-align: center;
+}
+
+.rtl .jk-block-archives.aligncenter,
+.rtl .jk-block-categories.aligncenter,
+.rtl .jk-block-latest-posts.aligncenter {
+	margin-left: 0;
+	margin-right: 2.5em;
+}
+
+/* Latest Comments */
+
+.jk-block-latest-comments {
+	margin: 0;
+	padding: 0;
+}
+
+.jk-block-latest-comments .avatar,
+.jk-block-latest-comments__comment-avatar {
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+	-webkit-box-shadow: 0 1px 2px #ccc;
+	-moz-box-shadow: 0 1px 2px #ccc;
+	box-shadow: 0 1px 2px #ccc;
+}
+
+.jk-block-latest-comments__comment,
+.jk-block-latest-comments__comment-excerpt,
+.jk-block-latest-comments__comment-excerpt p {
+	font-size: 15px;
+}
+
+.jk-block-latest-comments__comment-excerpt p:last-child {
+	margin-bottom: 0;
+}
+
+.jk-block-latest-comments__comment-meta,
+.jk-block-latest-comments__comment-date {
+	color: #666;
+	font-size: 12px;
+	line-height: 2.2em;
+}
+
+.jk-block-latest-comments__comment-meta a {
+	font-weight: bold;
+}
+
+.jk-block-latest-comments .jk-block-latest-comments__comment {
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+	margin: 0 0 2.625em;
+	position: relative;
+}
+
+/* Latest Posts */
+
+.jk-block-latest-posts.is-grid {
+	margin-left: 0;
+	margin-right: 0;
+}
+
+/*--------------------------------------------------------------
+6.0 Blocks - Colors
+--------------------------------------------------------------*/
+
+.has-blue-color {
+	color: #1982d1;
+}
+
+.has-blue-background-color {
+	background-color: #1982d1;
+}
+
+.has-black-color {
+	color: #000;
+}
+
+.has-black-background-color {
+	background-color: #000;
+}
+
+.has-dark-gray-color {
+	color: #373737;
+}
+
+.has-dark-gray-background-color {
+	background-color: #373737;
+}
+
+.has-medium-gray-color {
+	color: #666;
+}
+
+.has-medium-gray-background-color {
+	background-color: #666;
+}
+
+.has-light-gray-color {
+	color: #e2e2e2;
+}
+
+.has-light-gray-background-color {
+	background-color: #e2e2e2;
+}
+
+.has-white-color {
+	color: #fff;
+}
+
+.has-white-background-color {
+	background-color: #fff;
+}

@@ -1,0 +1,6 @@
+.jk-element-button{
+  cursor:revert;
+}
+.jk-element-button[role=textbox]{
+  cursor:text;
+}

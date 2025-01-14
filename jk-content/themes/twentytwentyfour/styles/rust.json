@@ -1,0 +1,145 @@
+{
+	"$schema": "https://schemas.jk.org/jk/6.5/theme.json",
+	"version": 2,
+	"title": "Rust",
+	"settings": {
+		"color": {
+			"duotone": [
+				{
+					"colors": [
+						"#A62B0C",
+						"#F3F0E7"
+					],
+					"slug": "duotone-1",
+					"name": "Dark rust to beige"
+				}
+			],
+			"gradients": [
+				{
+					"slug": "gradient-1",
+					"gradient": "linear-gradient(to bottom, #A62A0C42 0%, #F3F0E7 100%)",
+					"name": "Vertical transparent rust to beige"
+				},
+				{
+					"slug": "gradient-7",
+					"gradient": "linear-gradient(to bottom, #A62A0C42 50%, #F3F0E7 50%)",
+					"name": "Vertical hard transparent rust to beige"
+				},
+				{
+					"slug": "gradient-2",
+					"gradient": "linear-gradient(to bottom, #A62B0C 0%, #F3F0E7 100%)",
+					"name": "Vertical rust to beige"
+				},
+				{
+					"slug": "gradient-8",
+					"gradient": "linear-gradient(to bottom, #A62B0C 50%, #F3F0E7 50%)",
+					"name": "Vertical hard rust to beige"
+				}
+			],
+			"palette": [
+				{
+					"color": "#F3F0E7",
+					"name": "Base",
+					"slug": "base"
+				},
+				{
+					"color": "#ECEADF",
+					"name": "Base / 2",
+					"slug": "base-2"
+				},
+				{
+					"color": "#A62B0C",
+					"name": "Contrast",
+					"slug": "contrast"
+				}
+			]
+		}
+	},
+	"styles": {
+		"blocks": {
+			"core/calendar": {
+				"css": ".jk-block-calendar table:where(:not(.has-text-color)) th{background-color:var(--jk--preset--color--contrast);color:var(--jk--preset--color--base);border-color:var(--jk--preset--color--contrast)} & table:where(:not(.has-text-color)) td{border-color:var(--jk--preset--color--contrast)}"
+			},
+			"core/comment-date": {
+				"color": {
+					"text": "var(--jk--preset--color--contrast)"
+				},
+				"elements": {
+					"link": {
+						"color": {
+							"text": "var(--jk--preset--color--contrast)"
+						}
+					}
+				}
+			},
+			"core/comment-edit-link": {
+				"elements": {
+					"link": {
+						"color": {
+							"text": "var(--jk--preset--color--contrast)"
+						}
+					}
+				}
+			},
+			"core/comment-reply-link": {
+				"elements": {
+					"link": {
+						"color": {
+							"text": "var(--jk--preset--color--contrast)"
+						}
+					}
+				}
+			},
+			"core/post-date": {
+				"color": {
+					"text": "var(--jk--preset--color--contrast)"
+				},
+				"elements": {
+					"link": {
+						"color": {
+							"text": "var(--jk--preset--color--contrast)"
+						}
+					}
+				}
+			},
+			"core/post-terms": {
+				"css":"& .jk-block-post-terms__prefix{color: var(--jk--preset--color--contrast);}"
+			},
+			"core/quote": {
+				"color": {
+					"background": "var(--jk--preset--color--base)"
+				}
+			},
+			"core/site-tagline": {
+				"color": {
+					"text": "var(--jk--preset--color--contrast)"
+				}
+			}
+		},
+		"elements": {
+			"button": {
+				":focus": {
+					"color": {
+						"background": "var(--jk--preset--color--contrast)"
+					},
+					"border": {
+						"color": "var(--jk--preset--color--contrast)"
+					}
+				},
+				":hover": {
+					"color": {
+						"background": "var(--jk--preset--color--contrast)"
+					},
+					"border": {
+						"color": "var(--jk--preset--color--contrast)"
+					}
+				}
+			},
+			"caption": {
+				"color": {
+					"text": "var(--jk--preset--color--contrast)"
+				}
+			}
+		}
+	}
+}

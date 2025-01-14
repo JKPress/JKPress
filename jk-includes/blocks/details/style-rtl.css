@@ -1,0 +1,7 @@
+.jk-block-details{
+  box-sizing:border-box;
+}
+
+.jk-block-details summary{
+  cursor:pointer;
+}

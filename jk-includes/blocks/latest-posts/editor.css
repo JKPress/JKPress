@@ -1,0 +1,15 @@
+.jk-block-latest-posts>li{
+  overflow:hidden;
+}
+
+.jk-block-latest-posts li a>div{
+  display:inline;
+}
+
+:root :where(.jk-block-latest-posts){
+  padding-left:2.5em;
+}
+
+:root :where(.jk-block-latest-posts.is-grid),:root :where(.jk-block-latest-posts__list){
+  padding-left:0;
+}

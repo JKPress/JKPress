@@ -1,0 +1,58 @@
+.jk-block-pullquote{
+  box-sizing:border-box;
+  margin:0 0 1em;
+  overflow-wrap:break-word;
+  padding:4em 0;
+  text-align:center;
+}
+.jk-block-pullquote blockquote,.jk-block-pullquote cite,.jk-block-pullquote p{
+  color:inherit;
+}
+.jk-block-pullquote blockquote{
+  margin:0;
+}
+.jk-block-pullquote p{
+  margin-top:0;
+}
+.jk-block-pullquote p:last-child{
+  margin-bottom:0;
+}
+.jk-block-pullquote.alignleft,.jk-block-pullquote.alignright{
+  max-width:420px;
+}
+.jk-block-pullquote cite,.jk-block-pullquote footer{
+  position:relative;
+}
+.jk-block-pullquote .has-text-color a{
+  color:inherit;
+}
+
+.jk-block-pullquote.has-text-align-left blockquote{
+  text-align:right;
+}
+
+.jk-block-pullquote.has-text-align-right blockquote{
+  text-align:left;
+}
+
+.jk-block-pullquote.is-style-solid-color{
+  border:none;
+}
+.jk-block-pullquote.is-style-solid-color blockquote{
+  margin-left:auto;
+  margin-right:auto;
+  max-width:60%;
+}
+.jk-block-pullquote.is-style-solid-color blockquote p{
+  font-size:2em;
+  margin-bottom:0;
+  margin-top:0;
+}
+.jk-block-pullquote.is-style-solid-color blockquote cite{
+  font-style:normal;
+  text-transform:none;
+}
+
+.jk-block-pullquote cite{
+  color:inherit;
+}

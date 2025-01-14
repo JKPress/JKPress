@@ -1,0 +1,16 @@
+.jk-block[data-align=center] .jk-block-search .jk-block-search__inside-wrapper{
+  margin:auto;
+}
+
+.jk-block-search :where(.jk-block-search__button){
+  align-items:center;
+  border-radius:initial;
+  display:flex;
+  height:auto;
+  justify-content:center;
+  text-align:center;
+}
+
+.jk-block-search__inspector-controls .components-base-control{
+  margin-bottom:0;
+}

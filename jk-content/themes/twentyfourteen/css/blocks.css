@@ -1,0 +1,454 @@
+/*
+Theme Name: Twenty Fourteen
+Description: Used to style blocks.
+*/
+
+/*--------------------------------------------------------------
+>>> TABLE OF CONTENTS:
+----------------------------------------------------------------
+1.0 General Block Styles
+2.0 Blocks - Common Blocks
+3.0 Blocks - Formatting
+4.0 Blocks - Layout Elements
+5.0 Blocks - Widgets
+6.0 Blocks - Colors
+--------------------------------------------------------------*/
+
+/*--------------------------------------------------------------
+1.0 General Block Styles
+--------------------------------------------------------------*/
+
+[class^="jk-block-"] figcaption,
+[class^="jk-block-"] figcaption.editor-rich-text__tinymce.mce-content-body {
+	font-size: 12px;
+	font-style: italic;
+	line-height: 1.5;
+	margin: 9px 0 0;
+}
+
+/* Alignments */
+
+[class^="jk-block-"].alignleft,
+[class^="jk-block-"] .alignleft {
+	margin-right: 24px;
+}
+
+[class^="jk-block-"].alignright,
+[class^="jk-block-"] .alignright {
+	margin-left: 24px;
+}
+
+/*--------------------------------------------------------------
+2.0 Blocks - Common Blocks
+--------------------------------------------------------------*/
+
+/* Paragraph */
+
+p.has-drop-cap:not(:focus)::first-letter {
+	font-size: 5em;
+}
+
+/* Image */
+
+.jk-block-image {
+	margin-bottom: 24px;
+}
+
+.jk-block-image figcaption {
+	text-align: left;
+}
+
+@media screen and (min-width: 810px) {
+	.full-width .site-content .jk-block-image figure.alignleft {
+		margin-left: -168px;
+	}
+
+	.full-width .site-content .jk-block-image figure.alignright {
+		margin-right: -168px;
+	}
+}
+
+.rtl .jk-block-image figcaption {
+	text-align: right;
+}
+
+/* Gallery */
+
+.jk-block-gallery {
+	margin: 0 0 24px;
+}
+
+.jk-block-gallery .blocks-gallery-image figcaption,
+.jk-block-gallery .blocks-gallery-item figcaption {
+	left: 0;
+	right: 0;
+	width: auto;
+}
+
+/* Quote */
+
+.jk-block-quote:not(.is-large):not(.is-style-large) {
+	border-left: 0;
+	border-right: 0;
+	padding-left: 0;
+	padding-right: 0;
+}
+
+.jk-block-quote.is-large,
+.jk-block-quote.is-style-large {
+	padding: 0;
+}
+
+.jk-block-quote cite {
+	color: #2b2b2b;
+	font-size: 16px;
+	font-weight: 400;
+}
+
+.jk-block-quote.alignleft cite,
+.jk-block-quote.alignright cite {
+	display: inline-block;
+	margin-bottom: 17px;
+	margin-top: 0;
+}
+
+.rtl .jk-block-quote.alignleft {
+	margin-right: 24px;
+}
+
+.rtl .jk-block-quote.alignright {
+	margin-left: 24px;
+}
+
+/* Audio */
+
+.jk-block-audio audio {
+	display: block;
+	width: 100%;
+}
+
+/* Cover */
+
+.jk-block-cover-image.aligncenter,
+.jk-block-cover.aligncenter {
+	display: flex;
+}
+
+/* File */
+
+.jk-block-file .jk-block-file__button {
+	background-color: #24890d;
+	border: 0;
+	color: #fff;
+	font-size: 12px;
+	font-weight: 700;
+	line-height: 1.25;
+	padding: 10px 30px 11px;
+	text-transform: uppercase;
+	vertical-align: bottom;
+}
+
+.jk-block-file .jk-block-file__button:hover,
+.jk-block-file .jk-block-file__button:focus {
+	background-color: #41a62a;
+}
+
+.jk-block-file .jk-block-file__button:active {
+	background-color: #55d737;
+}
+
+.widget .jk-block-file .jk-block-file__button,
+.widget .jk-block-file .jk-block-file__button:hover {
+	color: #fff;
+}
+
+/*--------------------------------------------------------------
+3.0 Blocks - Formatting
+--------------------------------------------------------------*/
+
+/* Code */
+
+.jk-block-code {
+	border: 0;
+	padding: 0;
+}
+
+.jk-block-code code {
+	font-size: inherit;
+}
+
+/* Pullquote */
+
+.jk-block-pullquote {
+	border: 0;
+	margin: 0;
+}
+
+:where(.jk-block-pullquote[class*="-font-size"], .jk-block-pullquote[style*="font-size"]) blockquote {
+	font-size: inherit;
+}
+
+:where(.jk-block-pullquote[style*="font-style"]) blockquote {
+	font-style: inherit;
+}
+
+:where(.jk-block-pullquote[style*="font-weight"]) blockquote {
+	font-weight: inherit;
+}
+
+.jk-block-pullquote cite {
+	color: #2b2b2b;
+	font-size: 16px;
+	font-weight: 400;
+	margin-top: 0;
+	text-transform: none;
+}
+
+.jk-block-pullquote.has-text-color blockquote,
+.jk-block-pullquote.has-background blockquote,
+.has-background .jk-block-pullquote blockquote,
+.jk-block-pullquote.has-text-color cite,
+.has-background .jk-block-pullquote cite,
+.has-text-color .jk-block-pullquote__citation {
+	color: inherit;
+}
+
+.jk-block-pullquote.alignleft {
+	margin-right: 1em;
+}
+
+.jk-block-pullquote.alignright {
+	margin-right: 1em;
+}
+
+@media screen and (min-width: 810px) {
+	.full-width .site-content .jk-block-pullquote.alignleft {
+		margin-left: -168px;
+	}
+
+	.full-width .site-content .jk-block-pullquote.alignright {
+		margin-right: -168px;
+	}
+}
+
+/* Table */
+
+.jk-block-table {
+	overflow-x: visible;
+}
+
+.jk-block-table:where(:not(.is-style-stripes)) th,
+.jk-block-table:where(:not(.is-style-stripes)) td {
+	border-color: rgba(0, 0, 0, 0.1);
+	border-width: 0 1px 1px 0;
+}
+
+/*--------------------------------------------------------------
+4.0 Blocks - Layout Elements
+--------------------------------------------------------------*/
+
+/* Buttons */
+
+.jk-block-button .jk-block-button__link {
+	font-size: 12px;
+	font-weight: 700;
+	line-height: 1.25;
+	padding: 10px 30px 11px;
+	text-decoration: none;
+	text-transform: uppercase;
+	vertical-align: bottom;
+}
+
+.jk-block-buttons[style*="text-transform"] .jk-block-button__link,
+.jk-block-button[style*="text-transform"] .jk-block-button__link {
+	text-transform: inherit;
+}
+
+.jk-block-button__link {
+	background-color: #24890d;
+	color: #fff;
+}
+
+.is-style-outline .jk-block-button__link:not(.has-text-color) {
+	color: #24890d;
+}
+
+.jk-block-button__link:hover,
+.jk-block-button__link:focus,
+.is-style-outline .jk-block-button__link:not(.has-text-color):hover,
+.is-style-outline .jk-block-button__link:not(.has-text-color):focus {
+	background-color: #41a62a;
+	color: #fff;
+}
+
+.jk-block-button__link:active {
+	background-color: #55d737;
+}
+
+.widget a.jk-block-button__link:not(.has-text-color),
+.widget a.jk-block-button__link:not(.has-text-color):hover {
+	color: #fff;
+}
+
+/* Separator */
+
+.jk-block-separator {
+	border: 0;
+	max-width: 100px;
+}
+
+.jk-block-separator.is-style-wide,
+.jk-block-separator.is-style-dots {
+	max-width: 100%;
+}
+
+/* Media & Text */
+
+.jk-block-media-text {
+	margin-bottom: 24px;
+}
+
+.jk-block-media-text *:last-child {
+	margin-bottom: 0;
+}
+
+/*--------------------------------------------------------------
+5.0 Blocks - Widgets
+--------------------------------------------------------------*/
+
+/* Archives, Categories & Latest Posts */
+
+.jk-block-archives.aligncenter,
+.jk-block-categories.aligncenter,
+.jk-block-latest-posts.aligncenter {
+	list-style-position: inside;
+	margin-left: 20px;
+	text-align: center;
+}
+
+.rtl .jk-block-archives.aligncenter,
+.rtl .jk-block-categories.aligncenter,
+.rtl .jk-block-latest-posts.aligncenter {
+	margin-left: 0;
+	margin-right: 20px;
+}
+
+/* Latest Comments */
+
+.jk-block-latest-comments {
+	margin: 0;
+	padding: 0;
+}
+
+.has-avatars .jk-block-latest-comments__comment .jk-block-latest-comments__comment-excerpt,
+.has-avatars .jk-block-latest-comments__comment .jk-block-latest-comments__comment-meta {
+	margin-left: 60px;
+}
+
+.jk-block-latest-comments .avatar, .jk-block-latest-comments__comment-avatar {
+	border-radius: 0;
+	border: 1px solid rgba(0, 0, 0, 0.1);
+	padding: 2px;
+}
+
+.jk-block-latest-comments__comment,
+.jk-block-latest-comments__comment-excerpt,
+.jk-block-latest-comments__comment-excerpt p {
+	font-size: 16px;
+}
+
+.jk-block-latest-comments__comment-meta a {
+	color: #2b2b2b;
+	font-weight: 900;
+	text-decoration: none;
+}
+
+.jk-block-latest-comments_comment-meta a:hover,
+.jk-block-latest-comments_comment-meta a:focus {
+	color: #41a62a;
+}
+
+.widget-area .jk-block-latest-comments__comment-meta a {
+	color: #fff;
+}
+
+.widget-area .jk-block-latest-comments__comment-meta a:hover,
+.widget-area .jk-block-latest-comments__comment-meta a:focus {
+	color: #41a62a;
+}
+
+.jk-block-latest-comments__comment-date {
+	text-transform: uppercase;
+}
+
+.jk-block-latest-comments .jk-block-latest-comments__comment {
+	border-top: 1px solid rgba(0, 0, 0, 0.1);
+	margin-bottom: 24px;
+	padding-top: 24px;
+}
+
+/* Latest Posts */
+
+.jk-block-latest-posts.is-grid {
+	margin-left: 0;
+	margin-right: 0;
+}
+
+/* Search */
+
+html :where(.jk-block-search__button-inside .jk-block-search__inside-wrapper) {
+	border: 1px solid #949494;
+	padding: 4px;
+}
+
+/*--------------------------------------------------------------
+6.0 Blocks - Colors
+--------------------------------------------------------------*/
+
+.has-green-color {
+	color: #24890d;
+}
+
+.has-green-background-color {
+	background-color: #24890d;
+}
+
+.has-black-color {
+	color: #000;
+}
+
+.has-black-background-color {
+	background-color: #000;
+}
+
+.has-dark-gray-color {
+	color: #2b2b2b;
+}
+
+.has-dark-gray-background-color {
+	background-color: #2b2b2b;
+}
+
+.has-medium-gray-color {
+	color: #767676;
+}
+
+.has-medium-gray-background-color {
+	background-color: #767676;
+}
+
+.has-light-gray-color {
+	color: #f5f5f5;
+}
+
+.has-light-gray-background-color {
+	background-color: #f5f5f5;
+}
+
+.has-white-color {
+	color: #fff;
+}
+
+.has-white-background-color {
+	background-color: #fff;
+}

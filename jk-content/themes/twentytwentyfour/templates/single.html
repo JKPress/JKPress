@@ -1,0 +1,49 @@
+<!-- jk:template-part {"slug":"header","area":"header","tagName":"header"} /-->
+
+<!-- jk:group {"tagName":"main","align":"full"} -->
+<main class="jk-block-group alignfull">
+	<!-- jk:group {"style":{"spacing":{"padding":{"top":"var:preset|spacing|50"},"margin":{"bottom":"var:preset|spacing|40"}}},"layout":{"type":"constrained"}} -->
+	<div class="jk-block-group"
+		style="margin-bottom:var(--jk--preset--spacing--40);padding-top:var(--jk--preset--spacing--50)">
+		<!-- jk:post-featured-image {"style":{"spacing":{"margin":{"bottom":"var:preset|spacing|40"}}}} /-->
+
+		<!-- jk:group {"style":{"spacing":{"blockGap":"var:preset|spacing|10","padding":{"top":"0","bottom":"0"}}},"layout":{"type":"flex","orientation":"vertical","justifyContent":"stretch"}} -->
+		<div class="jk-block-group" style="padding-top:0;padding-bottom:0">
+			<!-- jk:post-title {"level":1,"fontSize":"x-large"} /-->
+
+			<!-- jk:template-part {"slug":"post-meta"} /-->
+		</div>
+		<!-- /jk:group -->
+	</div>
+	<!-- /jk:group -->
+
+	<!-- jk:post-content {"lock":{"move":false,"remove":true},"align":"full","layout":{"type":"constrained"}} /-->
+
+	<!-- jk:group {"style":{"spacing":{"margin":{"top":"var:preset|spacing|40"},"padding":{"bottom":"var:preset|spacing|50"}}},"layout":{"type":"constrained"}} -->
+	<div class="jk-block-group"
+		style="margin-top:var(--jk--preset--spacing--40);padding-bottom:var(--jk--preset--spacing--50)">
+		<!-- jk:post-terms {"term":"post_tag","separator":"  ","className":"is-style-pill"} /-->
+
+		<!-- jk:group {"layout":{"type":"constrained"}} -->
+		<div class="jk-block-group">
+			<!-- jk:spacer {"height":"var:preset|spacing|40"} -->
+			<div style="height:var(--jk--preset--spacing--40)" aria-hidden="true" class="jk-block-spacer">
+			</div>
+			<!-- /jk:spacer -->
+
+			<!-- jk:separator {"style":{"spacing":{"margin":{"bottom":"var:preset|spacing|40"}}},"backgroundColor":"contrast-3","className":"is-style-wide"} -->
+			<hr class="jk-block-separator has-text-color has-contrast-3-color has-alpha-channel-opacity has-contrast-3-background-color has-background is-style-wide" style="margin-bottom:var(--jk--preset--spacing--40)"/>
+			<!-- /jk:separator -->
+
+			<!-- jk:pattern {"slug":"twentytwentyfour/hidden-comments"} /-->
+
+			<!-- jk:pattern {"slug":"twentytwentyfour/hidden-post-navigation"} /-->
+
+		</div>
+		<!-- /jk:group -->
+	</div>
+	<!-- /jk:group -->
+</main>
+<!-- /jk:group -->
+
+<!-- jk:template-part {"slug":"footer","area":"footer","tagName":"footer"} /-->

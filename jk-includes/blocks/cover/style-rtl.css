@@ -1,0 +1,236 @@
+.jk-block-cover,.jk-block-cover-image{
+  align-items:center;
+  background-position:50%;
+  box-sizing:border-box; direction:ltr;
+  display:flex;
+  justify-content:center;
+  min-height:430px;
+  overflow:hidden;
+  overflow:clip;
+  padding:1em;
+  position:relative;
+}
+.jk-block-cover .has-background-dim:not([class*=-background-color]),.jk-block-cover-image .has-background-dim:not([class*=-background-color]),.jk-block-cover-image.has-background-dim:not([class*=-background-color]),.jk-block-cover.has-background-dim:not([class*=-background-color]){
+  background-color:#000;
+}
+.jk-block-cover .has-background-dim.has-background-gradient,.jk-block-cover-image .has-background-dim.has-background-gradient{
+  background-color:initial;
+}
+.jk-block-cover-image.has-background-dim:before,.jk-block-cover.has-background-dim:before{
+  background-color:inherit;
+  content:"";
+}
+.jk-block-cover .jk-block-cover__background,.jk-block-cover .jk-block-cover__gradient-background,.jk-block-cover-image .jk-block-cover__background,.jk-block-cover-image .jk-block-cover__gradient-background,.jk-block-cover-image.has-background-dim:not(.has-background-gradient):before,.jk-block-cover.has-background-dim:not(.has-background-gradient):before{
+  bottom:0;
+  left:0;
+  opacity:.5;
+  position:absolute;
+  right:0;
+  top:0;
+  z-index:1;
+}
+.jk-block-cover-image.has-background-dim.has-background-dim-10 .jk-block-cover__background,.jk-block-cover-image.has-background-dim.has-background-dim-10 .jk-block-cover__gradient-background,.jk-block-cover-image.has-background-dim.has-background-dim-10:not(.has-background-gradient):before,.jk-block-cover.has-background-dim.has-background-dim-10 .jk-block-cover__background,.jk-block-cover.has-background-dim.has-background-dim-10 .jk-block-cover__gradient-background,.jk-block-cover.has-background-dim.has-background-dim-10:not(.has-background-gradient):before{
+  opacity:.1;
+}
+.jk-block-cover-image.has-background-dim.has-background-dim-20 .jk-block-cover__background,.jk-block-cover-image.has-background-dim.has-background-dim-20 .jk-block-cover__gradient-background,.jk-block-cover-image.has-background-dim.has-background-dim-20:not(.has-background-gradient):before,.jk-block-cover.has-background-dim.has-background-dim-20 .jk-block-cover__background,.jk-block-cover.has-background-dim.has-background-dim-20 .jk-block-cover__gradient-background,.jk-block-cover.has-background-dim.has-background-dim-20:not(.has-background-gradient):before{
+  opacity:.2;
+}
+.jk-block-cover-image.has-background-dim.has-background-dim-30 .jk-block-cover__background,.jk-block-cover-image.has-background-dim.has-background-dim-30 .jk-block-cover__gradient-background,.jk-block-cover-image.has-background-dim.has-background-dim-30:not(.has-background-gradient):before,.jk-block-cover.has-background-dim.has-background-dim-30 .jk-block-cover__background,.jk-block-cover.has-background-dim.has-background-dim-30 .jk-block-cover__gradient-background,.jk-block-cover.has-background-dim.has-background-dim-30:not(.has-background-gradient):before{
+  opacity:.3;
+}
+.jk-block-cover-image.has-background-dim.has-background-dim-40 .jk-block-cover__background,.jk-block-cover-image.has-background-dim.has-background-dim-40 .jk-block-cover__gradient-background,.jk-block-cover-image.has-background-dim.has-background-dim-40:not(.has-background-gradient):before,.jk-block-cover.has-background-dim.has-background-dim-40 .jk-block-cover__background,.jk-block-cover.has-background-dim.has-background-dim-40 .jk-block-cover__gradient-background,.jk-block-cover.has-background-dim.has-background-dim-40:not(.has-background-gradient):before{
+  opacity:.4;
+}
+.jk-block-cover-image.has-background-dim.has-background-dim-50 .jk-block-cover__background,.jk-block-cover-image.has-background-dim.has-background-dim-50 .jk-block-cover__gradient-background,.jk-block-cover-image.has-background-dim.has-background-dim-50:not(.has-background-gradient):before,.jk-block-cover.has-background-dim.has-background-dim-50 .jk-block-cover__background,.jk-block-cover.has-background-dim.has-background-dim-50 .jk-block-cover__gradient-background,.jk-block-cover.has-background-dim.has-background-dim-50:not(.has-background-gradient):before{
+  opacity:.5;
+}
+.jk-block-cover-image.has-background-dim.has-background-dim-60 .jk-block-cover__background,.jk-block-cover-image.has-background-dim.has-background-dim-60 .jk-block-cover__gradient-background,.jk-block-cover-image.has-background-dim.has-background-dim-60:not(.has-background-gradient):before,.jk-block-cover.has-background-dim.has-background-dim-60 .jk-block-cover__background,.jk-block-cover.has-background-dim.has-background-dim-60 .jk-block-cover__gradient-background,.jk-block-cover.has-background-dim.has-background-dim-60:not(.has-background-gradient):before{
+  opacity:.6;
+}
+.jk-block-cover-image.has-background-dim.has-background-dim-70 .jk-block-cover__background,.jk-block-cover-image.has-background-dim.has-background-dim-70 .jk-block-cover__gradient-background,.jk-block-cover-image.has-background-dim.has-background-dim-70:not(.has-background-gradient):before,.jk-block-cover.has-background-dim.has-background-dim-70 .jk-block-cover__background,.jk-block-cover.has-background-dim.has-background-dim-70 .jk-block-cover__gradient-background,.jk-block-cover.has-background-dim.has-background-dim-70:not(.has-background-gradient):before{
+  opacity:.7;
+}
+.jk-block-cover-image.has-background-dim.has-background-dim-80 .jk-block-cover__background,.jk-block-cover-image.has-background-dim.has-background-dim-80 .jk-block-cover__gradient-background,.jk-block-cover-image.has-background-dim.has-background-dim-80:not(.has-background-gradient):before,.jk-block-cover.has-background-dim.has-background-dim-80 .jk-block-cover__background,.jk-block-cover.has-background-dim.has-background-dim-80 .jk-block-cover__gradient-background,.jk-block-cover.has-background-dim.has-background-dim-80:not(.has-background-gradient):before{
+  opacity:.8;
+}
+.jk-block-cover-image.has-background-dim.has-background-dim-90 .jk-block-cover__background,.jk-block-cover-image.has-background-dim.has-background-dim-90 .jk-block-cover__gradient-background,.jk-block-cover-image.has-background-dim.has-background-dim-90:not(.has-background-gradient):before,.jk-block-cover.has-background-dim.has-background-dim-90 .jk-block-cover__background,.jk-block-cover.has-background-dim.has-background-dim-90 .jk-block-cover__gradient-background,.jk-block-cover.has-background-dim.has-background-dim-90:not(.has-background-gradient):before{
+  opacity:.9;
+}
+.jk-block-cover-image.has-background-dim.has-background-dim-100 .jk-block-cover__background,.jk-block-cover-image.has-background-dim.has-background-dim-100 .jk-block-cover__gradient-background,.jk-block-cover-image.has-background-dim.has-background-dim-100:not(.has-background-gradient):before,.jk-block-cover.has-background-dim.has-background-dim-100 .jk-block-cover__background,.jk-block-cover.has-background-dim.has-background-dim-100 .jk-block-cover__gradient-background,.jk-block-cover.has-background-dim.has-background-dim-100:not(.has-background-gradient):before{
+  opacity:1;
+}
+.jk-block-cover .jk-block-cover__background.has-background-dim.has-background-dim-0,.jk-block-cover .jk-block-cover__gradient-background.has-background-dim.has-background-dim-0,.jk-block-cover-image .jk-block-cover__background.has-background-dim.has-background-dim-0,.jk-block-cover-image .jk-block-cover__gradient-background.has-background-dim.has-background-dim-0{
+  opacity:0;
+}
+.jk-block-cover .jk-block-cover__background.has-background-dim.has-background-dim-10,.jk-block-cover .jk-block-cover__gradient-background.has-background-dim.has-background-dim-10,.jk-block-cover-image .jk-block-cover__background.has-background-dim.has-background-dim-10,.jk-block-cover-image .jk-block-cover__gradient-background.has-background-dim.has-background-dim-10{
+  opacity:.1;
+}
+.jk-block-cover .jk-block-cover__background.has-background-dim.has-background-dim-20,.jk-block-cover .jk-block-cover__gradient-background.has-background-dim.has-background-dim-20,.jk-block-cover-image .jk-block-cover__background.has-background-dim.has-background-dim-20,.jk-block-cover-image .jk-block-cover__gradient-background.has-background-dim.has-background-dim-20{
+  opacity:.2;
+}
+.jk-block-cover .jk-block-cover__background.has-background-dim.has-background-dim-30,.jk-block-cover .jk-block-cover__gradient-background.has-background-dim.has-background-dim-30,.jk-block-cover-image .jk-block-cover__background.has-background-dim.has-background-dim-30,.jk-block-cover-image .jk-block-cover__gradient-background.has-background-dim.has-background-dim-30{
+  opacity:.3;
+}
+.jk-block-cover .jk-block-cover__background.has-background-dim.has-background-dim-40,.jk-block-cover .jk-block-cover__gradient-background.has-background-dim.has-background-dim-40,.jk-block-cover-image .jk-block-cover__background.has-background-dim.has-background-dim-40,.jk-block-cover-image .jk-block-cover__gradient-background.has-background-dim.has-background-dim-40{
+  opacity:.4;
+}
+.jk-block-cover .jk-block-cover__background.has-background-dim.has-background-dim-50,.jk-block-cover .jk-block-cover__gradient-background.has-background-dim.has-background-dim-50,.jk-block-cover-image .jk-block-cover__background.has-background-dim.has-background-dim-50,.jk-block-cover-image .jk-block-cover__gradient-background.has-background-dim.has-background-dim-50{
+  opacity:.5;
+}
+.jk-block-cover .jk-block-cover__background.has-background-dim.has-background-dim-60,.jk-block-cover .jk-block-cover__gradient-background.has-background-dim.has-background-dim-60,.jk-block-cover-image .jk-block-cover__background.has-background-dim.has-background-dim-60,.jk-block-cover-image .jk-block-cover__gradient-background.has-background-dim.has-background-dim-60{
+  opacity:.6;
+}
+.jk-block-cover .jk-block-cover__background.has-background-dim.has-background-dim-70,.jk-block-cover .jk-block-cover__gradient-background.has-background-dim.has-background-dim-70,.jk-block-cover-image .jk-block-cover__background.has-background-dim.has-background-dim-70,.jk-block-cover-image .jk-block-cover__gradient-background.has-background-dim.has-background-dim-70{
+  opacity:.7;
+}
+.jk-block-cover .jk-block-cover__background.has-background-dim.has-background-dim-80,.jk-block-cover .jk-block-cover__gradient-background.has-background-dim.has-background-dim-80,.jk-block-cover-image .jk-block-cover__background.has-background-dim.has-background-dim-80,.jk-block-cover-image .jk-block-cover__gradient-background.has-background-dim.has-background-dim-80{
+  opacity:.8;
+}
+.jk-block-cover .jk-block-cover__background.has-background-dim.has-background-dim-90,.jk-block-cover .jk-block-cover__gradient-background.has-background-dim.has-background-dim-90,.jk-block-cover-image .jk-block-cover__background.has-background-dim.has-background-dim-90,.jk-block-cover-image .jk-block-cover__gradient-background.has-background-dim.has-background-dim-90{
+  opacity:.9;
+}
+.jk-block-cover .jk-block-cover__background.has-background-dim.has-background-dim-100,.jk-block-cover .jk-block-cover__gradient-background.has-background-dim.has-background-dim-100,.jk-block-cover-image .jk-block-cover__background.has-background-dim.has-background-dim-100,.jk-block-cover-image .jk-block-cover__gradient-background.has-background-dim.has-background-dim-100{
+  opacity:1;
+}
+.jk-block-cover-image.alignleft,.jk-block-cover-image.alignright,.jk-block-cover.alignleft,.jk-block-cover.alignright{
+  max-width:420px;
+  width:100%;
+}
+.jk-block-cover-image.aligncenter,.jk-block-cover-image.alignleft,.jk-block-cover-image.alignright,.jk-block-cover.aligncenter,.jk-block-cover.alignleft,.jk-block-cover.alignright{
+  display:flex;
+}
+.jk-block-cover .jk-block-cover__inner-container,.jk-block-cover-image .jk-block-cover__inner-container{
+  color:inherit; direction:rtl;
+  width:100%;
+  z-index:1;
+}
+.has-modal-open .jk-block-cover .jk-block-cover__inner-container,.has-modal-open .jk-block-cover-image .jk-block-cover__inner-container{
+  z-index:auto;
+}
+
+.jk-block-cover-image.is-position-top-left,.jk-block-cover.is-position-top-left{
+  align-items:flex-start;
+  justify-content:flex-start;
+}
+.jk-block-cover-image.is-position-top-center,.jk-block-cover.is-position-top-center{
+  align-items:flex-start;
+  justify-content:center;
+}
+.jk-block-cover-image.is-position-top-right,.jk-block-cover.is-position-top-right{
+  align-items:flex-start;
+  justify-content:flex-end;
+}
+.jk-block-cover-image.is-position-center-left,.jk-block-cover.is-position-center-left{
+  align-items:center;
+  justify-content:flex-start;
+}
+.jk-block-cover-image.is-position-center-center,.jk-block-cover.is-position-center-center{
+  align-items:center;
+  justify-content:center;
+}
+.jk-block-cover-image.is-position-center-right,.jk-block-cover.is-position-center-right{
+  align-items:center;
+  justify-content:flex-end;
+}
+.jk-block-cover-image.is-position-bottom-left,.jk-block-cover.is-position-bottom-left{
+  align-items:flex-end;
+  justify-content:flex-start;
+}
+.jk-block-cover-image.is-position-bottom-center,.jk-block-cover.is-position-bottom-center{
+  align-items:flex-end;
+  justify-content:center;
+}
+.jk-block-cover-image.is-position-bottom-right,.jk-block-cover.is-position-bottom-right{
+  align-items:flex-end;
+  justify-content:flex-end;
+}
+.jk-block-cover-image.has-custom-content-position.has-custom-content-position .jk-block-cover__inner-container,.jk-block-cover.has-custom-content-position.has-custom-content-position .jk-block-cover__inner-container{
+  margin:0;
+}
+.jk-block-cover-image.has-custom-content-position.has-custom-content-position.is-position-bottom-left .jk-block-cover__inner-container,.jk-block-cover-image.has-custom-content-position.has-custom-content-position.is-position-bottom-right .jk-block-cover__inner-container,.jk-block-cover-image.has-custom-content-position.has-custom-content-position.is-position-center-left .jk-block-cover__inner-container,.jk-block-cover-image.has-custom-content-position.has-custom-content-position.is-position-center-right .jk-block-cover__inner-container,.jk-block-cover-image.has-custom-content-position.has-custom-content-position.is-position-top-left .jk-block-cover__inner-container,.jk-block-cover-image.has-custom-content-position.has-custom-content-position.is-position-top-right .jk-block-cover__inner-container,.jk-block-cover.has-custom-content-position.has-custom-content-position.is-position-bottom-left .jk-block-cover__inner-container,.jk-block-cover.has-custom-content-position.has-custom-content-position.is-position-bottom-right .jk-block-cover__inner-container,.jk-block-cover.has-custom-content-position.has-custom-content-position.is-position-center-left .jk-block-cover__inner-container,.jk-block-cover.has-custom-content-position.has-custom-content-position.is-position-center-right .jk-block-cover__inner-container,.jk-block-cover.has-custom-content-position.has-custom-content-position.is-position-top-left .jk-block-cover__inner-container,.jk-block-cover.has-custom-content-position.has-custom-content-position.is-position-top-right .jk-block-cover__inner-container{
+  margin:0;
+  width:auto;
+}
+.jk-block-cover .jk-block-cover__image-background,.jk-block-cover video.jk-block-cover__video-background,.jk-block-cover-image .jk-block-cover__image-background,.jk-block-cover-image video.jk-block-cover__video-background{
+  border:none;
+  bottom:0;
+  box-shadow:none;
+  height:100%;
+  left:0;
+  margin:0;
+  max-height:none;
+  max-width:none;
+  object-fit:cover;
+  outline:none;
+  padding:0;
+  position:absolute;
+  right:0;
+  top:0;
+  width:100%;
+}
+
+.jk-block-cover-image.has-parallax,.jk-block-cover.has-parallax,.jk-block-cover__image-background.has-parallax,video.jk-block-cover__video-background.has-parallax{
+  background-attachment:fixed;
+  background-repeat:no-repeat;
+  background-size:cover;
+}
+@supports (-webkit-touch-callout:inherit){
+  .jk-block-cover-image.has-parallax,.jk-block-cover.has-parallax,.jk-block-cover__image-background.has-parallax,video.jk-block-cover__video-background.has-parallax{
+    background-attachment:scroll;
+  }
+}
+@media (prefers-reduced-motion:reduce){
+  .jk-block-cover-image.has-parallax,.jk-block-cover.has-parallax,.jk-block-cover__image-background.has-parallax,video.jk-block-cover__video-background.has-parallax{
+    background-attachment:scroll;
+  }
+}
+.jk-block-cover-image.is-repeated,.jk-block-cover.is-repeated,.jk-block-cover__image-background.is-repeated,video.jk-block-cover__video-background.is-repeated{
+  background-repeat:repeat;
+  background-size:auto;
+}
+
+.jk-block-cover__image-background,.jk-block-cover__video-background{
+  z-index:0;
+}
+.jk-block-cover-image-text,.jk-block-cover-image-text a,.jk-block-cover-image-text a:active,.jk-block-cover-image-text a:focus,.jk-block-cover-image-text a:hover,.jk-block-cover-text,.jk-block-cover-text a,.jk-block-cover-text a:active,.jk-block-cover-text a:focus,.jk-block-cover-text a:hover,section.jk-block-cover-image h2,section.jk-block-cover-image h2 a,section.jk-block-cover-image h2 a:active,section.jk-block-cover-image h2 a:focus,section.jk-block-cover-image h2 a:hover{
+  color:#fff;
+}
+
+.jk-block-cover-image .jk-block-cover.has-left-content{
+  justify-content:flex-start;
+}
+.jk-block-cover-image .jk-block-cover.has-right-content{
+  justify-content:flex-end;
+}
+
+.jk-block-cover-image.has-left-content .jk-block-cover-image-text,.jk-block-cover.has-left-content .jk-block-cover-text,section.jk-block-cover-image.has-left-content>h2{
+  margin-right:0;
+  text-align:right;
+}
+
+.jk-block-cover-image.has-right-content .jk-block-cover-image-text,.jk-block-cover.has-right-content .jk-block-cover-text,section.jk-block-cover-image.has-right-content>h2{
+  margin-left:0;
+  text-align:left;
+}
+
+.jk-block-cover .jk-block-cover-text,.jk-block-cover-image .jk-block-cover-image-text,section.jk-block-cover-image>h2{
+  font-size:2em;
+  line-height:1.25;
+  margin-bottom:0;
+  max-width:840px;
+  padding:.44em;
+  text-align:center;
+  z-index:1;
+}
+
+:where(.jk-block-cover-image:not(.has-text-color)),:where(.jk-block-cover:not(.has-text-color)){
+  color:#fff;
+}
+
+:where(.jk-block-cover-image.is-light:not(.has-text-color)),:where(.jk-block-cover.is-light:not(.has-text-color)){
+  color:#000;
+}
+
+:root :where(.jk-block-cover h1:not(.has-text-color)),:root :where(.jk-block-cover h2:not(.has-text-color)),:root :where(.jk-block-cover h3:not(.has-text-color)),:root :where(.jk-block-cover h4:not(.has-text-color)),:root :where(.jk-block-cover h5:not(.has-text-color)),:root :where(.jk-block-cover h6:not(.has-text-color)),:root :where(.jk-block-cover p:not(.has-text-color)){
+  color:inherit;
+}

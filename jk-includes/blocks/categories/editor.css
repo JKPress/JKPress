@@ -1,0 +1,13 @@
+.jk-block-categories ul{
+  padding-left:2.5em;
+}
+.jk-block-categories ul ul{
+  margin-top:6px;
+}
+[data-align=center] .jk-block-categories{
+  text-align:center;
+}
+
+.jk-block-categories__indentation{
+  padding-left:16px;
+}

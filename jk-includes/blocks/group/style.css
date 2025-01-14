@@ -1,0 +1,7 @@
+.jk-block-group{
+  box-sizing:border-box;
+}
+
+:where(.jk-block-group.jk-block-group-is-layout-constrained){
+  position:relative;
+}

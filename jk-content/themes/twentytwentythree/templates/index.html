@@ -1,0 +1,27 @@
+<!-- jk:template-part {"slug":"header","tagName":"header"} /-->
+
+<!-- jk:group {"tagName":"main","layout":{"type":"constrained"}} -->
+<main class="jk-block-group">
+	<!-- jk:query {"query":{"pages":0,"offset":0,"postType":"post","order":"desc","orderBy":"date","author":"","search":"","exclude":[],"sticky":"","inherit":true,"taxQuery":null,"parents":[]},"displayLayout":{"type":"flex","columns":3},"align":"wide","layout":{"type":"default"}} -->
+	<div class="jk-block-query alignwide">
+		<!-- jk:post-template {"align":"wide"} -->
+			<!-- jk:post-featured-image {"isLink":true,"width":"100%","height":"clamp(15vw, 30vh, 400px)","align":"wide"} /-->
+			<!-- jk:post-title {"isLink":true,"align":"wide"} /-->
+			<!-- jk:post-excerpt /-->
+			<!-- jk:post-date {"isLink":true} /-->
+
+			<!-- jk:spacer {"height":"var(--jk--preset--spacing--70)"} -->
+			<div style="height:var(--jk--preset--spacing--70)" aria-hidden="true" class="jk-block-spacer"></div>
+			<!-- /jk:spacer -->
+		<!-- /jk:post-template -->
+
+		<!-- jk:query-pagination {"paginationArrow":"arrow","align":"wide","layout":{"type":"flex","justifyContent":"space-between"}} -->
+			<!-- jk:query-pagination-previous /-->
+			<!-- jk:query-pagination-next /-->
+		<!-- /jk:query-pagination -->
+	</div>
+	<!-- /jk:query -->
+</main>
+<!-- /jk:group -->
+
+<!-- jk:template-part {"slug":"footer","tagName":"footer"} /-->

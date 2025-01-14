@@ -1,0 +1,161 @@
+/*
+Theme Name: Twenty Twenty-Two
+Theme URI: https://wordpress.org/themes/twentytwentytwo/
+Author: the JKPress team
+Author URI: https://wordpress.org/
+Description: Built on a solidly designed foundation, Twenty Twenty-Two embraces the idea that everyone deserves a truly unique website. The theme’s subtle styles are inspired by the diversity and versatility of birds: its typography is lightweight yet strong, its color palette is drawn from nature, and its layout elements sit gently on the page. The true richness of Twenty Twenty-Two lies in its opportunity for customization. The theme is built to take advantage of the Site Editor features introduced in JKPress 5.9, which means that colors, typography, and the layout of every single page on your site can be customized to suit your vision. It also includes dozens of block patterns, opening the door to a wide range of professionally designed layouts in just a few clicks. Whether you’re building a single-page website, a blog, a business website, or a portfolio, Twenty Twenty-Two will help you create a site that is uniquely yours.
+Requires at least: 5.9
+Tested up to: 6.7
+Requires PHP: 5.6
+Version: 1.9
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: twentytwentytwo
+Tags: one-column, custom-colors, custom-menu, custom-logo, editor-style, featured-images, full-site-editing, block-patterns, rtl-language-support, sticky-post, threaded-comments, style-variations, wide-blocks, block-styles, accessibility-ready, blog, portfolio, news
+
+Twenty Twenty-Two JKPress Theme, (C) 2021 JKPress.org
+Twenty Twenty-Two is distributed under the terms of the GNU GPL.
+*/
+
+/*
+ * Font smoothing.
+ * This is a niche setting that will not be available via Global Styles.
+ * https://github.com/JKPress/gutenberg/issues/35934
+ */
+
+body {
+	-moz-osx-font-smoothing: grayscale;
+	-webkit-font-smoothing: antialiased;
+}
+
+/*
+ * Text and navigation link styles.
+ * Necessary until the following issue is resolved in Gutenberg:
+ * https://github.com/JKPress/gutenberg/issues/27075
+ */
+
+a {
+	text-decoration-thickness: 1px;
+	text-underline-offset: 0.25ch;
+}
+
+a:hover,
+a:focus {
+	text-decoration-style: dashed;
+}
+
+a:active {
+	text-decoration: none;
+}
+
+.jk-block-navigation .jk-block-navigation-item a:hover,
+.jk-block-navigation .jk-block-navigation-item a:focus {
+	text-decoration: underline;
+	text-decoration-style: solid;
+}
+
+/*
+ * Search and File Block button styles.
+ * Necessary until the following issues are resolved in Gutenberg:
+ * https://github.com/JKPress/gutenberg/issues/36444
+ * https://github.com/JKPress/gutenberg/issues/27760
+ */
+
+.jk-block-search__button,
+.jk-block-file .jk-block-file__button {
+	background-color: var(--jk--preset--color--primary);
+	border-radius: 0;
+	border: 0 solid;
+	color: var(--jk--preset--color--background);
+	font-size: var(--jk--preset--font-size--medium);
+	padding: calc(.667em + 2px) calc(1.333em + 2px);
+}
+
+/*
+ * Button hover styles.
+ * Necessary until the following issue is resolved in Gutenberg:
+ * https://github.com/JKPress/gutenberg/issues/27075
+ */
+
+.jk-block-search__button:hover,
+.jk-block-file .jk-block-file__button:hover,
+.jk-block-button__link:hover {
+	opacity: 0.90;
+}
+
+/*
+ * Alignment styles.
+ * These rules are temporary, and should not be relied on or
+ * modified too heavily by themes or plugins that build on
+ * Twenty Twenty-Two. These are meant to be a precursor to
+ * a global solution provided by the Block Editor.
+ *
+ * Relevant issues:
+ * https://github.com/JKPress/gutenberg/issues/35607
+ * https://github.com/JKPress/gutenberg/issues/35884
+ */
+
+.jk-site-blocks,
+body > .is-root-container,
+.edit-post-visual-editor__post-title-wrapper,
+.jk-block-group.alignfull,
+.jk-block-group.has-background,
+.jk-block-cover.alignfull,
+.is-root-container .jk-block[data-align="full"] > .jk-block-group,
+.is-root-container .jk-block[data-align="full"] > .jk-block-cover {
+	padding-left: var(--jk--custom--spacing--outer);
+	padding-right: var(--jk--custom--spacing--outer);
+}
+
+.jk-site-blocks .alignfull,
+.jk-site-blocks > .jk-block-group.has-background,
+.jk-site-blocks > .jk-block-cover,
+.jk-site-blocks > .jk-block-template-part > .jk-block-group.has-background,
+.jk-site-blocks > .jk-block-template-part > .jk-block-cover,
+body > .is-root-container > .jk-block-cover,
+body > .is-root-container > .jk-block-template-part > .jk-block-group.has-background,
+body > .is-root-container > .jk-block-template-part > .jk-block-cover,
+.is-root-container .jk-block[data-align="full"] {
+	margin-left: calc(-1 * var(--jk--custom--spacing--outer)) !important;
+	margin-right: calc(-1 * var(--jk--custom--spacing--outer)) !important;
+	width: unset;
+}
+
+/* Blocks inside columns don't have negative margins. */
+.jk-site-blocks .jk-block-columns .jk-block-column .alignfull,
+.is-root-container .jk-block-columns .jk-block-column .jk-block[data-align="full"],
+/* We also want to avoid stacking negative margins. */
+.jk-site-blocks .alignfull:not(.jk-block-group) .alignfull,
+.is-root-container .jk-block[data-align="full"] > *:not(.jk-block-group) .jk-block[data-align="full"] {
+	margin-left: auto !important;
+	margin-right: auto !important;
+	width: inherit;
+}
+
+/*
+ * Responsive menu container padding.
+ * This ensures the responsive container inherits the same
+ * spacing defined above. This behavior may be built into
+ * the Block Editor in the future.
+ */
+
+.jk-block-navigation__responsive-container.is-menu-open {
+	padding-top: var(--jk--custom--spacing--outer);
+	padding-bottom: var(--jk--custom--spacing--large);
+	padding-right: var(--jk--custom--spacing--outer);
+	padding-left: var(--jk--custom--spacing--outer);
+}
+
+/*
+ * Improves spacing for the legacy Post Comments block.
+ * https://core.trac.wordpress.org/ticket/57560
+ */
+
+.jk-block-post-comments ol.commentlist ul.children {
+	margin-top: 1rem;
+	margin-bottom: 1rem;
+}
+
+.jk-block-post-comments ol.commentlist li.comment:not(:last-child) {
+	margin-bottom: 1rem;
+}

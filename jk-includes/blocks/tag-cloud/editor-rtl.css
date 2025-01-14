@@ -1,0 +1,10 @@
+.jk-block-tag-cloud .jk-block-tag-cloud{
+  border:none;
+  border-radius:inherit;
+  margin:0;
+  padding:0;
+}
+
+.jk-block-tag-cloud__inspector-settings .components-base-control,.jk-block-tag-cloud__inspector-settings .components-base-control:last-child{
+  margin-bottom:0;
+}

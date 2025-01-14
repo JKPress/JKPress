@@ -1,0 +1,552 @@
+/*
+Theme Name: Twenty Sixteen
+Description: Used to style blocks.
+*/
+
+/*--------------------------------------------------------------
+>>> TABLE OF CONTENTS:
+----------------------------------------------------------------
+1.0 General Block Styles
+2.0 Blocks - Common Blocks
+3.0 Blocks - Formatting
+4.0 Blocks - Layout Elements
+5.0 Blocks - Widgets
+6.0 Blocks - Colors
+--------------------------------------------------------------*/
+
+/*--------------------------------------------------------------
+1.0 General Block Styles
+--------------------------------------------------------------*/
+
+/* Captions */
+
+[class^="jk-block-"] figcaption {
+	color: #686868;
+	font-style: italic;
+	line-height: 1.6153846154;
+	padding-top: 0.5384615385em;
+	text-align: left;
+}
+
+.rtl [class^="jk-block-"] figcaption {
+	text-align: right;
+}
+
+/*--------------------------------------------------------------
+2.0 Blocks - Common Blocks
+--------------------------------------------------------------*/
+
+/* Paragraph */
+
+p.has-drop-cap:not(:focus)::first-letter {
+	font-size: 5em;
+}
+
+/* Image */
+
+@media screen and (min-width: 61.5625em) {
+	body:not(.search-results) article:not(.type-page) .jk-block-image figcaption.below-entry-meta {
+		clear: both;
+		display: block;
+		float: none;
+		margin-right: 0;
+		margin-left: -40%;
+		max-width: 140%;
+	}
+
+	body.rtl:not(.search-results) article:not(.type-page) .jk-block-image figcaption.below-entry-meta {
+		margin-left: 0;
+		margin-right: -40%;
+	}
+
+	body:not(.search-results) article:not(.type-page) .jk-block-gallery .jk-block-image img.below-entry-meta,
+	body:not(.search-results) article:not(.type-page) .jk-block-gallery .jk-block-image figcaption.below-entry-meta {
+		margin: 0;
+		max-width: 100%;
+	}
+}
+
+/* Gallery */
+
+.jk-block-gallery {
+	margin-bottom: 1.75em;
+}
+
+/* Quote */
+
+.jk-block-quote {
+	border-width: 0 0 0 4px;
+}
+ 
+:where(.rtl) .jk-block-quote {
+	border-width: 0 4px 0 0;
+}
+
+.jk-block-quote:not(.is-large):not(.is-style-large).alignleft,
+.jk-block-quote:not(.is-large):not(.is-style-large).alignright {
+	border-left: none;
+	padding-left: 0;
+}
+
+.rtl .jk-block-quote:not(.is-large):not(.is-style-large).alignleft,
+.rtl .jk-block-quote:not(.is-large):not(.is-style-large).alignright {
+	border-right: none;
+	padding-right: 0;
+}
+
+.jk-block-quote cite {
+	color: #1a1a1a;
+	display: block;
+	font-size: 16px;
+	font-size: 1rem;
+	line-height: 1.75;
+}
+
+.jk-block-quote.has-text-color cite {
+	color: inherit;
+}
+
+.jk-block-quote cite:before {
+	content: "\2014\00a0";
+}
+
+/* Audio */
+
+.jk-block-audio audio {
+	display: block;
+	width: 100%;
+}
+
+/* Cover */
+
+.jk-block-cover-image.aligncenter,
+.jk-block-cover.aligncenter {
+	display: flex;
+}
+
+/* File */
+
+.jk-block-file .jk-block-file__button {
+	background: #1a1a1a;
+	border: 0;
+	border-radius: 2px;
+	color: #fff;
+	font-family: Montserrat, "Helvetica Neue", sans-serif;
+	font-weight: 700;
+	letter-spacing: 0.046875em;
+	line-height: 1;
+	padding: 0.84375em 0.875em 0.78125em;
+	text-transform: uppercase;
+}
+
+.jk-block-file .jk-block-file__button:hover,
+.jk-block-file .jk-block-file__button:focus {
+	background: #007acc;
+}
+
+.jk-block-file .jk-block-file__button:focus {
+	outline: thin dotted;
+	outline-offset: -4px;
+}
+
+.rtl .jk-block-file * + .jk-block-file__button {
+	margin-left: 0.75em;
+	margin-right: 0;
+}
+
+/*--------------------------------------------------------------
+3.0 Blocks - Formatting Blocks
+--------------------------------------------------------------*/
+
+/* Code */
+
+.jk-block-code {
+	border: 0;
+	font-family: Inconsolata, monospace;
+	line-height: 1.75;
+	padding: 0;
+}
+
+.jk-block-code code {
+	font-size: inherit;
+}
+
+/* Pullquote */
+
+.jk-block-pullquote {
+	border-width: 4px;
+}
+
+.jk-block-pullquote blockquote {
+	color: #686868;
+	border: 0;
+	margin: 0;
+	padding: 0;
+}
+
+.entry-content .jk-block-pullquote blockquote:not(.alignleft):not(.alignright) {
+	margin-left: 0;
+	margin-right: 0;
+}
+
+.jk-block-pullquote:where([style*="border-width"]) blockquote {
+	padding-left: 1rem;
+	padding-right: 1rem;
+}
+
+.jk-block-pullquote.has-text-color blockquote,
+.jk-block-pullquote.has-background blockquote,
+.has-background .jk-block-pullquote blockquote,
+.jk-block-pullquote.has-text-color cite {
+	color: inherit;
+}
+
+.jk-block-pullquote p {
+	font-size: 19px;
+	font-size: 1.1875rem;
+}
+
+.jk-block-pullquote cite {
+	color: #1a1a1a;
+	display: block;
+	font-size: 16px;
+	font-size: 1rem;
+	font-style: normal;
+	line-height: 1.75;
+	text-transform: none;
+}
+
+.jk-block-pullquote[class*="-font-size"] blockquote,
+.jk-block-pullquote[class*="-font-size"] blockquote p,
+.jk-block-pullquote[class*="-font-size"] cite,
+.jk-block-pullquote[style*="font-size"] blockquote,
+.jk-block-pullquote[style*="font-size"] blockquote p,
+.jk-block-pullquote[style*="font-size"] cite {
+	font-size: inherit;
+}
+
+.jk-block-pullquote[style*="line-height"] blockquote,
+.jk-block-pullquote[style*="line-height"] blockquote p,
+.jk-block-pullquote[style*="line-height"] cite {
+	line-height: inherit;
+}
+
+.jk-block-pullquote cite:before {
+	content: "\2014\00a0";
+}
+
+/* Table */
+
+.jk-block-table,
+.jk-block-table th,
+.jk-block-table td {
+	border: 1px solid #d1d1d1;
+}
+
+.jk-block-table {
+	border-collapse: separate;
+	border-spacing: 0;
+	border-width: 0;
+	margin: 0 0 1.75em;
+	table-layout: fixed;
+	width: 100%;
+}
+
+.jk-block-table th,
+.jk-block-table td {
+	font-weight: normal;
+	padding: 0.4375em;
+}
+
+.jk-block-table th {
+	border-width: 0 1px 1px 0;
+	font-weight: 700;
+}
+
+.jk-block-table td {
+	border-width: 0 1px 1px 0;
+}
+
+/*--------------------------------------------------------------
+4.0 Blocks - Layout Elements
+--------------------------------------------------------------*/
+
+/* Buttons */
+
+.jk-block-buttons {
+	font-weight: 700;
+	letter-spacing: 0.046875em;
+	line-height: 1;
+	text-transform: uppercase;
+}
+
+.jk-block-button .jk-block-button__link {
+	box-shadow: none;
+	font-family: Montserrat, "Helvetica Neue", sans-serif;
+	padding: 0.84375em 1.3125em 0.78125em;
+}
+
+.jk-block-button__link {
+	background: #1a1a1a;
+	color: #fff;
+}
+
+.is-style-outline .jk-block-button__link:not(.has-background) {
+	background: transparent;
+}
+
+.is-style-outline .jk-block-button__link:not(.has-text-color) {
+	color: #1a1a1a;
+}
+
+.jk-block-button .jk-block-button__link:active,
+.jk-block-button .jk-block-button__link:focus,
+.jk-block-button .jk-block-button__link:hover,
+.is-style-outline .jk-block-button__link:not(.has-background):active,
+.is-style-outline .jk-block-button__link:not(.has-background):hover,
+.is-style-outline .jk-block-button__link:not(.has-background):focus,
+.is-style-outline .jk-block-button__link:not(.has-text-color):active,
+.is-style-outline .jk-block-button__link:not(.has-text-color):hover,
+.is-style-outline .jk-block-button__link:not(.has-text-color):focus {
+	background: #007acc;
+	color: #fff;
+}
+
+.jk-block-button .jk-block-button__link:focus {
+	outline: thin dotted;
+	outline-offset: -4px;
+}
+
+/* Separator */
+
+hr.jk-block-separator {
+	border: 0;
+}
+
+.jk-block-separator {
+	margin-left: auto;
+	margin-right: auto;
+	max-width: 100px;
+}
+
+.jk-block-separator.is-style-wide,
+.jk-block-separator.is-style-dots {
+	max-width: 100%;
+}
+
+/* Media & Text */
+
+.jk-block-media-text {
+	margin-bottom: 1.75em;
+}
+
+.jk-block-media-text *:last-child {
+	margin-bottom: 0;
+}
+
+/* Details */
+
+.jk-block-details > summary:first-of-type {
+	display: list-item;
+}
+
+/*--------------------------------------------------------------
+5.0 Blocks - Widget Blocks
+--------------------------------------------------------------*/
+
+/* Archives, Categories & Latest Posts */
+
+.jk-block-archives.aligncenter,
+.jk-block-categories.aligncenter,
+.jk-block-latest-posts.aligncenter {
+	list-style-position: inside;
+	text-align: center;
+}
+
+/* Latest Comments */
+
+.jk-block-latest-comments__comment-meta a {
+	box-shadow: none;
+	font-weight: 700;
+}
+
+.jk-block-latest-comments__comment-date {
+	color: #686868;
+	font-family: Montserrat, "Helvetica Neue", sans-serif;
+	font-size: 13px;
+	font-size: 0.8125rem;
+	line-height: 1.6153846154;
+}
+
+.jk-block-latest-comments .jk-block-latest-comments__comment:not(:first-child) {
+	border-top: 1px solid #d1d1d1;
+	margin-bottom: 0;
+	padding: 1.75em 0;
+}
+
+.jk-block-latest-comments__comment-excerpt p:last-child {
+	margin-bottom: 0;
+}
+
+/* Query Loop & Post Template */
+
+.jk-block-query .jk-block-post-template {
+	margin-left: 0;
+}
+
+.jk-block-query .jk-block-post-template li {
+	margin-bottom: 0;
+	padding: 1.5em 0 0;
+}
+
+.jk-block-query .jk-block-post-template li:not(:first-child) {
+	border-top: 1px solid #d1d1d1;
+}
+
+/*--------------------------------------------------------------
+6.0 Blocks - Colors
+--------------------------------------------------------------*/
+
+.has-dark-gray-color {
+	color: #1a1a1a;
+}
+
+.has-dark-gray-background-color {
+	background-color: #1a1a1a;
+}
+
+.has-dark-gray-border-color {
+	border-color: #1a1a1a;
+}
+
+.has-medium-gray-color {
+	color: #686868;
+}
+
+.has-medium-gray-background-color {
+	background-color: #686868;
+}
+
+.has-medium-gray-border-color {
+	border-color: #686868;
+}
+
+.has-light-gray-color {
+	color: #e5e5e5;
+}
+
+.has-light-gray-background-color {
+	background-color: #e5e5e5;
+}
+
+.has-light-gray-border-color {
+	border-color: #e5e5e5;
+}
+
+.has-white-color {
+	color: #fff;
+}
+
+.has-white-background-color {
+	background-color: #fff;
+}
+
+.has-white-border-color {
+	border-color: #fff;
+}
+
+.has-blue-gray-color {
+	color: #4d545c;
+}
+
+.has-blue-gray-background-color {
+	background-color: #4d545c;
+}
+
+.has-blue-gray-border-color {
+	border-color: #4d545c;
+}
+
+.has-bright-blue-color {
+	color: #007acc;
+}
+
+.has-bright-blue-background-color {
+	background-color: #007acc;
+}
+
+.has-bright-blue-border-color {
+	border-color: #007acc;
+}
+
+.has-light-blue-color {
+	color: #9adffd;
+}
+
+.has-light-blue-background-color {
+	background-color: #9adffd;
+}
+
+.has-light-blue-border-color {
+	border-color: #9adffd;
+}
+
+.has-dark-brown-color {
+	color: #402b30;
+}
+
+.has-dark-brown-background-color {
+	background-color: #402b30;
+}
+
+.has-dark-brown-border-color {
+	border-color: #402b30;
+}
+
+.has-medium-brown-color {
+	color: #774e24;
+}
+
+.has-medium-brown-background-color {
+	background-color: #774e24;
+}
+
+.has-medium-brown-border-color {
+	border-color: #774e24;
+}
+
+.has-dark-red-color {
+	color: #640c1f;
+}
+
+.has-dark-red-background-color {
+	background-color: #640c1f;
+}
+
+.has-dark-red-border-color {
+	border-color: #640c1f;
+}
+
+.has-bright-red-color {
+	color: #ff675f;
+}
+
+.has-bright-red-background-color {
+	background-color: #ff675f;
+}
+
+.has-bright-red-border-color {
+	border-color: #ff675f;
+}
+
+.has-yellow-color {
+	color: #ffef8e;
+}
+
+.has-yellow-background-color {
+	background-color: #ffef8e;
+}
+
+.has-yellow-border-color {
+	border-color: #ffef8e;
+}

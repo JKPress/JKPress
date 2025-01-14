@@ -1,0 +1,31 @@
+.jk-block-social-links .jk-social-link{
+  line-height:0;
+}
+
+.jk-block-social-link-anchor{
+  align-items:center;
+  background:none;
+  border:0;
+  box-sizing:border-box;
+  color:currentColor;
+  cursor:pointer;
+  display:inline-flex;
+  font-size:inherit;
+  height:auto;
+  opacity:1;
+  padding:.25em;
+}
+.jk-block-social-link-anchor:focus:not(:disabled){
+  border-radius:2px;
+  box-shadow:0 0 0 var(--jk-admin-border-width-focus) var(--jk-admin-theme-color);
+  outline:3px solid #0000;
+}
+
+:root :where(.jk-block-social-links.is-style-pill-shape .jk-social-link button){
+  padding-left:.66667em;
+  padding-right:.66667em;
+}
+
+:root :where(.jk-block-social-links.is-style-logos-only .jk-social-link button){
+  padding:0;
+}

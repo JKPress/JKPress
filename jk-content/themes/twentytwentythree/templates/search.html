@@ -1,0 +1,33 @@
+<!-- jk:template-part {"slug":"header","tagName":"header"} /-->
+
+<!-- jk:group {"tagName":"main","style":{"spacing":{"margin":{"top":"var:preset|spacing|70","bottom":"var:preset|spacing|70"}}},"layout":{"type":"constrained"}} -->
+<main class="jk-block-group" style="margin-top:var(--jk--preset--spacing--70);margin-bottom:var(--jk--preset--spacing--70)">
+	<!-- jk:query-title {"type":"search","align":"wide","style":{"spacing":{"margin":{"bottom":"var:preset|spacing|50"}}}} /-->
+
+	<!-- jk:query {"query":{"pages":0,"offset":0,"postType":"post","order":"desc","orderBy":"date","author":"","search":"","exclude":[],"sticky":"","inherit":true},"displayLayout":{"type":"flex","columns":3},"align":"wide","layout":{"type":"default"}} -->
+	<div class="jk-block-query alignwide">
+		<!-- jk:post-template {"align":"wide"} -->
+			<!-- jk:post-featured-image {"isLink":true,"width":"100%","height":"clamp(15vw, 30vh, 400px)","align":"wide"} /-->
+			<!-- jk:post-title {"isLink":true} /-->
+			<!-- jk:post-excerpt /-->
+			<!-- jk:post-date {"isLink":true} /-->
+
+			<!-- jk:spacer {"height":"var(--jk--preset--spacing--70)"} -->
+			<div style="height:var(--jk--preset--spacing--70)" aria-hidden="true" class="jk-block-spacer"></div>
+			<!-- /jk:spacer -->
+		<!-- /jk:post-template -->
+
+		<!-- jk:query-pagination {"paginationArrow":"arrow","layout":{"type":"flex","justifyContent":"space-between"}} -->
+			<!-- jk:query-pagination-previous /-->
+			<!-- jk:query-pagination-next /-->
+		<!-- /jk:query-pagination -->
+
+		<!-- jk:query-no-results -->
+			<!-- jk:pattern {"slug":"twentytwentythree/hidden-no-results-content"} /-->
+		<!-- /jk:query-no-results -->
+	</div>
+	<!-- /jk:query -->
+</main>
+<!-- /jk:group -->
+
+<!-- jk:template-part {"slug":"footer","tagName":"footer"} /-->

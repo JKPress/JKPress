@@ -1,0 +1,35 @@
+.jk-block-file{
+  box-sizing:border-box;
+}
+.jk-block-file:not(.jk-element-button){
+  font-size:.8em;
+}
+.jk-block-file.aligncenter{
+  text-align:center;
+}
+.jk-block-file.alignright{
+  text-align:right;
+}
+.jk-block-file *+.jk-block-file__button{
+  margin-right:.75em;
+}
+
+:where(.jk-block-file){
+  margin-bottom:1.5em;
+}
+
+.jk-block-file__embed{
+  margin-bottom:1em;
+}
+
+:where(.jk-block-file__button){
+  border-radius:2em;
+  display:inline-block;
+  padding:.5em 1em;
+}
+:where(.jk-block-file__button):is(a):active,:where(.jk-block-file__button):is(a):focus,:where(.jk-block-file__button):is(a):hover,:where(.jk-block-file__button):is(a):visited{
+  box-shadow:none;
+  color:#fff;
+  opacity:.85;
+  text-decoration:none;
+}

@@ -1,0 +1,20 @@
+{
+	"$schema": "https://schemas.jk.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "core/widget-group",
+	"title": "Widget Group",
+	"category": "widgets",
+	"attributes": {
+		"title": {
+			"type": "string"
+		}
+	},
+	"supports": {
+		"html": false,
+		"inserter": true,
+		"customClassName": true,
+		"reusable": false
+	},
+	"editorStyle": "jk-block-widget-group-editor",
+	"style": "jk-block-widget-group"
+}

@@ -1,0 +1,21 @@
+/* Center image block by default in the editor */
+
+.jk-block-image,
+.jk-block-image > div:not(.components-placeholder) {
+	text-align: center;
+}
+
+[data-type="core/image"] .block-editor-block-list__block-edit figure.is-resized {
+	margin: 0 auto;
+}
+
+/* Block Styles */
+
+.jk-block-image.is-style-twentytwentyone-border img,
+.jk-block-image.is-style-twentytwentyone-image-frame img {
+	border: calc(3 * var(--separator--height)) solid var(--global--color-border);
+}
+
+.jk-block-image.is-style-twentytwentyone-image-frame img {
+	padding: var(--global--spacing-unit);
+}

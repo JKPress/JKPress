@@ -1,0 +1,519 @@
+/*
+Theme Name: Twenty Twelve
+Description: Used to style blocks in the editor.
+*/
+
+/*--------------------------------------------------------------
+>>> TABLE OF CONTENTS:
+----------------------------------------------------------------
+1.0 General Typography
+2.0 General Block Styles
+3.0 Blocks - Common Blocks
+4.0 Blocks - Formatting
+5.0 Blocks - Layout Elements
+6.0 Blocks - Widgets
+7.0 Blocks - Colors
+--------------------------------------------------------------*/
+
+/*--------------------------------------------------------------
+1.0 General Typography
+--------------------------------------------------------------*/
+
+.edit-post-visual-editor .editor-block-list__block,
+.edit-post-visual-editor .editor-block-list__block p,
+.editor-default-block-appender textarea.editor-default-block-appender__content {
+	font-size: 14px;
+}
+
+.editor-default-block-appender textarea.editor-default-block-appender__content {
+	font-family: "Open Sans", Helvetica, Arial, sans-serif;
+}
+
+.edit-post-visual-editor .editor-block-list__block {
+	color: #444;
+}
+
+.editor-post-title__block .editor-post-title__input {
+	font-family: "Open Sans", Helvetica, Arial, sans-serif;
+	font-size: 20px;
+	font-weight: 400;
+}
+
+@media screen and (min-width: 600px) {
+	.editor-post-title__block .editor-post-title__input {
+		font-size: 22px;
+	}
+}
+
+.jk-block-freeform.block-library-rich-text__tinymce h1 {
+	font-size: 21px;
+}
+
+.jk-block-freeform.block-library-rich-text__tinymce h2 {
+	font-size: 18px;
+}
+
+.jk-block-freeform.block-library-rich-text__tinymce h3 {
+	font-size: 16px;
+}
+
+.jk-block-freeform.block-library-rich-text__tinymce h4 {
+	font-size: 14px;
+}
+
+.jk-block-freeform.block-library-rich-text__tinymce h5 {
+	font-size: 13px;
+}
+
+.jk-block-freeform.block-library-rich-text__tinymce h6 {
+	font-size: 12px;
+}
+
+/*--------------------------------------------------------------
+2.0 General Block Styles
+--------------------------------------------------------------*/
+
+/* Main column width */
+
+.jk-block {
+	max-width: 655px; /* 625px + 30px for padding */
+}
+
+/* Link styles */
+
+.edit-post-visual-editor a,
+.editor-block-list__block a,
+.jk-block-freeform.block-library-rich-text__tinymce a {
+	color: #21759b;
+}
+
+/* List styles */
+
+.jk-block-freeform.block-library-rich-text__tinymce ol,
+.jk-block-freeform.block-library-rich-text__tinymce ul:not(.jk-block-gallery),
+.block-library-list ol.editor-rich-text__tinymce,
+.block-library-list ul.editor-rich-text__tinymce:not(.jk-block-gallery) {
+	padding-left: 0;
+	padding-right: 0;
+}
+
+/* Quote styles */
+
+.jk-block-freeform.block-library-rich-text__tinymce blockquote {
+	border: 0;
+	font-style: italic;
+	padding: 24px;
+}
+
+/* Table styles */
+
+.jk-block-freeform.block-library-rich-text__tinymce th {
+	font-size: 11px;
+}
+
+.jk-block-freeform.block-library-rich-text__tinymce td {
+	font-size: 12px;
+}
+
+.jk-block-freeform.block-library-rich-text__tinymce th,
+.jk-block-freeform.block-library-rich-text__tinymce td {
+	padding-left: 0;
+	padding-right: 0;
+}
+
+.rtl .jk-block-freeform.block-library-rich-text__tinymce th,
+.rtl .jk-block-freeform.block-library-rich-text__tinymce td {
+	text-align: right;
+}
+
+/* Code styles */
+
+.jk-block-freeform.block-library-rich-text__tinymce code {
+	background-color: transparent;
+	font-size: 12px;
+}
+
+/* Pre styles */
+
+.jk-block-freeform.block-library-rich-text__tinymce pre {
+	font-size: 12px;
+}
+
+/* Captions */
+
+[class^="jk-block-"] figcaption,
+[class^="jk-block-"] figcaption.editor-rich-text__tinymce.mce-content-body {
+	color: #757575;
+	font-size: 12px;
+	line-height: 2;
+	font-style: italic;
+	text-align: left;
+}
+
+.rtl [class^="jk-block-"] figcaption,
+.rtl [class^="jk-block-"] figcaption.editor-rich-text__tinymce.mce-content-body {
+	text-align: right;
+}
+
+/* Definition Lists */
+
+.jk-block-freeform.block-library-rich-text__tinymce dt {
+	margin-bottom: 0;
+}
+
+/*--------------------------------------------------------------
+3.0 Blocks - Common Blocks
+--------------------------------------------------------------*/
+
+/* Paragraph */
+
+p.has-drop-cap:not(:focus)::first-letter {
+	font-size: 5em;
+	margin-top: 0.1em;
+}
+
+/* Image */
+
+.jk-block-image {
+	margin-left: 0;
+	margin-right: 0;
+}
+
+/* Gallery */
+
+.jk-block-gallery {
+	margin-bottom: 24px;
+}
+
+.jk-block-gallery figcaption,
+.jk-block-gallery figcaption.editor-rich-text__tinymce.mce-content-body {
+	color: #fff;
+	text-align: center;
+}
+
+/* Quote */
+
+.jk-block-quote,
+.jk-block-quote:not(.is-large):not(.is-style-large) {
+	padding: 24px;
+}
+
+.jk-block-quote p {
+	font-style: italic;
+}
+
+.jk-block-quote:not(.is-large):not(.is-style-large) {
+	border: 0;
+}
+
+.jk-block-quote.is-large p,
+.jk-block-quote.is-style-large p {
+	font-size: 20px;
+}
+
+.jk-block-quote .jk-block-quote__citation {
+	color: inherit;
+	font-style: italic;
+}
+
+.jk-block-quote.is-large .jk-block-quote__citation,
+.jk-block-quote.is-style-large .jk-block-quote__citation {
+	font-size: 18px;
+}
+
+/* Cover */
+
+.edit-post-visual-editor .editor-block-list__block .jk-block-cover-image p,
+.edit-post-visual-editor .editor-block-list__block .jk-block-cover p {
+	font-size: 28px;
+}
+
+/* File */
+
+.jk-block-file .jk-block-file__textlink {
+	color: #21759b;
+	text-decoration: underline;
+}
+
+.jk-block-file .jk-block-file__button {
+	background-color: #e6e6e6;
+	background-repeat: repeat-x;
+	background-image: -moz-linear-gradient(top, #f4f4f4, #e6e6e6);
+	background-image: -ms-linear-gradient(top, #f4f4f4, #e6e6e6);
+	background-image: -webkit-linear-gradient(top, #f4f4f4, #e6e6e6);
+	background-image: -o-linear-gradient(top, #f4f4f4, #e6e6e6);
+	background-image: linear-gradient(to bottom, #f4f4f4, #e6e6e6);
+	border: 1px solid #d2d2d2;
+	border-radius: 3px;
+	box-shadow: 0 1px 2px rgba(64, 64, 64, 0.1);
+	color: #7c7c7c;
+	font-family: inherit;
+	font-size: 11px;
+	font-weight: normal;
+	line-height: 1.428571429;
+	padding: 6px 10px;
+}
+
+/*--------------------------------------------------------------
+4.0 Blocks - Formatting
+--------------------------------------------------------------*/
+
+/* Verse */
+
+.editor-block-list__block .jk-block-verse pre {
+	font-size: 12px;
+}
+
+/* Code */
+
+.jk-block-code {
+	border: 0;
+	font-family: Consolas, Monaco, Lucida Console, monospace;
+	font-size: 12px;
+	line-height: 2;
+	padding: 0;
+}
+
+.jk-block-html .CodeMirror-sizer {
+	line-height: 1.7;
+}
+
+/* Preformatted */
+
+.editor-block-list__block .jk-block-preformatted pre {
+	font-size: 12px;
+}
+
+/* Pullquote */
+
+.jk-block-pullquote {
+	font-style: italic;
+}
+
+.jk-block-pullquote .jk-block-pullquote__citation,
+.jk-block-pullquote cite {
+	font-size: 14px;
+	text-transform: none;
+}
+
+/* Table */
+
+.jk-block-table {
+	border-bottom: 1px solid #ededed;
+	border-collapse: collapse;
+	border-spacing: 0;
+	font-size: 14px;
+	line-height: 2;
+	margin: 0 0 20px;
+	width: 100%;
+}
+
+.editor-styles-wrapper .has-text-color th {
+	color: inherit;
+}
+
+.editor-styles-wrapper .jk-block-table[style*="font-size"] *,
+.editor-styles-wrapper .jk-block-table[class*="-font-size"] * {
+	font-size: inherit;
+}
+
+.editor-block-list__block .jk-block-table th {
+	border: 0;
+	font-size: 11px;
+	font-weight: bold;
+	text-transform: uppercase;
+}
+
+.editor-block-list__block .jk-block-table td {
+	border: 0;
+	border-top: 1px solid #ededed;
+	font-size: 12px;
+	padding: 0;
+}
+
+.jk-block-table__cell-content {
+	padding: 6px 10px 6px 0;
+}
+
+/*--------------------------------------------------------------
+5.0 Blocks - Layout Elements
+--------------------------------------------------------------*/
+
+/* Buttons */
+
+.jk-block-button__link {
+	background-color: #e6e6e6;
+	color: #7c7c7c;
+}
+
+.jk-block-button .jk-block-button__link {
+	border: 1px solid #d2d2d2;
+	font-family: inherit;
+	font-size: 11px;
+	font-weight: normal;
+	line-height: 1.428571429;
+	padding: 6px 10px;
+}
+
+.jk-block-button .editor-rich-text__tinymce.mce-content-body {
+	line-height: 1.428571429;
+}
+
+.jk-block-button__link:not(.has-text-color) {
+	box-shadow: 0 1px 2px rgba(64, 64, 64, 0.1);
+}
+
+.jk-block-button.is-style-outline .jk-block-button__link {
+	background-color: inherit;
+	border-color: inherit;
+}
+
+.jk-block-button:not(.is-style-outline) .jk-block-button__link:not(.has-background) {
+	background-image: -moz-linear-gradient(top, #f4f4f4, #e6e6e6);
+	background-image: -ms-linear-gradient(top, #f4f4f4, #e6e6e6);
+	background-image: -webkit-linear-gradient(top, #f4f4f4, #e6e6e6);
+	background-image: -o-linear-gradient(top, #f4f4f4, #e6e6e6);
+	background-image: linear-gradient(to bottom, #f4f4f4, #e6e6e6);
+	background-repeat: repeat-x;
+	color: #7c7c7c;
+}
+
+/* Separator */
+
+.editor-block-list__block hr.jk-block-separator {
+	margin-left: auto;
+	margin-right: auto;
+}
+
+/* Media & Text */
+
+.jk-block-media-text *:last-child {
+	margin-bottom: 0;
+}
+
+/*--------------------------------------------------------------
+6.0 Blocks - Widgets
+--------------------------------------------------------------*/
+
+/* Archives, Categories & Latest Posts */
+
+[data-align="center"] .jk-block-archives ul,
+[data-align="center"] .jk-block-categories ul,
+[data-align="center"] .jk-block-latest-posts ul {
+	list-style-position: inside;
+}
+
+/* Archives */
+
+.editor-block-list__block ul.jk-block-archives {
+	padding-left: 0;
+}
+
+/* Categories */
+
+.editor-block-list__block .jk-block-categories ul {
+	padding-left: 0;
+}
+
+/* Latest Comments */
+
+.editor-block-list__block .jk-block-latest-comments {
+	margin: 0;
+	padding: 0;
+}
+
+.jk-block-latest-comments .avatar,
+.jk-block-latest-comments__comment-avatar {
+	border-radius: 0;
+	box-shadow: none;
+}
+
+.has-avatars .jk-block-latest-comments__comment .jk-block-latest-comments__comment-excerpt,
+.has-avatars .jk-block-latest-comments__comment .jk-block-latest-comments__comment-meta {
+	margin-left: 60px;
+}
+
+.jk-block-latest-comments__comment,
+.jk-block-latest-comments__comment-excerpt,
+.jk-block-latest-comments__comment-excerpt p {
+	font-size: 14px;
+}
+
+.jk-block-latest-comments__comment-excerpt p:last-child {
+	margin-bottom: 0;
+}
+
+.jk-block-latest-comments__comment-date {
+	color: #5e5e5e;
+}
+
+.jk-block-latest-comments .jk-block-latest-comments__comment {
+	margin: 0;
+	padding: 24px 0;
+}
+
+.jk-block-latest-comments article {
+	border-bottom: 4px double #ededed;
+	padding-bottom: 2em;
+}
+
+/* Latest Posts */
+
+.editor-block-list__block .jk-block-latest-posts {
+	padding-left: 0;
+	padding-right: 0;
+}
+
+/*--------------------------------------------------------------
+7.0 Blocks - Colors
+--------------------------------------------------------------*/
+
+:root .editor-styles-wrapper .has-blue-color,
+:root .editor-styles-wrapper .has-blue-color:visited {
+	color: #21759b;
+}
+
+:root .editor-styles-wrapper .has-blue-background-color,
+:root .editor-styles-wrapper .has-blue-background-color:visited {
+	background-color: #21759b;
+}
+
+:root .editor-styles-wrapper .has-dark-gray-color,
+:root .editor-styles-wrapper .has-dark-gray-color:visited {
+	color: #373737;
+}
+
+:root .editor-styles-wrapper .has-dark-gray-background-color,
+:root .editor-styles-wrapper .has-dark-gray-background-color:visited {
+	background-color: #373737;
+}
+
+:root .editor-styles-wrapper .has-medium-gray-color,
+:root .editor-styles-wrapper .has-medium-gray-color:visited {
+	color: #9f9f9f;
+}
+
+:root .editor-styles-wrapper .has-medium-gray-background-color,
+:root .editor-styles-wrapper .has-medium-gray-background-color:visited {
+	background-color: #9f9f9f;
+}
+
+:root .editor-styles-wrapper .has-light-gray-color,
+:root .editor-styles-wrapper .has-light-gray-color:visited {
+	color: #e6e6e6;
+}
+
+:root .editor-styles-wrapper .has-light-gray-background-color,
+:root .editor-styles-wrapper .has-light-gray-background-color:visited {
+	background-color: #e6e6e6;
+}
+
+:root .editor-styles-wrapper .has-white-color,
+:root .editor-styles-wrapper .has-white-color:visited {
+	color: #fff;
+}
+
+:root .editor-styles-wrapper .has-white-background-color,
+:root .editor-styles-wrapper .has-white-background-color:visited {
+	background-color: #fff;
+}

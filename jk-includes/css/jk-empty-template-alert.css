@@ -1,0 +1,23 @@
+#jk-empty-template-alert {
+    display: flex;
+    padding: var(--jk--style--root--padding-right, 2rem);
+    min-height: 60vh;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--jk--style--block-gap, 2rem);
+}
+
+#jk-empty-template-alert > * {
+     max-width: 400px;
+}
+
+#jk-empty-template-alert h2,
+#jk-empty-template-alert p {
+    margin: 0;
+    text-align: center;
+}
+
+#jk-empty-template-alert a {
+    margin-top: 1rem;
+}

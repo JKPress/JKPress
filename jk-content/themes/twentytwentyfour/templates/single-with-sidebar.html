@@ -1,0 +1,61 @@
+<!-- jk:template-part {"slug":"header","area":"header","tagName":"header"} /-->
+
+<!-- jk:group {"tagName":"main","style":{"spacing":{"margin":{"top":"0vh","bottom":"0vh"},"padding":{"top":"10vh","bottom":"8vh"}}},"layout":{"type":"constrained"}} -->
+<main class="jk-block-group" style="margin-top:0vh;margin-bottom:0vh;padding-top:10vh;padding-bottom:8vh">
+    <!-- jk:columns {"align":"wide","style":{"spacing":{"blockGap":{"top":"1rem","left":"1rem"},"padding":{"right":"var:preset|spacing|40","left":"var:preset|spacing|40"}}}} -->
+    <div class="jk-block-columns alignwide" style="padding-right:var(--jk--preset--spacing--40);padding-left:var(--jk--preset--spacing--40)">
+        <!-- jk:column {"width":"70%"} -->
+        <div class="jk-block-column" style="flex-basis:70%">
+            <!-- jk:group {"layout":{"type":"constrained"}} -->
+            <div class="jk-block-group">
+                <!-- jk:post-featured-image {"style":{"spacing":{"padding":{"bottom":"2vh"}}}} /-->
+
+                <!-- jk:post-title {"level":1,"fontSize":"x-large"} /-->
+
+                <!-- jk:template-part {"slug":"post-meta"} /-->
+
+                <!-- jk:spacer {"height":"var:preset|spacing|10"} -->
+                <div style="height:var(--jk--preset--spacing--10)" aria-hidden="true" class="jk-block-spacer"></div>
+                <!-- /jk:spacer -->
+
+            </div>
+            <!-- /jk:group -->
+
+            <!-- jk:group {"layout":{"type":"constrained"}} -->
+            <div class="jk-block-group">
+                <!-- jk:post-content {"lock":{"move":false,"remove":true},"layout":{"type":"constrained"}} /-->
+
+                <!-- jk:post-terms {"term":"post_tag","separator":"  "} /-->
+            </div>
+            <!-- /jk:group -->
+
+            <!-- jk:group {"layout":{"type":"constrained"}} -->
+            <div class="jk-block-group">
+                <!-- jk:spacer {"height":"4rem"} -->
+                <div style="height:4rem" aria-hidden="true" class="jk-block-spacer"></div>
+                <!-- /jk:spacer -->
+
+                <!-- jk:pattern {"slug":"twentytwentyfour/hidden-comments"} /-->
+
+                <!-- jk:spacer {"height":"4rem"} -->
+                <div style="height:4rem" aria-hidden="true" class="jk-block-spacer"></div>
+                <!-- /jk:spacer -->
+
+                <!-- jk:pattern {"slug":"twentytwentyfour/hidden-post-navigation"} /-->
+
+            </div>
+            <!-- /jk:group -->
+        </div>
+        <!-- /jk:column -->
+
+        <!-- jk:column {"width":"30%"} -->
+        <div class="jk-block-column" style="flex-basis:30%">
+            <!-- jk:template-part {"slug":"sidebar","tagName":"aside"} /-->
+        </div>
+        <!-- /jk:column -->
+    </div>
+    <!-- /jk:columns -->
+</main>
+<!-- /jk:group -->
+
+<!-- jk:template-part {"slug":"footer","area":"footer","tagName":"footer"} /-->

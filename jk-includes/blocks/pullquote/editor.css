@@ -1,0 +1,11 @@
+.jk-block-pullquote.is-style-solid-color blockquote p{
+  font-size:32px;
+}
+.jk-block-pullquote.is-style-solid-color .jk-block-pullquote__citation{
+  font-style:normal;
+  text-transform:none;
+}
+
+.jk-block-pullquote .jk-block-pullquote__citation{
+  color:inherit;
+}

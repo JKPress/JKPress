@@ -1,0 +1,45 @@
+.jk-block-navigation {
+
+	[data-block] {
+		margin-top: revert;
+		margin-bottom: revert;
+	}
+
+	.jk-block-navigation__container {
+		background: var(--global--color-background);
+	}
+
+	.jk-block-navigation-link {
+
+		.jk-block-navigation-link__label {
+			font-family: var(--primary-nav--font-family);
+			font-size: var(--primary-nav--font-size);
+			font-weight: var(--primary-nav--font-weight);
+		}
+	}
+
+	.has-child {
+
+		.jk-block-navigation__container {
+			box-shadow: var(--global--elevation);
+		}
+	}
+
+	&:not(.has-text-color) {
+
+		.jk-block-navigation-link {
+
+			> a {
+
+				&:hover,
+				&:focus {
+					color: var(--primary-nav--color-link-hover);
+				}
+			}
+		}
+
+		.jk-block-navigation-link__content {
+			color: currentColor;
+		}
+	}
+}

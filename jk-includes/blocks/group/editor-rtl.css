@@ -1,0 +1,35 @@
+.jk-block-group .block-editor-block-list__insertion-point{
+  left:0;
+  right:0;
+}
+
+[data-type="core/group"].is-selected .block-list-appender{
+  margin-left:0;
+  margin-right:0;
+}
+[data-type="core/group"].is-selected .has-background .block-list-appender{
+  margin-bottom:18px;
+  margin-top:18px;
+}
+
+.jk-block-group.is-layout-flex.block-editor-block-list__block>.block-list-appender:only-child{
+  gap:inherit;
+  pointer-events:none;
+}
+.jk-block-group.is-layout-flex.block-editor-block-list__block>.block-list-appender:only-child,.jk-block-group.is-layout-flex.block-editor-block-list__block>.block-list-appender:only-child .block-editor-default-block-appender__content,.jk-block-group.is-layout-flex.block-editor-block-list__block>.block-list-appender:only-child .block-editor-inserter{
+  display:inherit;
+  flex:1;
+  flex-direction:inherit;
+  width:100%;
+}
+.jk-block-group.is-layout-flex.block-editor-block-list__block>.block-list-appender:only-child:after{
+  border:1px dashed;
+  content:"";
+  display:flex;
+  flex:1 0 40px;
+  min-height:38px;
+  pointer-events:none;
+}
+.jk-block-group.is-layout-flex.block-editor-block-list__block>.block-list-appender:only-child .block-editor-button-block-appender,.jk-block-group.is-layout-flex.block-editor-block-list__block>.block-list-appender:only-child .block-editor-inserter{
+  pointer-events:all;
+}

@@ -1,0 +1,7 @@
+.jk-block-rss li a>div{
+  display:inline;
+}
+
+.jk-block-rss__placeholder-form .jk-block-rss__placeholder-input{
+  flex:1 1 auto;
+}

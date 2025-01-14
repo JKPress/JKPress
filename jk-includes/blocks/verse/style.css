@@ -1,0 +1,8 @@
+pre.jk-block-verse{
+  overflow:auto;
+  white-space:pre-wrap;
+}
+
+:where(pre.jk-block-verse){
+  font-family:inherit;
+}

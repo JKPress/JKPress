@@ -1,17 +1,17 @@
 <?php
 /**
- * Front to the WordPress application. This file doesn't do anything, but loads
- * wp-blog-header.php which does and tells WordPress to load the theme.
+ * Front to the JKPress application. This file doesn't do anything, but loads
+ * jk-blog-header.php which does and tells JKPress to load the theme.
  *
- * @package WordPress
+ * @package JKPress
  */
 
 /**
- * Tells WordPress to load the WordPress theme and output it.
+ * Tells JKPress to load the JKPress theme and output it.
  *
  * @var bool
  */
-define( 'WP_USE_THEMES', true );
+define( 'JK_USE_THEMES', true );
 
-/** Loads the WordPress Environment and Template */
-require __DIR__ . '/wp-blog-header.php';
+/** Loads the JKPress Environment and Template */
+require __DIR__ . '/jk-blog-header.php';

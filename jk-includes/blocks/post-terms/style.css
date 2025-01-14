@@ -1,0 +1,6 @@
+.jk-block-post-terms{
+  box-sizing:border-box;
+}
+.jk-block-post-terms .jk-block-post-terms__separator{
+  white-space:pre-wrap;
+}

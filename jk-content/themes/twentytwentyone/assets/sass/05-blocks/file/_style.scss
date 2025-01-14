@@ -1,0 +1,13 @@
+.jk-block-file {
+
+	// Undo Gutenberg hover defaults
+	a.jk-block-file__button:active,
+	a.jk-block-file__button:focus,
+	a.jk-block-file__button:hover {
+		opacity: inherit;
+	}
+
+	a.jk-block-file__button {
+		display: inline-block;
+	}
+}

@@ -1,0 +1,1635 @@
+@charset "UTF-8";
+/*!
+Twenty Nineteen Editor Styles
+*/
+/** === Includes === */
+/*
+ * Chrome renders extra-wide &nbsp; characters for the Hoefler Text font.
+ * This results in a jumping cursor when typing in both the Classic and block
+ * editors. The following font-face override fixes the issue by manually inserting
+ * a custom font that includes just a Hoefler Text space replacement for that
+ * character instead.
+ */
+@font-face {
+  font-family: 'NonBreakingSpaceOverride';
+  src: url(data:application/font-woff2;charset=utf-8;base64,d09GMgABAAAAAAMoAA0AAAAACDQAAALTAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP0ZGVE0cGh4GYACCahEICjx3CywAATYCJANUBCAFhiEHgWwbXQfILgpsY+rQRRARwyAs6uL7pxzYhxEE+32b3aeHmifR6tklkS9hiZA0ewkqGRJE+H7/+6378ASViK/PGeavqJyOzsceKi1s3BCiQsiOdn1r/RBgIJYEgCUhbm/8/8/h4saPssnTNkkiWUBrTRtjmQSajw3Ui3pZ3LYDPD+XG2C3JA/yKAS8/rU5eNfuGqRf4eNNgV4YAlIIgxglEkWe6FYpq10+wi3g+/nUgvgPFczNrz/RsTgVm/zfbPuHZlsuQECxuyqBcQwKFBjFgKO8AqP4bAN9tFJtnM9xPcbNjeXS/x1wY/xU52f5W/X1+9cnH4YwKIaoRRAkUkj/YlAAeF/624foiIDBgBmgQBeGAyhBljUPZUm/l2dTvmpqcBDUOHdbPZWd8JsBAsGr4w8/EDn82/bUPx4eh0YNrQTBuHO2FjQEAGBwK0DeI37DpQVqdERS4gZBhpeUhWCfLFz7J99aEBgsJCHvUGAdAPp4IADDCAPCEFMGpMZ9AQpTfQtQGhLbGVBZFV8BaqNyP68oTZgHNj3M8kBPfXTTC9t90UuzYhy9ciH0grVlOcqyCytisvbsERsEYztiznR0WCrmTksJwbSNK6fd1Rvr25I9oLvctUoEbNOmXJbqgYgPXEHJ82IUsrCnpkxh23F1rfZ2zcRnJYoXtauB3VTFkFXQg3uoZYD5qE0kdjDtoDoF1h2bulGmev5HbYhbrjtohQSRI4aNOkffIcT+d3v6atpaYh3JvPoQsztCcqvaBkppDSPcQ3bw3KaCBo1f5CJWTZEgW3LjLofYg51MaVezrx8xZitYbQ9KYeoRaqQdVLwSEfrKXLK1otCWOKNdR/YwYAfon5Yk8O2MJfSD10dPGA5PIJJQMkah0ugMJiv6x4Dm7LEa8xnrRGGGLAg4sAlbsA07sAt76DOsXKO3hIjtIlpnnFrt1qW4kh6NhS83P/6HB/fl1SMAAA==) format("woff2"), url(data:application/font-woff;charset=utf-8;base64,d09GRgABAAAAAAUQAA0AAAAACDQAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAABGRlRNAAAE9AAAABwAAAAchf5yU0dERUYAAATYAAAAHAAAAB4AJwAbT1MvMgAAAaAAAABJAAAAYJAcgU5jbWFwAAACIAAAAF4AAAFqUUxBZ2dhc3AAAATQAAAACAAAAAgAAAAQZ2x5ZgAAApAAAAAyAAAAPL0n8y9oZWFkAAABMAAAADAAAAA2Fi93Z2hoZWEAAAFgAAAAHQAAACQOSgWaaG10eAAAAewAAAAzAAAAVC7TAQBsb2NhAAACgAAAABAAAAAsAOQBAm1heHAAAAGAAAAAHQAAACAAWQALbmFtZQAAAsQAAAF6AAADIYvD/Adwb3N0AAAEQAAAAI4AAADsapk2o3jaY2BkYGAA4ov5mwzj+W2+MnCzXwCKMNzgCBSB0LfbQDQ7AxuI4mBgAlEAFKQIRHjaY2BkYGD3+NvCwMDBAALsDAyMDKhAFAA3+wH3AAAAeNpjYGRgYBBl4GBgYgABEMnIABJzAPMZAAVmAGUAAAB42mNgZlJhnMDAysDCKsKygYGBYRqEZtrDYMT4D8gHSmEHjgUFOQwODAqqf9g9/rYwMLB7MNUAhRlBcsxBrMlASoGBEQAj8QtyAAAAeNrjYGBkAAGmWQwMjO8gmBnIZ2NA0ExAzNjAAFYJVn0ASBsD6VAIDZb7AtELAgANIgb9AHjaY2BgYGaAYBkGRgYQSAHyGMF8FgYPIM3HwMHAxMDGoMCwQIFLQV8hXvXP//9AcRCfAcb///h/ygPW+w/vb7olBjUHCTCyMcAFGZmABBO6AogThgZgIUsXAEDcEzcAAHjaY2BgECMCyoEgACZaAed42mNgYmRgYGBnYGNgYAZSDJqMgorCgoqCjECRXwwNrCAKSP5mAAFGBiRgyAAAi/YFBQAAeNqtkc1OwkAUhU/5M25cEhcsZick0AwlBJq6MWwgJkAgYV/KAA2lJeUn+hY+gktXvpKv4dLTMqKycGHsTZNv7px7z50ZAFd4hYHjdw1Ls4EiHjVncIFnzVnc4F1zDkWjrzmPW+NNcwGlzIRKI3fJlUyrEjZQxb3mDH2fNGfRx4vmHKqG0JzHg6E0F9DOlFBGBxUI1GEzLNT4S0aLuTtsGAEUuYcQHkyg3KmIum1bNUvKlrjbbAIleqHHnS4iSudpQcySMYtdFiXlAxzSbAwfMxK6kZoHKhbjjespMTioOPZnzI+4ucCeTVyKMVKLfeAS6vSWaTinuZwzyy/Dc7vaed+6KaV0kukdPUk6yOcctZPvvxxqksq2lEW8RvHjMEO2FCl/zy6p3NEm0R9OFSafJdldc4QVeyaaObMBO0/5cCaa6d9Ggyubxire+lEojscdjoWUR1xGOy8KD8mG2ZLO2l2paDc3A39qmU2z2W5YNv5+u79e6QfGJY/hAAB42m3NywrCMBQE0DupWp/1AYI7/6DEaLQu66Mrd35BKUWKJSlFv1+rue4cGM7shgR981qSon+ZNwUJ8iDgoYU2OvDRRQ99DDDECAHGmGCKmf80hZSx/Kik/LliFbtmN6xmt+yOjdg9GztV4tROnRwX/Bsaaw51nt4Lc7tWaZYHp/MlzKx51LZs5htNri+2AAAAAQAB//8AD3jaY2BkYGDgAWIxIGZiYARCESBmAfMYAAR6AEMAAAABAAAAANXtRbgAAAAA2AhRFAAAAADYCNuG) format("woff");
+}
+
+/* If we add the border using a regular CSS border, it won't look good on non-retina devices,
+ * since its edges can look jagged due to lack of antialiasing. In this case, we are several
+ * layers of box-shadow to add the border visually, which will render the border smoother. */
+/* Calculates maximum width for post content */
+/* Nested sub-menu padding: 10 levels deep */
+/* Ensure all font family declarations come with non-latin fallbacks */
+/* Build our non-latin font styles */
+body:lang(ar), h1:lang(ar),
+h2:lang(ar),
+h3:lang(ar),
+h4:lang(ar),
+h5:lang(ar),
+h6:lang(ar), figcaption:lang(ar),
+.gallery-caption:lang(ar), .editor-post-title__block .editor-post-title__input:lang(ar), .block-editor-default-block-appender textarea.block-editor-default-block-appender__content:lang(ar), .jk-block-paragraph.has-drop-cap:lang(ar):not(:focus)::first-letter, .jk-block-table:lang(ar), .jk-block-cover h2:lang(ar),
+.jk-block-cover .jk-block-cover-text:lang(ar), .jk-block-button .jk-block-button__link:lang(ar), .jk-block-search .jk-block-search__button:lang(ar), .jk-block-quote cite:lang(ar),
+.jk-block-quote footer:lang(ar),
+.jk-block-quote .jk-block-quote__citation:lang(ar), .jk-block-pullquote[data-type="core/pullquote"] .jk-block-pullquote__citation:lang(ar),
+.jk-block[data-type="core/pullquote"] .jk-block-pullquote__citation:lang(ar),
+.jk-block[data-type="core/pullquote"][data-align="left"] .jk-block-pullquote__citation:lang(ar),
+.jk-block[data-type="core/pullquote"][data-align="right"] .jk-block-pullquote__citation:lang(ar), .jk-block-file:lang(ar), ul.jk-block-archives li > a:lang(ar),
+.jk-block-categories li > a:lang(ar),
+.jk-block-latest-posts li > a:lang(ar), .jk-block-latest-posts .jk-block-latest-posts__post-date:lang(ar), .jk-block-latest-comments .jk-block-latest-comments__comment-meta:lang(ar), .jk-caption dd:lang(ar), .jk-block-freeform blockquote cite:lang(ar) {
+  font-family: Tahoma, Arial, sans-serif;
+}
+
+body:lang(ary), h1:lang(ary),
+h2:lang(ary),
+h3:lang(ary),
+h4:lang(ary),
+h5:lang(ary),
+h6:lang(ary), figcaption:lang(ary),
+.gallery-caption:lang(ary), .editor-post-title__block .editor-post-title__input:lang(ary), .block-editor-default-block-appender textarea.block-editor-default-block-appender__content:lang(ary), .jk-block-paragraph.has-drop-cap:lang(ary):not(:focus)::first-letter, .jk-block-table:lang(ary), .jk-block-cover h2:lang(ary),
+.jk-block-cover .jk-block-cover-text:lang(ary), .jk-block-button .jk-block-button__link:lang(ary), .jk-block-search .jk-block-search__button:lang(ary), .jk-block-quote cite:lang(ary),
+.jk-block-quote footer:lang(ary),
+.jk-block-quote .jk-block-quote__citation:lang(ary), .jk-block-pullquote[data-type="core/pullquote"] .jk-block-pullquote__citation:lang(ary),
+.jk-block[data-type="core/pullquote"] .jk-block-pullquote__citation:lang(ary),
+.jk-block[data-type="core/pullquote"][data-align="left"] .jk-block-pullquote__citation:lang(ary),
+.jk-block[data-type="core/pullquote"][data-align="right"] .jk-block-pullquote__citation:lang(ary), .jk-block-file:lang(ary), ul.jk-block-archives li > a:lang(ary),
+.jk-block-categories li > a:lang(ary),
+.jk-block-latest-posts li > a:lang(ary), .jk-block-latest-posts .jk-block-latest-posts__post-date:lang(ary), .jk-block-latest-comments .jk-block-latest-comments__comment-meta:lang(ary), .jk-caption dd:lang(ary), .jk-block-freeform blockquote cite:lang(ary) {
+  font-family: Tahoma, Arial, sans-serif;
+}
+
+body:lang(azb), h1:lang(azb),
+h2:lang(azb),
+h3:lang(azb),
+h4:lang(azb),
+h5:lang(azb),
+h6:lang(azb), figcaption:lang(azb),
+.gallery-caption:lang(azb), .editor-post-title__block .editor-post-title__input:lang(azb), .block-editor-default-block-appender textarea.block-editor-default-block-appender__content:lang(azb), .jk-block-paragraph.has-drop-cap:lang(azb):not(:focus)::first-letter, .jk-block-table:lang(azb), .jk-block-cover h2:lang(azb),
+.jk-block-cover .jk-block-cover-text:lang(azb), .jk-block-button .jk-block-button__link:lang(azb), .jk-block-search .jk-block-search__button:lang(azb), .jk-block-quote cite:lang(azb),
+.jk-block-quote footer:lang(azb),
+.jk-block-quote .jk-block-quote__citation:lang(azb), .jk-block-pullquote[data-type="core/pullquote"] .jk-block-pullquote__citation:lang(azb),
+.jk-block[data-type="core/pullquote"] .jk-block-pullquote__citation:lang(azb),
+.jk-block[data-type="core/pullquote"][data-align="left"] .jk-block-pullquote__citation:lang(azb),
+.jk-block[data-type="core/pullquote"][data-align="right"] .jk-block-pullquote__citation:lang(azb), .jk-block-file:lang(azb), ul.jk-block-archives li > a:lang(azb),
+.jk-block-categories li > a:lang(azb),
+.jk-block-latest-posts li > a:lang(azb), .jk-block-latest-posts .jk-block-latest-posts__post-date:lang(azb), .jk-block-latest-comments .jk-block-latest-comments__comment-meta:lang(azb), .jk-caption dd:lang(azb), .jk-block-freeform blockquote cite:lang(azb) {
+  font-family: Tahoma, Arial, sans-serif;
+}
+
+body:lang(ckb), h1:lang(ckb),
+h2:lang(ckb),
+h3:lang(ckb),
+h4:lang(ckb),
+h5:lang(ckb),
+h6:lang(ckb), figcaption:lang(ckb),
+.gallery-caption:lang(ckb), .editor-post-title__block .editor-post-title__input:lang(ckb), .block-editor-default-block-appender textarea.block-editor-default-block-appender__content:lang(ckb), .jk-block-paragraph.has-drop-cap:lang(ckb):not(:focus)::first-letter, .jk-block-table:lang(ckb), .jk-block-cover h2:lang(ckb),
+.jk-block-cover .jk-block-cover-text:lang(ckb), .jk-block-button .jk-block-button__link:lang(ckb), .jk-block-search .jk-block-search__button:lang(ckb), .jk-block-quote cite:lang(ckb),
+.jk-block-quote footer:lang(ckb),
+.jk-block-quote .jk-block-quote__citation:lang(ckb), .jk-block-pullquote[data-type="core/pullquote"] .jk-block-pullquote__citation:lang(ckb),
+.jk-block[data-type="core/pullquote"] .jk-block-pullquote__citation:lang(ckb),
+.jk-block[data-type="core/pullquote"][data-align="left"] .jk-block-pullquote__citation:lang(ckb),
+.jk-block[data-type="core/pullquote"][data-align="right"] .jk-block-pullquote__citation:lang(ckb), .jk-block-file:lang(ckb), ul.jk-block-archives li > a:lang(ckb),
+.jk-block-categories li > a:lang(ckb),
+.jk-block-latest-posts li > a:lang(ckb), .jk-block-latest-posts .jk-block-latest-posts__post-date:lang(ckb), .jk-block-latest-comments .jk-block-latest-comments__comment-meta:lang(ckb), .jk-caption dd:lang(ckb), .jk-block-freeform blockquote cite:lang(ckb) {
+  font-family: Tahoma, Arial, sans-serif;
+}
+
+body:lang(fa-IR), h1:lang(fa-IR),
+h2:lang(fa-IR),
+h3:lang(fa-IR),
+h4:lang(fa-IR),
+h5:lang(fa-IR),
+h6:lang(fa-IR), figcaption:lang(fa-IR),
+.gallery-caption:lang(fa-IR), .editor-post-title__block .editor-post-title__input:lang(fa-IR), .block-editor-default-block-appender textarea.block-editor-default-block-appender__content:lang(fa-IR), .jk-block-paragraph.has-drop-cap:lang(fa-IR):not(:focus)::first-letter, .jk-block-table:lang(fa-IR), .jk-block-cover h2:lang(fa-IR),
+.jk-block-cover .jk-block-cover-text:lang(fa-IR), .jk-block-button .jk-block-button__link:lang(fa-IR), .jk-block-search .jk-block-search__button:lang(fa-IR), .jk-block-quote cite:lang(fa-IR),
+.jk-block-quote footer:lang(fa-IR),
+.jk-block-quote .jk-block-quote__citation:lang(fa-IR), .jk-block-pullquote[data-type="core/pullquote"] .jk-block-pullquote__citation:lang(fa-IR),
+.jk-block[data-type="core/pullquote"] .jk-block-pullquote__citation:lang(fa-IR),
+.jk-block[data-type="core/pullquote"][data-align="left"] .jk-block-pullquote__citation:lang(fa-IR),
+.jk-block[data-type="core/pullquote"][data-align="right"] .jk-block-pullquote__citation:lang(fa-IR), .jk-block-file:lang(fa-IR), ul.jk-block-archives li > a:lang(fa-IR),
+.jk-block-categories li > a:lang(fa-IR),
+.jk-block-latest-posts li > a:lang(fa-IR), .jk-block-latest-posts .jk-block-latest-posts__post-date:lang(fa-IR), .jk-block-latest-comments .jk-block-latest-comments__comment-meta:lang(fa-IR), .jk-caption dd:lang(fa-IR), .jk-block-freeform blockquote cite:lang(fa-IR) {
+  font-family: Tahoma, Arial, sans-serif;
+}
+
+body:lang(haz), h1:lang(haz),
+h2:lang(haz),
+h3:lang(haz),
+h4:lang(haz),
+h5:lang(haz),
+h6:lang(haz), figcaption:lang(haz),
+.gallery-caption:lang(haz), .editor-post-title__block .editor-post-title__input:lang(haz), .block-editor-default-block-appender textarea.block-editor-default-block-appender__content:lang(haz), .jk-block-paragraph.has-drop-cap:lang(haz):not(:focus)::first-letter, .jk-block-table:lang(haz), .jk-block-cover h2:lang(haz),
+.jk-block-cover .jk-block-cover-text:lang(haz), .jk-block-button .jk-block-button__link:lang(haz), .jk-block-search .jk-block-search__button:lang(haz), .jk-block-quote cite:lang(haz),
+.jk-block-quote footer:lang(haz),
+.jk-block-quote .jk-block-quote__citation:lang(haz), .jk-block-pullquote[data-type="core/pullquote"] .jk-block-pullquote__citation:lang(haz),
+.jk-block[data-type="core/pullquote"] .jk-block-pullquote__citation:lang(haz),
+.jk-block[data-type="core/pullquote"][data-align="left"] .jk-block-pullquote__citation:lang(haz),
+.jk-block[data-type="core/pullquote"][data-align="right"] .jk-block-pullquote__citation:lang(haz), .jk-block-file:lang(haz), ul.jk-block-archives li > a:lang(haz),
+.jk-block-categories li > a:lang(haz),
+.jk-block-latest-posts li > a:lang(haz), .jk-block-latest-posts .jk-block-latest-posts__post-date:lang(haz), .jk-block-latest-comments .jk-block-latest-comments__comment-meta:lang(haz), .jk-caption dd:lang(haz), .jk-block-freeform blockquote cite:lang(haz) {
+  font-family: Tahoma, Arial, sans-serif;
+}
+
+body:lang(ps), h1:lang(ps),
+h2:lang(ps),
+h3:lang(ps),
+h4:lang(ps),
+h5:lang(ps),
+h6:lang(ps), figcaption:lang(ps),
+.gallery-caption:lang(ps), .editor-post-title__block .editor-post-title__input:lang(ps), .block-editor-default-block-appender textarea.block-editor-default-block-appender__content:lang(ps), .jk-block-paragraph.has-drop-cap:lang(ps):not(:focus)::first-letter, .jk-block-table:lang(ps), .jk-block-cover h2:lang(ps),
+.jk-block-cover .jk-block-cover-text:lang(ps), .jk-block-button .jk-block-button__link:lang(ps), .jk-block-search .jk-block-search__button:lang(ps), .jk-block-quote cite:lang(ps),
+.jk-block-quote footer:lang(ps),
+.jk-block-quote .jk-block-quote__citation:lang(ps), .jk-block-pullquote[data-type="core/pullquote"] .jk-block-pullquote__citation:lang(ps),
+.jk-block[data-type="core/pullquote"] .jk-block-pullquote__citation:lang(ps),
+.jk-block[data-type="core/pullquote"][data-align="left"] .jk-block-pullquote__citation:lang(ps),
+.jk-block[data-type="core/pullquote"][data-align="right"] .jk-block-pullquote__citation:lang(ps), .jk-block-file:lang(ps), ul.jk-block-archives li > a:lang(ps),
+.jk-block-categories li > a:lang(ps),
+.jk-block-latest-posts li > a:lang(ps), .jk-block-latest-posts .jk-block-latest-posts__post-date:lang(ps), .jk-block-latest-comments .jk-block-latest-comments__comment-meta:lang(ps), .jk-caption dd:lang(ps), .jk-block-freeform blockquote cite:lang(ps) {
+  font-family: Tahoma, Arial, sans-serif;
+}
+
+body:lang(be), h1:lang(be),
+h2:lang(be),
+h3:lang(be),
+h4:lang(be),
+h5:lang(be),
+h6:lang(be), figcaption:lang(be),
+.gallery-caption:lang(be), .editor-post-title__block .editor-post-title__input:lang(be), .block-editor-default-block-appender textarea.block-editor-default-block-appender__content:lang(be), .jk-block-paragraph.has-drop-cap:lang(be):not(:focus)::first-letter, .jk-block-table:lang(be), .jk-block-cover h2:lang(be),
+.jk-block-cover .jk-block-cover-text:lang(be), .jk-block-button .jk-block-button__link:lang(be), .jk-block-search .jk-block-search__button:lang(be), .jk-block-quote cite:lang(be),
+.jk-block-quote footer:lang(be),
+.jk-block-quote .jk-block-quote__citation:lang(be), .jk-block-pullquote[data-type="core/pullquote"] .jk-block-pullquote__citation:lang(be),
+.jk-block[data-type="core/pullquote"] .jk-block-pullquote__citation:lang(be),
+.jk-block[data-type="core/pullquote"][data-align="left"] .jk-block-pullquote__citation:lang(be),
+.jk-block[data-type="core/pullquote"][data-align="right"] .jk-block-pullquote__citation:lang(be), .jk-block-file:lang(be), ul.jk-block-archives li > a:lang(be),
+.jk-block-categories li > a:lang(be),
+.jk-block-latest-posts li > a:lang(be), .jk-block-latest-posts .jk-block-latest-posts__post-date:lang(be), .jk-block-latest-comments .jk-block-latest-comments__comment-meta:lang(be), .jk-caption dd:lang(be), .jk-block-freeform blockquote cite:lang(be) {
+  font-family: "Helvetica Neue", Helvetica, "Segoe UI", Arial, sans-serif;
+}
+
+body:lang(bg-BG), h1:lang(bg-BG),
+h2:lang(bg-BG),
+h3:lang(bg-BG),
+h4:lang(bg-BG),
+h5:lang(bg-BG),
+h6:lang(bg-BG), figcaption:lang(bg-BG),
+.gallery-caption:lang(bg-BG), .editor-post-title__block .editor-post-title__input:lang(bg-BG), .block-editor-default-block-appender textarea.block-editor-default-block-appender__content:lang(bg-BG), .jk-block-paragraph.has-drop-cap:lang(bg-BG):not(:focus)::first-letter, .jk-block-table:lang(bg-BG), .jk-block-cover h2:lang(bg-BG),
+.jk-block-cover .jk-block-cover-text:lang(bg-BG), .jk-block-button .jk-block-button__link:lang(bg-BG), .jk-block-search .jk-block-search__button:lang(bg-BG), .jk-block-quote cite:lang(bg-BG),
+.jk-block-quote footer:lang(bg-BG),
+.jk-block-quote .jk-block-quote__citation:lang(bg-BG), .jk-block-pullquote[data-type="core/pullquote"] .jk-block-pullquote__citation:lang(bg-BG),
+.jk-block[data-type="core/pullquote"] .jk-block-pullquote__citation:lang(bg-BG),
+.jk-block[data-type="core/pullquote"][data-align="left"] .jk-block-pullquote__citation:lang(bg-BG),
+.jk-block[data-type="core/pullquote"][data-align="right"] .jk-block-pullquote__citation:lang(bg-BG), .jk-block-file:lang(bg-BG), ul.jk-block-archives li > a:lang(bg-BG),
+.jk-block-categories li > a:lang(bg-BG),
+.jk-block-latest-posts li > a:lang(bg-BG), .jk-block-latest-posts .jk-block-latest-posts__post-date:lang(bg-BG), .jk-block-latest-comments .jk-block-latest-comments__comment-meta:lang(bg-BG), .jk-caption dd:lang(bg-BG), .jk-block-freeform blockquote cite:lang(bg-BG) {
+  font-family: "Helvetica Neue", Helvetica, "Segoe UI", Arial, sans-serif;
+}
+
+body:lang(kk), h1:lang(kk),
+h2:lang(kk),
+h3:lang(kk),
+h4:lang(kk),
+h5:lang(kk),
+h6:lang(kk), figcaption:lang(kk),
+.gallery-caption:lang(kk), .editor-post-title__block .editor-post-title__input:lang(kk), .block-editor-default-block-appender textarea.block-editor-default-block-appender__content:lang(kk), .jk-block-paragraph.has-drop-cap:lang(kk):not(:focus)::first-letter, .jk-block-table:lang(kk), .jk-block-cover h2:lang(kk),
+.jk-block-cover .jk-block-cover-text:lang(kk), .jk-block-button .jk-block-button__link:lang(kk), .jk-block-search .jk-block-search__button:lang(kk), .jk-block-quote cite:lang(kk),
+.jk-block-quote footer:lang(kk),
+.jk-block-quote .jk-block-quote__citation:lang(kk), .jk-block-pullquote[data-type="core/pullquote"] .jk-block-pullquote__citation:lang(kk),
+.jk-block[data-type="core/pullquote"] .jk-block-pullquote__citation:lang(kk),
+.jk-block[data-type="core/pullquote"][data-align="left"] .jk-block-pullquote__citation:lang(kk),
+.jk-block[data-type="core/pullquote"][data-align="right"] .jk-block-pullquote__citation:lang(kk), .jk-block-file:lang(kk), ul.jk-block-archives li > a:lang(kk),
+.jk-block-categories li > a:lang(kk),
+.jk-block-latest-posts li > a:lang(kk), .jk-block-latest-posts .jk-block-latest-posts__post-date:lang(kk), .jk-block-latest-comments .jk-block-latest-comments__comment-meta:lang(kk), .jk-caption dd:lang(kk), .jk-block-freeform blockquote cite:lang(kk) {
+  font-family: "Helvetica Neue", Helvetica, "Segoe UI", Arial, sans-serif;
+}
+
+body:lang(mk-MK), h1:lang(mk-MK),
+h2:lang(mk-MK),
+h3:lang(mk-MK),
+h4:lang(mk-MK),
+h5:lang(mk-MK),
+h6:lang(mk-MK), figcaption:lang(mk-MK),
+.gallery-caption:lang(mk-MK), .editor-post-title__block .editor-post-title__input:lang(mk-MK), .block-editor-default-block-appender textarea.block-editor-default-block-appender__content:lang(mk-MK), .jk-block-paragraph.has-drop-cap:lang(mk-MK):not(:focus)::first-letter, .jk-block-table:lang(mk-MK), .jk-block-cover h2:lang(mk-MK),
+.jk-block-cover .jk-block-cover-text:lang(mk-MK), .jk-block-button .jk-block-button__link:lang(mk-MK), .jk-block-search .jk-block-search__button:lang(mk-MK), .jk-block-quote cite:lang(mk-MK),
+.jk-block-quote footer:lang(mk-MK),
+.jk-block-quote .jk-block-quote__citation:lang(mk-MK), .jk-block-pullquote[data-type="core/pullquote"] .jk-block-pullquote__citation:lang(mk-MK),
+.jk-block[data-type="core/pullquote"] .jk-block-pullquote__citation:lang(mk-MK),
+.jk-block[data-type="core/pullquote"][data-align="left"] .jk-block-pullquote__citation:lang(mk-MK),
+.jk-block[data-type="core/pullquote"][data-align="right"] .jk-block-pullquote__citation:lang(mk-MK), .jk-block-file:lang(mk-MK), ul.jk-block-archives li > a:lang(mk-MK),
+.jk-block-categories li > a:lang(mk-MK),
+.jk-block-latest-posts li > a:lang(mk-MK), .jk-block-latest-posts .jk-block-latest-posts__post-date:lang(mk-MK), .jk-block-latest-comments .jk-block-latest-comments__comment-meta:lang(mk-MK), .jk-caption dd:lang(mk-MK), .jk-block-freeform blockquote cite:lang(mk-MK) {
+  font-family: "Helvetica Neue", Helvetica, "Segoe UI", Arial, sans-serif;
+}
+
+body:lang(mn), h1:lang(mn),
+h2:lang(mn),
+h3:lang(mn),
+h4:lang(mn),
+h5:lang(mn),
+h6:lang(mn), figcaption:lang(mn),
+.gallery-caption:lang(mn), .editor-post-title__block .editor-post-title__input:lang(mn), .block-editor-default-block-appender textarea.block-editor-default-block-appender__content:lang(mn), .jk-block-paragraph.has-drop-cap:lang(mn):not(:focus)::first-letter, .jk-block-table:lang(mn), .jk-block-cover h2:lang(mn),
+.jk-block-cover .jk-block-cover-text:lang(mn), .jk-block-button .jk-block-button__link:lang(mn), .jk-block-search .jk-block-search__button:lang(mn), .jk-block-quote cite:lang(mn),
+.jk-block-quote footer:lang(mn),
+.jk-block-quote .jk-block-quote__citation:lang(mn), .jk-block-pullquote[data-type="core/pullquote"] .jk-block-pullquote__citation:lang(mn),
+.jk-block[data-type="core/pullquote"] .jk-block-pullquote__citation:lang(mn),
+.jk-block[data-type="core/pullquote"][data-align="left"] .jk-block-pullquote__citation:lang(mn),
+.jk-block[data-type="core/pullquote"][data-align="right"] .jk-block-pullquote__citation:lang(mn), .jk-block-file:lang(mn), ul.jk-block-archives li > a:lang(mn),
+.jk-block-categories li > a:lang(mn),
+.jk-block-latest-posts li > a:lang(mn), .jk-block-latest-posts .jk-block-latest-posts__post-date:lang(mn), .jk-block-latest-comments .jk-block-latest-comments__comment-meta:lang(mn), .jk-caption dd:lang(mn), .jk-block-freeform blockquote cite:lang(mn) {
+  font-family: "Helvetica Neue", Helvetica, "Segoe UI", Arial, sans-serif;
+}
+
+body:lang(ru-RU), h1:lang(ru-RU),
+h2:lang(ru-RU),
+h3:lang(ru-RU),
+h4:lang(ru-RU),
+h5:lang(ru-RU),
+h6:lang(ru-RU), figcaption:lang(ru-RU),
+.gallery-caption:lang(ru-RU), .editor-post-title__block .editor-post-title__input:lang(ru-RU), .block-editor-default-block-appender textarea.block-editor-default-block-appender__content:lang(ru-RU), .jk-block-paragraph.has-drop-cap:lang(ru-RU):not(:focus)::first-letter, .jk-block-table:lang(ru-RU), .jk-block-cover h2:lang(ru-RU),
+.jk-block-cover .jk-block-cover-text:lang(ru-RU), .jk-block-button .jk-block-button__link:lang(ru-RU), .jk-block-search .jk-block-search__button:lang(ru-RU), .jk-block-quote cite:lang(ru-RU),
+.jk-block-quote footer:lang(ru-RU),
+.jk-block-quote .jk-block-quote__citation:lang(ru-RU), .jk-block-pullquote[data-type="core/pullquote"] .jk-block-pullquote__citation:lang(ru-RU),
+.jk-block[data-type="core/pullquote"] .jk-block-pullquote__citation:lang(ru-RU),
+.jk-block[data-type="core/pullquote"][data-align="left"] .jk-block-pullquote__citation:lang(ru-RU),
+.jk-block[data-type="core/pullquote"][data-align="right"] .jk-block-pullquote__citation:lang(ru-RU), .jk-block-file:lang(ru-RU), ul.jk-block-archives li > a:lang(ru-RU),
+.jk-block-categories li > a:lang(ru-RU),
+.jk-block-latest-posts li > a:lang(ru-RU), .jk-block-latest-posts .jk-block-latest-posts__post-date:lang(ru-RU), .jk-block-latest-comments .jk-block-latest-comments__comment-meta:lang(ru-RU), .jk-caption dd:lang(ru-RU), .jk-block-freeform blockquote cite:lang(ru-RU) {
+  font-family: "Helvetica Neue", Helvetica, "Segoe UI", Arial, sans-serif;
+}
+
+body:lang(sah), h1:lang(sah),
+h2:lang(sah),
+h3:lang(sah),
+h4:lang(sah),
+h5:lang(sah),
+h6:lang(sah), figcaption:lang(sah),
+.gallery-caption:lang(sah), .editor-post-title__block .editor-post-title__input:lang(sah), .block-editor-default-block-appender textarea.block-editor-default-block-appender__content:lang(sah), .jk-block-paragraph.has-drop-cap:lang(sah):not(:focus)::first-letter, .jk-block-table:lang(sah), .jk-block-cover h2:lang(sah),
+.jk-block-cover .jk-block-cover-text:lang(sah), .jk-block-button .jk-block-button__link:lang(sah), .jk-block-search .jk-block-search__button:lang(sah), .jk-block-quote cite:lang(sah),
+.jk-block-quote footer:lang(sah),
+.jk-block-quote .jk-block-quote__citation:lang(sah), .jk-block-pullquote[data-type="core/pullquote"] .jk-block-pullquote__citation:lang(sah),
+.jk-block[data-type="core/pullquote"] .jk-block-pullquote__citation:lang(sah),
+.jk-block[data-type="core/pullquote"][data-align="left"] .jk-block-pullquote__citation:lang(sah),
+.jk-block[data-type="core/pullquote"][data-align="right"] .jk-block-pullquote__citation:lang(sah), .jk-block-file:lang(sah), ul.jk-block-archives li > a:lang(sah),
+.jk-block-categories li > a:lang(sah),
+.jk-block-latest-posts li > a:lang(sah), .jk-block-latest-posts .jk-block-latest-posts__post-date:lang(sah), .jk-block-latest-comments .jk-block-latest-comments__comment-meta:lang(sah), .jk-caption dd:lang(sah), .jk-block-freeform blockquote cite:lang(sah) {
+  font-family: "Helvetica Neue", Helvetica, "Segoe UI", Arial, sans-serif;
+}
+
+body:lang(sr-RS), h1:lang(sr-RS),
+h2:lang(sr-RS),
+h3:lang(sr-RS),
+h4:lang(sr-RS),
+h5:lang(sr-RS),
+h6:lang(sr-RS), figcaption:lang(sr-RS),
+.gallery-caption:lang(sr-RS), .editor-post-title__block .editor-post-title__input:lang(sr-RS), .block-editor-default-block-appender textarea.block-editor-default-block-appender__content:lang(sr-RS), .jk-block-paragraph.has-drop-cap:lang(sr-RS):not(:focus)::first-letter, .jk-block-table:lang(sr-RS), .jk-block-cover h2:lang(sr-RS),
+.jk-block-cover .jk-block-cover-text:lang(sr-RS), .jk-block-button .jk-block-button__link:lang(sr-RS), .jk-block-search .jk-block-search__button:lang(sr-RS), .jk-block-quote cite:lang(sr-RS),
+.jk-block-quote footer:lang(sr-RS),
+.jk-block-quote .jk-block-quote__citation:lang(sr-RS), .jk-block-pullquote[data-type="core/pullquote"] .jk-block-pullquote__citation:lang(sr-RS),
+.jk-block[data-type="core/pullquote"] .jk-block-pullquote__citation:lang(sr-RS),
+.jk-block[data-type="core/pullquote"][data-align="left"] .jk-block-pullquote__citation:lang(sr-RS),
+.jk-block[data-type="core/pullquote"][data-align="right"] .jk-block-pullquote__citation:lang(sr-RS), .jk-block-file:lang(sr-RS), ul.jk-block-archives li > a:lang(sr-RS),
+.jk-block-categories li > a:lang(sr-RS),
+.jk-block-latest-posts li > a:lang(sr-RS), .jk-block-latest-posts .jk-block-latest-posts__post-date:lang(sr-RS), .jk-block-latest-comments .jk-block-latest-comments__comment-meta:lang(sr-RS), .jk-caption dd:lang(sr-RS), .jk-block-freeform blockquote cite:lang(sr-RS) {
+  font-family: "Helvetica Neue", Helvetica, "Segoe UI", Arial, sans-serif;
+}
+
+body:lang(tt-RU), h1:lang(tt-RU),
+h2:lang(tt-RU),
+h3:lang(tt-RU),
+h4:lang(tt-RU),
+h5:lang(tt-RU),
+h6:lang(tt-RU), figcaption:lang(tt-RU),
+.gallery-caption:lang(tt-RU), .editor-post-title__block .editor-post-title__input:lang(tt-RU), .block-editor-default-block-appender textarea.block-editor-default-block-appender__content:lang(tt-RU), .jk-block-paragraph.has-drop-cap:lang(tt-RU):not(:focus)::first-letter, .jk-block-table:lang(tt-RU), .jk-block-cover h2:lang(tt-RU),
+.jk-block-cover .jk-block-cover-text:lang(tt-RU), .jk-block-button .jk-block-button__link:lang(tt-RU), .jk-block-search .jk-block-search__button:lang(tt-RU), .jk-block-quote cite:lang(tt-RU),
+.jk-block-quote footer:lang(tt-RU),
+.jk-block-quote .jk-block-quote__citation:lang(tt-RU), .jk-block-pullquote[data-type="core/pullquote"] .jk-block-pullquote__citation:lang(tt-RU),
+.jk-block[data-type="core/pullquote"] .jk-block-pullquote__citation:lang(tt-RU),
+.jk-block[data-type="core/pullquote"][data-align="left"] .jk-block-pullquote__citation:lang(tt-RU),
+.jk-block[data-type="core/pullquote"][data-align="right"] .jk-block-pullquote__citation:lang(tt-RU), .jk-block-file:lang(tt-RU), ul.jk-block-archives li > a:lang(tt-RU),
+.jk-block-categories li > a:lang(tt-RU),
+.jk-block-latest-posts li > a:lang(tt-RU), .jk-block-latest-posts .jk-block-latest-posts__post-date:lang(tt-RU), .jk-block-latest-comments .jk-block-latest-comments__comment-meta:lang(tt-RU), .jk-caption dd:lang(tt-RU), .jk-block-freeform blockquote cite:lang(tt-RU) {
+  font-family: "Helvetica Neue", Helvetica, "Segoe UI", Arial, sans-serif;
+}
+
+body:lang(uk), h1:lang(uk),
+h2:lang(uk),
+h3:lang(uk),
+h4:lang(uk),
+h5:lang(uk),
+h6:lang(uk), figcaption:lang(uk),
+.gallery-caption:lang(uk), .editor-post-title__block .editor-post-title__input:lang(uk), .block-editor-default-block-appender textarea.block-editor-default-block-appender__content:lang(uk), .jk-block-paragraph.has-drop-cap:lang(uk):not(:focus)::first-letter, .jk-block-table:lang(uk), .jk-block-cover h2:lang(uk),
+.jk-block-cover .jk-block-cover-text:lang(uk), .jk-block-button .jk-block-button__link:lang(uk), .jk-block-search .jk-block-search__button:lang(uk), .jk-block-quote cite:lang(uk),
+.jk-block-quote footer:lang(uk),
+.jk-block-quote .jk-block-quote__citation:lang(uk), .jk-block-pullquote[data-type="core/pullquote"] .jk-block-pullquote__citation:lang(uk),
+.jk-block[data-type="core/pullquote"] .jk-block-pullquote__citation:lang(uk),
+.jk-block[data-type="core/pullquote"][data-align="left"] .jk-block-pullquote__citation:lang(uk),
+.jk-block[data-type="core/pullquote"][data-align="right"] .jk-block-pullquote__citation:lang(uk), .jk-block-file:lang(uk), ul.jk-block-archives li > a:lang(uk),
+.jk-block-categories li > a:lang(uk),
+.jk-block-latest-posts li > a:lang(uk), .jk-block-latest-posts .jk-block-latest-posts__post-date:lang(uk), .jk-block-latest-comments .jk-block-latest-comments__comment-meta:lang(uk), .jk-caption dd:lang(uk), .jk-block-freeform blockquote cite:lang(uk) {
+  font-family: "Helvetica Neue", Helvetica, "Segoe UI", Arial, sans-serif;
+}
+
+body:lang(zh-HK), h1:lang(zh-HK),
+h2:lang(zh-HK),
+h3:lang(zh-HK),
+h4:lang(zh-HK),
+h5:lang(zh-HK),
+h6:lang(zh-HK), figcaption:lang(zh-HK),
+.gallery-caption:lang(zh-HK), .editor-post-title__block .editor-post-title__input:lang(zh-HK), .block-editor-default-block-appender textarea.block-editor-default-block-appender__content:lang(zh-HK), .jk-block-paragraph.has-drop-cap:lang(zh-HK):not(:focus)::first-letter, .jk-block-table:lang(zh-HK), .jk-block-cover h2:lang(zh-HK),
+.jk-block-cover .jk-block-cover-text:lang(zh-HK), .jk-block-button .jk-block-button__link:lang(zh-HK), .jk-block-search .jk-block-search__button:lang(zh-HK), .jk-block-quote cite:lang(zh-HK),
+.jk-block-quote footer:lang(zh-HK),
+.jk-block-quote .jk-block-quote__citation:lang(zh-HK), .jk-block-pullquote[data-type="core/pullquote"] .jk-block-pullquote__citation:lang(zh-HK),
+.jk-block[data-type="core/pullquote"] .jk-block-pullquote__citation:lang(zh-HK),
+.jk-block[data-type="core/pullquote"][data-align="left"] .jk-block-pullquote__citation:lang(zh-HK),
+.jk-block[data-type="core/pullquote"][data-align="right"] .jk-block-pullquote__citation:lang(zh-HK), .jk-block-file:lang(zh-HK), ul.jk-block-archives li > a:lang(zh-HK),
+.jk-block-categories li > a:lang(zh-HK),
+.jk-block-latest-posts li > a:lang(zh-HK), .jk-block-latest-posts .jk-block-latest-posts__post-date:lang(zh-HK), .jk-block-latest-comments .jk-block-latest-comments__comment-meta:lang(zh-HK), .jk-caption dd:lang(zh-HK), .jk-block-freeform blockquote cite:lang(zh-HK) {
+  font-family: -apple-system, BlinkMacSystemFont, "PingFang HK", "Helvetica Neue", "Microsoft YaHei New", STHeiti Light, sans-serif;
+}
+
+body:lang(zh-TW), h1:lang(zh-TW),
+h2:lang(zh-TW),
+h3:lang(zh-TW),
+h4:lang(zh-TW),
+h5:lang(zh-TW),
+h6:lang(zh-TW), figcaption:lang(zh-TW),
+.gallery-caption:lang(zh-TW), .editor-post-title__block .editor-post-title__input:lang(zh-TW), .block-editor-default-block-appender textarea.block-editor-default-block-appender__content:lang(zh-TW), .jk-block-paragraph.has-drop-cap:lang(zh-TW):not(:focus)::first-letter, .jk-block-table:lang(zh-TW), .jk-block-cover h2:lang(zh-TW),
+.jk-block-cover .jk-block-cover-text:lang(zh-TW), .jk-block-button .jk-block-button__link:lang(zh-TW), .jk-block-search .jk-block-search__button:lang(zh-TW), .jk-block-quote cite:lang(zh-TW),
+.jk-block-quote footer:lang(zh-TW),
+.jk-block-quote .jk-block-quote__citation:lang(zh-TW), .jk-block-pullquote[data-type="core/pullquote"] .jk-block-pullquote__citation:lang(zh-TW),
+.jk-block[data-type="core/pullquote"] .jk-block-pullquote__citation:lang(zh-TW),
+.jk-block[data-type="core/pullquote"][data-align="left"] .jk-block-pullquote__citation:lang(zh-TW),
+.jk-block[data-type="core/pullquote"][data-align="right"] .jk-block-pullquote__citation:lang(zh-TW), .jk-block-file:lang(zh-TW), ul.jk-block-archives li > a:lang(zh-TW),
+.jk-block-categories li > a:lang(zh-TW),
+.jk-block-latest-posts li > a:lang(zh-TW), .jk-block-latest-posts .jk-block-latest-posts__post-date:lang(zh-TW), .jk-block-latest-comments .jk-block-latest-comments__comment-meta:lang(zh-TW), .jk-caption dd:lang(zh-TW), .jk-block-freeform blockquote cite:lang(zh-TW) {
+  font-family: -apple-system, BlinkMacSystemFont, "PingFang TC", "Helvetica Neue", "Microsoft YaHei New", STHeiti Light, sans-serif;
+}
+
+body:lang(zh-CN), h1:lang(zh-CN),
+h2:lang(zh-CN),
+h3:lang(zh-CN),
+h4:lang(zh-CN),
+h5:lang(zh-CN),
+h6:lang(zh-CN), figcaption:lang(zh-CN),
+.gallery-caption:lang(zh-CN), .editor-post-title__block .editor-post-title__input:lang(zh-CN), .block-editor-default-block-appender textarea.block-editor-default-block-appender__content:lang(zh-CN), .jk-block-paragraph.has-drop-cap:lang(zh-CN):not(:focus)::first-letter, .jk-block-table:lang(zh-CN), .jk-block-cover h2:lang(zh-CN),
+.jk-block-cover .jk-block-cover-text:lang(zh-CN), .jk-block-button .jk-block-button__link:lang(zh-CN), .jk-block-search .jk-block-search__button:lang(zh-CN), .jk-block-quote cite:lang(zh-CN),
+.jk-block-quote footer:lang(zh-CN),
+.jk-block-quote .jk-block-quote__citation:lang(zh-CN), .jk-block-pullquote[data-type="core/pullquote"] .jk-block-pullquote__citation:lang(zh-CN),
+.jk-block[data-type="core/pullquote"] .jk-block-pullquote__citation:lang(zh-CN),
+.jk-block[data-type="core/pullquote"][data-align="left"] .jk-block-pullquote__citation:lang(zh-CN),
+.jk-block[data-type="core/pullquote"][data-align="right"] .jk-block-pullquote__citation:lang(zh-CN), .jk-block-file:lang(zh-CN), ul.jk-block-archives li > a:lang(zh-CN),
+.jk-block-categories li > a:lang(zh-CN),
+.jk-block-latest-posts li > a:lang(zh-CN), .jk-block-latest-posts .jk-block-latest-posts__post-date:lang(zh-CN), .jk-block-latest-comments .jk-block-latest-comments__comment-meta:lang(zh-CN), .jk-caption dd:lang(zh-CN), .jk-block-freeform blockquote cite:lang(zh-CN) {
+  font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Helvetica Neue", "Microsoft YaHei New", STHeiti Light, sans-serif;
+}
+
+body:lang(bn-BD), h1:lang(bn-BD),
+h2:lang(bn-BD),
+h3:lang(bn-BD),
+h4:lang(bn-BD),
+h5:lang(bn-BD),
+h6:lang(bn-BD), figcaption:lang(bn-BD),
+.gallery-caption:lang(bn-BD), .editor-post-title__block .editor-post-title__input:lang(bn-BD), .block-editor-default-block-appender textarea.block-editor-default-block-appender__content:lang(bn-BD), .jk-block-paragraph.has-drop-cap:lang(bn-BD):not(:focus)::first-letter, .jk-block-table:lang(bn-BD), .jk-block-cover h2:lang(bn-BD),
+.jk-block-cover .jk-block-cover-text:lang(bn-BD), .jk-block-button .jk-block-button__link:lang(bn-BD), .jk-block-search .jk-block-search__button:lang(bn-BD), .jk-block-quote cite:lang(bn-BD),
+.jk-block-quote footer:lang(bn-BD),
+.jk-block-quote .jk-block-quote__citation:lang(bn-BD), .jk-block-pullquote[data-type="core/pullquote"] .jk-block-pullquote__citation:lang(bn-BD),
+.jk-block[data-type="core/pullquote"] .jk-block-pullquote__citation:lang(bn-BD),
+.jk-block[data-type="core/pullquote"][data-align="left"] .jk-block-pullquote__citation:lang(bn-BD),
+.jk-block[data-type="core/pullquote"][data-align="right"] .jk-block-pullquote__citation:lang(bn-BD), .jk-block-file:lang(bn-BD), ul.jk-block-archives li > a:lang(bn-BD),
+.jk-block-categories li > a:lang(bn-BD),
+.jk-block-latest-posts li > a:lang(bn-BD), .jk-block-latest-posts .jk-block-latest-posts__post-date:lang(bn-BD), .jk-block-latest-comments .jk-block-latest-comments__comment-meta:lang(bn-BD), .jk-caption dd:lang(bn-BD), .jk-block-freeform blockquote cite:lang(bn-BD) {
+  font-family: Arial, sans-serif;
+}
+
+body:lang(hi-IN), h1:lang(hi-IN),
+h2:lang(hi-IN),
+h3:lang(hi-IN),
+h4:lang(hi-IN),
+h5:lang(hi-IN),
+h6:lang(hi-IN), figcaption:lang(hi-IN),
+.gallery-caption:lang(hi-IN), .editor-post-title__block .editor-post-title__input:lang(hi-IN), .block-editor-default-block-appender textarea.block-editor-default-block-appender__content:lang(hi-IN), .jk-block-paragraph.has-drop-cap:lang(hi-IN):not(:focus)::first-letter, .jk-block-table:lang(hi-IN), .jk-block-cover h2:lang(hi-IN),
+.jk-block-cover .jk-block-cover-text:lang(hi-IN), .jk-block-button .jk-block-button__link:lang(hi-IN), .jk-block-search .jk-block-search__button:lang(hi-IN), .jk-block-quote cite:lang(hi-IN),
+.jk-block-quote footer:lang(hi-IN),
+.jk-block-quote .jk-block-quote__citation:lang(hi-IN), .jk-block-pullquote[data-type="core/pullquote"] .jk-block-pullquote__citation:lang(hi-IN),
+.jk-block[data-type="core/pullquote"] .jk-block-pullquote__citation:lang(hi-IN),
+.jk-block[data-type="core/pullquote"][data-align="left"] .jk-block-pullquote__citation:lang(hi-IN),
+.jk-block[data-type="core/pullquote"][data-align="right"] .jk-block-pullquote__citation:lang(hi-IN), .jk-block-file:lang(hi-IN), ul.jk-block-archives li > a:lang(hi-IN),
+.jk-block-categories li > a:lang(hi-IN),
+.jk-block-latest-posts li > a:lang(hi-IN), .jk-block-latest-posts .jk-block-latest-posts__post-date:lang(hi-IN), .jk-block-latest-comments .jk-block-latest-comments__comment-meta:lang(hi-IN), .jk-caption dd:lang(hi-IN), .jk-block-freeform blockquote cite:lang(hi-IN) {
+  font-family: Arial, sans-serif;
+}
+
+body:lang(mr), h1:lang(mr),
+h2:lang(mr),
+h3:lang(mr),
+h4:lang(mr),
+h5:lang(mr),
+h6:lang(mr), figcaption:lang(mr),
+.gallery-caption:lang(mr), .editor-post-title__block .editor-post-title__input:lang(mr), .block-editor-default-block-appender textarea.block-editor-default-block-appender__content:lang(mr), .jk-block-paragraph.has-drop-cap:lang(mr):not(:focus)::first-letter, .jk-block-table:lang(mr), .jk-block-cover h2:lang(mr),
+.jk-block-cover .jk-block-cover-text:lang(mr), .jk-block-button .jk-block-button__link:lang(mr), .jk-block-search .jk-block-search__button:lang(mr), .jk-block-quote cite:lang(mr),
+.jk-block-quote footer:lang(mr),
+.jk-block-quote .jk-block-quote__citation:lang(mr), .jk-block-pullquote[data-type="core/pullquote"] .jk-block-pullquote__citation:lang(mr),
+.jk-block[data-type="core/pullquote"] .jk-block-pullquote__citation:lang(mr),
+.jk-block[data-type="core/pullquote"][data-align="left"] .jk-block-pullquote__citation:lang(mr),
+.jk-block[data-type="core/pullquote"][data-align="right"] .jk-block-pullquote__citation:lang(mr), .jk-block-file:lang(mr), ul.jk-block-archives li > a:lang(mr),
+.jk-block-categories li > a:lang(mr),
+.jk-block-latest-posts li > a:lang(mr), .jk-block-latest-posts .jk-block-latest-posts__post-date:lang(mr), .jk-block-latest-comments .jk-block-latest-comments__comment-meta:lang(mr), .jk-caption dd:lang(mr), .jk-block-freeform blockquote cite:lang(mr) {
+  font-family: Arial, sans-serif;
+}
+
+body:lang(ne-NP), h1:lang(ne-NP),
+h2:lang(ne-NP),
+h3:lang(ne-NP),
+h4:lang(ne-NP),
+h5:lang(ne-NP),
+h6:lang(ne-NP), figcaption:lang(ne-NP),
+.gallery-caption:lang(ne-NP), .editor-post-title__block .editor-post-title__input:lang(ne-NP), .block-editor-default-block-appender textarea.block-editor-default-block-appender__content:lang(ne-NP), .jk-block-paragraph.has-drop-cap:lang(ne-NP):not(:focus)::first-letter, .jk-block-table:lang(ne-NP), .jk-block-cover h2:lang(ne-NP),
+.jk-block-cover .jk-block-cover-text:lang(ne-NP), .jk-block-button .jk-block-button__link:lang(ne-NP), .jk-block-search .jk-block-search__button:lang(ne-NP), .jk-block-quote cite:lang(ne-NP),
+.jk-block-quote footer:lang(ne-NP),
+.jk-block-quote .jk-block-quote__citation:lang(ne-NP), .jk-block-pullquote[data-type="core/pullquote"] .jk-block-pullquote__citation:lang(ne-NP),
+.jk-block[data-type="core/pullquote"] .jk-block-pullquote__citation:lang(ne-NP),
+.jk-block[data-type="core/pullquote"][data-align="left"] .jk-block-pullquote__citation:lang(ne-NP),
+.jk-block[data-type="core/pullquote"][data-align="right"] .jk-block-pullquote__citation:lang(ne-NP), .jk-block-file:lang(ne-NP), ul.jk-block-archives li > a:lang(ne-NP),
+.jk-block-categories li > a:lang(ne-NP),
+.jk-block-latest-posts li > a:lang(ne-NP), .jk-block-latest-posts .jk-block-latest-posts__post-date:lang(ne-NP), .jk-block-latest-comments .jk-block-latest-comments__comment-meta:lang(ne-NP), .jk-caption dd:lang(ne-NP), .jk-block-freeform blockquote cite:lang(ne-NP) {
+  font-family: Arial, sans-serif;
+}
+
+body:lang(el), h1:lang(el),
+h2:lang(el),
+h3:lang(el),
+h4:lang(el),
+h5:lang(el),
+h6:lang(el), figcaption:lang(el),
+.gallery-caption:lang(el), .editor-post-title__block .editor-post-title__input:lang(el), .block-editor-default-block-appender textarea.block-editor-default-block-appender__content:lang(el), .jk-block-paragraph.has-drop-cap:lang(el):not(:focus)::first-letter, .jk-block-table:lang(el), .jk-block-cover h2:lang(el),
+.jk-block-cover .jk-block-cover-text:lang(el), .jk-block-button .jk-block-button__link:lang(el), .jk-block-search .jk-block-search__button:lang(el), .jk-block-quote cite:lang(el),
+.jk-block-quote footer:lang(el),
+.jk-block-quote .jk-block-quote__citation:lang(el), .jk-block-pullquote[data-type="core/pullquote"] .jk-block-pullquote__citation:lang(el),
+.jk-block[data-type="core/pullquote"] .jk-block-pullquote__citation:lang(el),
+.jk-block[data-type="core/pullquote"][data-align="left"] .jk-block-pullquote__citation:lang(el),
+.jk-block[data-type="core/pullquote"][data-align="right"] .jk-block-pullquote__citation:lang(el), .jk-block-file:lang(el), ul.jk-block-archives li > a:lang(el),
+.jk-block-categories li > a:lang(el),
+.jk-block-latest-posts li > a:lang(el), .jk-block-latest-posts .jk-block-latest-posts__post-date:lang(el), .jk-block-latest-comments .jk-block-latest-comments__comment-meta:lang(el), .jk-caption dd:lang(el), .jk-block-freeform blockquote cite:lang(el) {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+body:lang(gu), h1:lang(gu),
+h2:lang(gu),
+h3:lang(gu),
+h4:lang(gu),
+h5:lang(gu),
+h6:lang(gu), figcaption:lang(gu),
+.gallery-caption:lang(gu), .editor-post-title__block .editor-post-title__input:lang(gu), .block-editor-default-block-appender textarea.block-editor-default-block-appender__content:lang(gu), .jk-block-paragraph.has-drop-cap:lang(gu):not(:focus)::first-letter, .jk-block-table:lang(gu), .jk-block-cover h2:lang(gu),
+.jk-block-cover .jk-block-cover-text:lang(gu), .jk-block-button .jk-block-button__link:lang(gu), .jk-block-search .jk-block-search__button:lang(gu), .jk-block-quote cite:lang(gu),
+.jk-block-quote footer:lang(gu),
+.jk-block-quote .jk-block-quote__citation:lang(gu), .jk-block-pullquote[data-type="core/pullquote"] .jk-block-pullquote__citation:lang(gu),
+.jk-block[data-type="core/pullquote"] .jk-block-pullquote__citation:lang(gu),
+.jk-block[data-type="core/pullquote"][data-align="left"] .jk-block-pullquote__citation:lang(gu),
+.jk-block[data-type="core/pullquote"][data-align="right"] .jk-block-pullquote__citation:lang(gu), .jk-block-file:lang(gu), ul.jk-block-archives li > a:lang(gu),
+.jk-block-categories li > a:lang(gu),
+.jk-block-latest-posts li > a:lang(gu), .jk-block-latest-posts .jk-block-latest-posts__post-date:lang(gu), .jk-block-latest-comments .jk-block-latest-comments__comment-meta:lang(gu), .jk-caption dd:lang(gu), .jk-block-freeform blockquote cite:lang(gu) {
+  font-family: Arial, sans-serif;
+}
+
+body:lang(he-IL), h1:lang(he-IL),
+h2:lang(he-IL),
+h3:lang(he-IL),
+h4:lang(he-IL),
+h5:lang(he-IL),
+h6:lang(he-IL), figcaption:lang(he-IL),
+.gallery-caption:lang(he-IL), .editor-post-title__block .editor-post-title__input:lang(he-IL), .block-editor-default-block-appender textarea.block-editor-default-block-appender__content:lang(he-IL), .jk-block-paragraph.has-drop-cap:lang(he-IL):not(:focus)::first-letter, .jk-block-table:lang(he-IL), .jk-block-cover h2:lang(he-IL),
+.jk-block-cover .jk-block-cover-text:lang(he-IL), .jk-block-button .jk-block-button__link:lang(he-IL), .jk-block-search .jk-block-search__button:lang(he-IL), .jk-block-quote cite:lang(he-IL),
+.jk-block-quote footer:lang(he-IL),
+.jk-block-quote .jk-block-quote__citation:lang(he-IL), .jk-block-pullquote[data-type="core/pullquote"] .jk-block-pullquote__citation:lang(he-IL),
+.jk-block[data-type="core/pullquote"] .jk-block-pullquote__citation:lang(he-IL),
+.jk-block[data-type="core/pullquote"][data-align="left"] .jk-block-pullquote__citation:lang(he-IL),
+.jk-block[data-type="core/pullquote"][data-align="right"] .jk-block-pullquote__citation:lang(he-IL), .jk-block-file:lang(he-IL), ul.jk-block-archives li > a:lang(he-IL),
+.jk-block-categories li > a:lang(he-IL),
+.jk-block-latest-posts li > a:lang(he-IL), .jk-block-latest-posts .jk-block-latest-posts__post-date:lang(he-IL), .jk-block-latest-comments .jk-block-latest-comments__comment-meta:lang(he-IL), .jk-caption dd:lang(he-IL), .jk-block-freeform blockquote cite:lang(he-IL) {
+  font-family: "Arial Hebrew", Arial, sans-serif;
+}
+
+body:lang(ja), h1:lang(ja),
+h2:lang(ja),
+h3:lang(ja),
+h4:lang(ja),
+h5:lang(ja),
+h6:lang(ja), figcaption:lang(ja),
+.gallery-caption:lang(ja), .editor-post-title__block .editor-post-title__input:lang(ja), .block-editor-default-block-appender textarea.block-editor-default-block-appender__content:lang(ja), .jk-block-paragraph.has-drop-cap:lang(ja):not(:focus)::first-letter, .jk-block-table:lang(ja), .jk-block-cover h2:lang(ja),
+.jk-block-cover .jk-block-cover-text:lang(ja), .jk-block-button .jk-block-button__link:lang(ja), .jk-block-search .jk-block-search__button:lang(ja), .jk-block-quote cite:lang(ja),
+.jk-block-quote footer:lang(ja),
+.jk-block-quote .jk-block-quote__citation:lang(ja), .jk-block-pullquote[data-type="core/pullquote"] .jk-block-pullquote__citation:lang(ja),
+.jk-block[data-type="core/pullquote"] .jk-block-pullquote__citation:lang(ja),
+.jk-block[data-type="core/pullquote"][data-align="left"] .jk-block-pullquote__citation:lang(ja),
+.jk-block[data-type="core/pullquote"][data-align="right"] .jk-block-pullquote__citation:lang(ja), .jk-block-file:lang(ja), ul.jk-block-archives li > a:lang(ja),
+.jk-block-categories li > a:lang(ja),
+.jk-block-latest-posts li > a:lang(ja), .jk-block-latest-posts .jk-block-latest-posts__post-date:lang(ja), .jk-block-latest-comments .jk-block-latest-comments__comment-meta:lang(ja), .jk-caption dd:lang(ja), .jk-block-freeform blockquote cite:lang(ja) {
+  font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", Meiryo, "Helvetica Neue", sans-serif;
+}
+
+body:lang(ko-KR), h1:lang(ko-KR),
+h2:lang(ko-KR),
+h3:lang(ko-KR),
+h4:lang(ko-KR),
+h5:lang(ko-KR),
+h6:lang(ko-KR), figcaption:lang(ko-KR),
+.gallery-caption:lang(ko-KR), .editor-post-title__block .editor-post-title__input:lang(ko-KR), .block-editor-default-block-appender textarea.block-editor-default-block-appender__content:lang(ko-KR), .jk-block-paragraph.has-drop-cap:lang(ko-KR):not(:focus)::first-letter, .jk-block-table:lang(ko-KR), .jk-block-cover h2:lang(ko-KR),
+.jk-block-cover .jk-block-cover-text:lang(ko-KR), .jk-block-button .jk-block-button__link:lang(ko-KR), .jk-block-search .jk-block-search__button:lang(ko-KR), .jk-block-quote cite:lang(ko-KR),
+.jk-block-quote footer:lang(ko-KR),
+.jk-block-quote .jk-block-quote__citation:lang(ko-KR), .jk-block-pullquote[data-type="core/pullquote"] .jk-block-pullquote__citation:lang(ko-KR),
+.jk-block[data-type="core/pullquote"] .jk-block-pullquote__citation:lang(ko-KR),
+.jk-block[data-type="core/pullquote"][data-align="left"] .jk-block-pullquote__citation:lang(ko-KR),
+.jk-block[data-type="core/pullquote"][data-align="right"] .jk-block-pullquote__citation:lang(ko-KR), .jk-block-file:lang(ko-KR), ul.jk-block-archives li > a:lang(ko-KR),
+.jk-block-categories li > a:lang(ko-KR),
+.jk-block-latest-posts li > a:lang(ko-KR), .jk-block-latest-posts .jk-block-latest-posts__post-date:lang(ko-KR), .jk-block-latest-comments .jk-block-latest-comments__comment-meta:lang(ko-KR), .jk-caption dd:lang(ko-KR), .jk-block-freeform blockquote cite:lang(ko-KR) {
+  font-family: "Apple SD Gothic Neo", "Malgun Gothic", "Nanum Gothic", Dotum, sans-serif;
+}
+
+body:lang(th), h1:lang(th),
+h2:lang(th),
+h3:lang(th),
+h4:lang(th),
+h5:lang(th),
+h6:lang(th), figcaption:lang(th),
+.gallery-caption:lang(th), .editor-post-title__block .editor-post-title__input:lang(th), .block-editor-default-block-appender textarea.block-editor-default-block-appender__content:lang(th), .jk-block-paragraph.has-drop-cap:lang(th):not(:focus)::first-letter, .jk-block-table:lang(th), .jk-block-cover h2:lang(th),
+.jk-block-cover .jk-block-cover-text:lang(th), .jk-block-button .jk-block-button__link:lang(th), .jk-block-search .jk-block-search__button:lang(th), .jk-block-quote cite:lang(th),
+.jk-block-quote footer:lang(th),
+.jk-block-quote .jk-block-quote__citation:lang(th), .jk-block-pullquote[data-type="core/pullquote"] .jk-block-pullquote__citation:lang(th),
+.jk-block[data-type="core/pullquote"] .jk-block-pullquote__citation:lang(th),
+.jk-block[data-type="core/pullquote"][data-align="left"] .jk-block-pullquote__citation:lang(th),
+.jk-block[data-type="core/pullquote"][data-align="right"] .jk-block-pullquote__citation:lang(th), .jk-block-file:lang(th), ul.jk-block-archives li > a:lang(th),
+.jk-block-categories li > a:lang(th),
+.jk-block-latest-posts li > a:lang(th), .jk-block-latest-posts .jk-block-latest-posts__post-date:lang(th), .jk-block-latest-comments .jk-block-latest-comments__comment-meta:lang(th), .jk-caption dd:lang(th), .jk-block-freeform blockquote cite:lang(th) {
+  font-family: "Sukhumvit Set", "Helvetica Neue", helvetica, arial, sans-serif;
+}
+
+body:lang(vi), h1:lang(vi),
+h2:lang(vi),
+h3:lang(vi),
+h4:lang(vi),
+h5:lang(vi),
+h6:lang(vi), figcaption:lang(vi),
+.gallery-caption:lang(vi), .editor-post-title__block .editor-post-title__input:lang(vi), .block-editor-default-block-appender textarea.block-editor-default-block-appender__content:lang(vi), .jk-block-paragraph.has-drop-cap:lang(vi):not(:focus)::first-letter, .jk-block-table:lang(vi), .jk-block-cover h2:lang(vi),
+.jk-block-cover .jk-block-cover-text:lang(vi), .jk-block-button .jk-block-button__link:lang(vi), .jk-block-search .jk-block-search__button:lang(vi), .jk-block-quote cite:lang(vi),
+.jk-block-quote footer:lang(vi),
+.jk-block-quote .jk-block-quote__citation:lang(vi), .jk-block-pullquote[data-type="core/pullquote"] .jk-block-pullquote__citation:lang(vi),
+.jk-block[data-type="core/pullquote"] .jk-block-pullquote__citation:lang(vi),
+.jk-block[data-type="core/pullquote"][data-align="left"] .jk-block-pullquote__citation:lang(vi),
+.jk-block[data-type="core/pullquote"][data-align="right"] .jk-block-pullquote__citation:lang(vi), .jk-block-file:lang(vi), ul.jk-block-archives li > a:lang(vi),
+.jk-block-categories li > a:lang(vi),
+.jk-block-latest-posts li > a:lang(vi), .jk-block-latest-posts .jk-block-latest-posts__post-date:lang(vi), .jk-block-latest-comments .jk-block-latest-comments__comment-meta:lang(vi), .jk-caption dd:lang(vi), .jk-block-freeform blockquote cite:lang(vi) {
+  font-family: "Libre Franklin", sans-serif;
+}
+
+/** === Editor Frame === */
+body .jk-block[data-align="full"],
+body .jk-block.alignfull {
+  max-width: calc(100% + 16px);
+  width: calc(100% + 16px);
+}
+
+body .jk-block[data-align="left"],
+body .jk-block.alignleft {
+  margin-right: 1rem;
+  width: inherit;
+}
+
+body .jk-block[data-align="right"],
+body .jk-block.alignright {
+  margin-left: 1rem;
+  width: inherit;
+}
+
+body .jk-block[data-align="center"],
+body .jk-block.aligncenter {
+  margin-left: 0;
+}
+
+@media only screen and (min-width: 768px) {
+  body.block-editor-iframe__body, body.block-editor-writing-flow,
+  body .block-editor-writing-flow {
+    max-width: 80%;
+    margin: 0 10%;
+  }
+  body .block-editor-default-block-appender,
+  body .block-editor-block-list__block {
+    margin-left: 0;
+    margin-right: 0;
+  }
+  body .jk-block[data-align="wide"],
+  body .jk-block.alignwide {
+    width: 100%;
+  }
+  body .jk-block[data-align="full"],
+  body .jk-block.alignfull {
+    width: calc(125% + 16px);
+    max-width: calc(125% + 16px);
+    position: relative;
+    left: -12.5%;
+  }
+  body .jk-block[data-align="wide"] .jk-block[data-align="full"],
+  body .jk-block[data-align="full"] .jk-block[data-align="full"],
+  body .jk-block.alignwide .jk-block.alignfull,
+  body .jk-block.alignfull .jk-block.alignfull {
+    left: 0;
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+
+/** === Content Width === */
+.jk-block {
+  max-width: 100%;
+}
+
+@media only screen and (min-width: 768px) {
+  .jk-block {
+    width: calc(8 * (100vw / 12));
+  }
+}
+
+@media only screen and (min-width: 1168px) {
+  .jk-block {
+    width: calc(6 * (100vw / 12 ));
+  }
+}
+
+.jk-block .jk-block {
+  width: initial;
+}
+
+/** === Base Typography === */
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 22px;
+  font-family: "NonBreakingSpaceOverride", "Hoefler Text", Garamond, "Times New Roman", serif;
+  line-height: 1.8;
+  color: #111;
+}
+
+p {
+  font-size: 22px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  font-weight: 700;
+}
+
+h1 {
+  font-size: 2.25em;
+}
+
+@media only screen and (min-width: 768px) {
+  h1 {
+    font-size: 2.8125em;
+  }
+}
+
+.jk-block-post-title,
+h2 {
+  font-size: 1.6875em;
+}
+
+@media only screen and (min-width: 768px) {
+  .jk-block-post-title,
+  h2 {
+    font-size: 2.25em;
+  }
+}
+
+h1:before,
+h2:before {
+  background: #767676;
+  content: "\020";
+  display: block;
+  height: 2px;
+  margin: 1rem 0;
+  width: 1em;
+}
+
+h1.has-text-align-center:before,
+h2.has-text-align-center:before {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+h1.has-text-align-right:before,
+h2.has-text-align-right:before {
+  margin-left: auto;
+}
+
+h3 {
+  font-size: 1.6875em;
+}
+
+h4 {
+  font-size: 1.125em;
+}
+
+h5 {
+  font-size: 0.88889em;
+}
+
+h6 {
+  font-size: 0.71111em;
+}
+
+a {
+  transition: color 110ms ease-in-out;
+  color: #0073aa;
+}
+
+a:hover, a:active {
+  color: #005177;
+  outline: 0;
+  text-decoration: none;
+}
+
+a:focus {
+  outline: 0;
+  text-decoration: underline;
+}
+
+.has-primary-background-color,
+.has-secondary-background-color,
+.has-dark-gray-background-color,
+.has-light-gray-background-color {
+  color: #fff;
+}
+
+.has-primary-background-color p,
+.has-primary-background-color h1,
+.has-primary-background-color h2,
+.has-primary-background-color h3,
+.has-primary-background-color h4,
+.has-primary-background-color h5,
+.has-primary-background-color h6,
+.has-primary-background-color a,
+.has-secondary-background-color p,
+.has-secondary-background-color h1,
+.has-secondary-background-color h2,
+.has-secondary-background-color h3,
+.has-secondary-background-color h4,
+.has-secondary-background-color h5,
+.has-secondary-background-color h6,
+.has-secondary-background-color a,
+.has-dark-gray-background-color p,
+.has-dark-gray-background-color h1,
+.has-dark-gray-background-color h2,
+.has-dark-gray-background-color h3,
+.has-dark-gray-background-color h4,
+.has-dark-gray-background-color h5,
+.has-dark-gray-background-color h6,
+.has-dark-gray-background-color a,
+.has-light-gray-background-color p,
+.has-light-gray-background-color h1,
+.has-light-gray-background-color h2,
+.has-light-gray-background-color h3,
+.has-light-gray-background-color h4,
+.has-light-gray-background-color h5,
+.has-light-gray-background-color h6,
+.has-light-gray-background-color a {
+  color: #fff;
+}
+
+.has-white-background-color {
+  color: #111;
+}
+
+.has-white-background-color p,
+.has-white-background-color h1,
+.has-white-background-color h2,
+.has-white-background-color h3,
+.has-white-background-color h4,
+.has-white-background-color h5,
+.has-white-background-color h6,
+.has-white-background-color a {
+  color: #111;
+}
+
+figcaption,
+.gallery-caption {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  font-size: 0.71111em;
+  line-height: 1.6;
+  color: #767676;
+}
+
+/** === Post Title === */
+.editor-post-title__block {
+  width: 100%;
+}
+
+.editor-post-title__block:before {
+  background: #767676;
+  content: "\020";
+  display: block;
+  height: 2px;
+  margin: 1rem 0;
+  width: 1em;
+}
+
+.editor-post-title__block.has-text-align-center:before {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.editor-post-title__block.has-text-align-right:before {
+  margin-left: auto;
+}
+
+.editor-post-title__block:before {
+  width: 2.8125em;
+  margin-top: 0;
+  margin-bottom: 0;
+  margin-left: 1rem;
+  position: relative;
+  top: 0.5em;
+}
+
+@media only screen and (min-width: 600px) {
+  .editor-post-title__block:before {
+    margin-left: 0;
+  }
+}
+
+.editor-post-title__block .editor-post-title__input {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  font-size: 2.8125em;
+  font-weight: 700;
+}
+
+/** === Default Appender === */
+.block-editor-default-block-appender textarea.block-editor-default-block-appender__content {
+  font-family: "NonBreakingSpaceOverride", "Hoefler Text", Garamond, "Times New Roman", serif;
+  font-size: 22px;
+}
+
+/** === Heading === */
+.jk-block-heading strong {
+  font-weight: bolder;
+}
+
+/** === Paragraph === */
+.jk-block-paragraph.has-drop-cap:not(:focus)::first-letter {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  font-size: 3.375em;
+  line-height: 1;
+  font-weight: bold;
+  margin: 0 0.25em 0 0;
+}
+
+@-moz-document url-prefix() {
+  .jk-block-paragraph.has-drop-cap:not(:focus)::first-letter {
+    margin-top: 0.2em;
+  }
+}
+
+/** === Table === */
+.jk-block-table {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+}
+
+/** === Cover === */
+.jk-block-cover h2,
+.jk-block-cover .jk-block-cover-text {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  font-size: 1.6875em;
+  font-weight: bold;
+  line-height: 1.4;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.jk-block-cover h2 strong,
+.jk-block-cover .jk-block-cover-text strong {
+  font-weight: bolder;
+}
+
+@media only screen and (min-width: 768px) {
+  .jk-block-cover h2,
+  .jk-block-cover .jk-block-cover-text {
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .jk-block-cover {
+    padding-left: 10%;
+    padding-right: 10%;
+  }
+  .jk-block-cover h2,
+  .jk-block-cover .jk-block-cover-text {
+    font-size: 2.25em;
+  }
+}
+
+.jk-block[data-type="core/cover"][data-align="left"] .editor-block-list__block-edit,
+.jk-block[data-type="core/cover"][data-align="right"] .editor-block-list__block-edit {
+  width: calc(4 * (100vw / 12));
+}
+
+.jk-block[data-type="core/cover"][data-align="left"] .jk-block-cover,
+.jk-block[data-type="core/cover"][data-align="right"] .jk-block-cover {
+  width: 100%;
+  max-width: 100%;
+  padding: calc(1.375 * 1rem);
+}
+
+.jk-block[data-type="core/cover"][data-align="left"] .jk-block-cover p,
+.jk-block[data-type="core/cover"][data-align="right"] .jk-block-cover p {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+@media only screen and (min-width: 768px) {
+  .jk-block[data-type="core/cover"][data-align="left"] .jk-block-cover,
+  .jk-block[data-type="core/cover"][data-align="right"] .jk-block-cover {
+    padding: calc(2.75 * 1rem) calc(2.75 * 1rem) calc(3.125 * 1rem);
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .jk-block[data-type="core/cover"][data-align="wide"] h2,
+  .jk-block[data-type="core/cover"][data-align="wide"] .jk-block-cover-text,
+  .jk-block[data-type="core/cover"][data-align="full"] h2,
+  .jk-block[data-type="core/cover"][data-align="full"] .jk-block-cover-text {
+    max-width: calc(8 * (100vw / 12));
+  }
+}
+
+@media only screen and (min-width: 1168px) {
+  .jk-block[data-type="core/cover"][data-align="wide"] h2,
+  .jk-block[data-type="core/cover"][data-align="wide"] .jk-block-cover-text,
+  .jk-block[data-type="core/cover"][data-align="full"] h2,
+  .jk-block[data-type="core/cover"][data-align="full"] .jk-block-cover-text {
+    max-width: calc(6 * (100vw / 12));
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .jk-block[data-type="core/cover"][data-align="full"] .jk-block-cover {
+    padding-left: calc(10% + 64px);
+    padding-right: calc(10% + 64px);
+  }
+}
+
+/** === Gallery === */
+.jk-block-gallery .blocks-gallery-image figcaption,
+.jk-block-gallery .blocks-gallery-item figcaption,
+.jk-block-gallery .gallery-item .gallery-caption {
+  font-size: 0.71111em;
+  line-height: 1.6;
+}
+
+/** === Audio === */
+.jk-block-audio audio {
+  display: block;
+}
+
+/** === Button === */
+.jk-block-buttons {
+  line-height: 1.2;
+}
+
+.jk-block-button .jk-block-button__link {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  font-size: 0.88889em;
+  font-weight: bold;
+  padding: 16.72px 22px;
+}
+
+.jk-block-button .jk-block-button__link:not(.has-text-color) {
+  color: #fff;
+}
+
+.jk-block-button:not(.is-style-outline) .jk-block-button__link {
+  background: #0073aa;
+}
+
+.jk-block-button:not(.is-style-squared) .jk-block-button__link {
+  border-radius: 5px;
+}
+
+.jk-block-button.is-style-outline, .jk-block-button.is-style-outline:hover, .jk-block-button.is-style-outline:focus, .jk-block-button.is-style-outline:active {
+  background: transparent;
+  color: #0073aa;
+}
+
+.jk-block-button.is-style-outline .jk-block-button__link, .jk-block-button.is-style-outline:hover .jk-block-button__link, .jk-block-button.is-style-outline:focus .jk-block-button__link, .jk-block-button.is-style-outline:active .jk-block-button__link {
+  background: transparent;
+}
+
+.jk-block-button.is-style-outline .jk-block-button__link:not(.has-text-color), .jk-block-button.is-style-outline:hover .jk-block-button__link:not(.has-text-color), .jk-block-button.is-style-outline:focus .jk-block-button__link:not(.has-text-color), .jk-block-button.is-style-outline:active .jk-block-button__link:not(.has-text-color) {
+  color: #0073aa;
+}
+
+.jk-block-buttons[style*="font-weight"] .jk-block-button__link,
+.jk-block-button[style*="font-weight"] .jk-block-button__link {
+  font-weight: inherit;
+}
+
+.jk-block-buttons[style*="text-decoration"] .jk-block-button__link,
+.jk-block-button[style*="text-decoration"] .jk-block-button__link {
+  text-decoration: inherit;
+}
+
+.jk-block-search .jk-block-search__button {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  font-size: 0.88889em;
+  font-weight: bold;
+  border-radius: 5px;
+}
+
+.jk-block-search .jk-block-search__button:not(.has-text-color) {
+  color: #fff;
+}
+
+.jk-block-search .jk-block-search__button:not(.has-background-color) {
+  background: #0073aa;
+}
+
+/** === Blockquote === */
+.jk-block-quote:not(.is-large):not(.is-style-large) {
+  border-width: 2px;
+  border-color: #0073aa;
+}
+
+.jk-block-quote.is-large, .jk-block-quote.is-style-large {
+  margin-top: 2.8125em;
+  margin-bottom: 2.8125em;
+}
+
+.jk-block-quote.is-large p,
+.jk-block-quote.is-style-large p {
+  font-size: 1.6875em;
+  line-height: 1.3;
+  margin-bottom: 0.5em;
+  margin-top: 0.5em;
+}
+
+.jk-block-quote cite,
+.jk-block-quote footer,
+.jk-block-quote .jk-block-quote__citation {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  font-size: 0.71111em;
+  line-height: 1.6;
+  color: inherit;
+}
+
+/** === Pullquote === */
+.jk-block-pullquote {
+  border-color: transparent;
+  border-width: 2px;
+  color: #000;
+}
+
+.jk-block-pullquote blockquote {
+  margin-top: calc(3 * 1rem);
+  margin-bottom: calc(3.33 * 1rem);
+  hyphens: auto;
+  word-break: break-word;
+}
+
+.jk-block-pullquote:not(.is-style-solid-color) .jk-block-pullquote__citation {
+  color: #767676;
+}
+
+.jk-block-pullquote.is-style-solid-color blockquote {
+  width: calc(100% - (2 * 1rem));
+  max-width: calc( 100% - (2 * 1rem));
+}
+
+.jk-block-pullquote.is-style-solid-color blockquote a,
+.jk-block-pullquote.is-style-solid-color blockquote.has-text-color p,
+.jk-block-pullquote.is-style-solid-color blockquote.has-text-color a {
+  color: inherit;
+}
+
+.jk-block-pullquote.is-style-solid-color blockquote:not(.has-text-color) {
+  color: #fff;
+}
+
+@media only screen and (min-width: 768px) {
+  .jk-block-pullquote.is-style-solid-color blockquote {
+    max-width: 80%;
+  }
+}
+
+.jk-block-pullquote.is-style-solid-color:not(.has-background-color) {
+  background-color: #0073aa;
+}
+
+.jk-block-pullquote[data-type="core/pullquote"] blockquote > .block-library-pullquote__content .editor-rich-text__tinymce[data-is-empty="true"]::before,
+.jk-block-pullquote[data-type="core/pullquote"] blockquote > .editor-rich-text p,
+.jk-block-pullquote[data-type="core/pullquote"] p,
+.jk-block[data-type="core/pullquote"] blockquote > .block-library-pullquote__content .editor-rich-text__tinymce[data-is-empty="true"]::before,
+.jk-block[data-type="core/pullquote"] blockquote > .editor-rich-text p,
+.jk-block[data-type="core/pullquote"] p,
+.jk-block[data-type="core/pullquote"][data-align="left"] blockquote > .block-library-pullquote__content .editor-rich-text__tinymce[data-is-empty="true"]::before,
+.jk-block[data-type="core/pullquote"][data-align="left"] blockquote > .editor-rich-text p,
+.jk-block[data-type="core/pullquote"][data-align="left"] p,
+.jk-block[data-type="core/pullquote"][data-align="right"] blockquote > .block-library-pullquote__content .editor-rich-text__tinymce[data-is-empty="true"]::before,
+.jk-block[data-type="core/pullquote"][data-align="right"] blockquote > .editor-rich-text p,
+.jk-block[data-type="core/pullquote"][data-align="right"] p {
+  font-size: 1.6875em;
+  font-style: italic;
+  line-height: 1.3;
+  margin-bottom: 0.5em;
+  margin-top: 0.5em;
+}
+
+@media only screen and (min-width: 768px) {
+  .jk-block-pullquote[data-type="core/pullquote"] blockquote > .block-library-pullquote__content .editor-rich-text__tinymce[data-is-empty="true"]::before,
+  .jk-block-pullquote[data-type="core/pullquote"] blockquote > .editor-rich-text p,
+  .jk-block-pullquote[data-type="core/pullquote"] p,
+  .jk-block[data-type="core/pullquote"] blockquote > .block-library-pullquote__content .editor-rich-text__tinymce[data-is-empty="true"]::before,
+  .jk-block[data-type="core/pullquote"] blockquote > .editor-rich-text p,
+  .jk-block[data-type="core/pullquote"] p,
+  .jk-block[data-type="core/pullquote"][data-align="left"] blockquote > .block-library-pullquote__content .editor-rich-text__tinymce[data-is-empty="true"]::before,
+  .jk-block[data-type="core/pullquote"][data-align="left"] blockquote > .editor-rich-text p,
+  .jk-block[data-type="core/pullquote"][data-align="left"] p,
+  .jk-block[data-type="core/pullquote"][data-align="right"] blockquote > .block-library-pullquote__content .editor-rich-text__tinymce[data-is-empty="true"]::before,
+  .jk-block[data-type="core/pullquote"][data-align="right"] blockquote > .editor-rich-text p,
+  .jk-block[data-type="core/pullquote"][data-align="right"] p {
+    font-size: 2.25em;
+  }
+}
+
+.jk-block-pullquote[data-type="core/pullquote"] .jk-block-pullquote__citation,
+.jk-block[data-type="core/pullquote"] .jk-block-pullquote__citation,
+.jk-block[data-type="core/pullquote"][data-align="left"] .jk-block-pullquote__citation,
+.jk-block[data-type="core/pullquote"][data-align="right"] .jk-block-pullquote__citation {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  font-size: 0.71111em;
+  line-height: 1.6;
+  text-transform: none;
+}
+
+.jk-block-pullquote[data-type="core/pullquote"] em,
+.jk-block[data-type="core/pullquote"] em,
+.jk-block[data-type="core/pullquote"][data-align="left"] em,
+.jk-block[data-type="core/pullquote"][data-align="right"] em {
+  font-style: normal;
+}
+
+.jk-block[data-align="left"] > .jk-block-pullquote,
+.jk-block[data-align="right"] > .jk-block-pullquote {
+  max-width: 50%;
+  text-align: inherit;
+}
+
+.jk-block[data-align="left"] > .jk-block-pullquote:not(.is-style-solid-color),
+.jk-block[data-align="right"] > .jk-block-pullquote:not(.is-style-solid-color) {
+  padding: 0;
+}
+
+.jk-block[data-align="left"] > .jk-block-pullquote.is-style-solid-color,
+.jk-block[data-align="right"] > .jk-block-pullquote.is-style-solid-color {
+  padding: 1em;
+}
+
+.jk-block[data-type="core/pullquote"][data-align="left"] .editor-block-list__block-edit,
+.jk-block[data-type="core/pullquote"][data-align="right"] .editor-block-list__block-edit {
+  width: calc(4 * (100vw / 12));
+  max-width: 50%;
+}
+
+.jk-block[data-type="core/pullquote"][data-align="left"] .editor-block-list__block-edit .jk-block-pullquote:not(.is-style-solid-color),
+.jk-block[data-type="core/pullquote"][data-align="right"] .editor-block-list__block-edit .jk-block-pullquote:not(.is-style-solid-color) {
+  padding: 0;
+}
+
+.jk-block[data-type="core/pullquote"][data-align="left"] .editor-block-list__block-edit .jk-block-pullquote.is-style-solid-color,
+.jk-block[data-type="core/pullquote"][data-align="right"] .editor-block-list__block-edit .jk-block-pullquote.is-style-solid-color {
+  padding: 1em;
+}
+
+.jk-block[data-type="core/pullquote"][data-align="left"] blockquote > .block-library-pullquote__content .editor-rich-text__tinymce[data-is-empty="true"]::before,
+.jk-block[data-type="core/pullquote"][data-align="left"] blockquote > .editor-rich-text p,
+.jk-block[data-type="core/pullquote"][data-align="left"] p,
+.jk-block[data-type="core/pullquote"][data-align="left"] .jk-block-pullquote__citation,
+.jk-block[data-type="core/pullquote"][data-align="right"] blockquote > .block-library-pullquote__content .editor-rich-text__tinymce[data-is-empty="true"]::before,
+.jk-block[data-type="core/pullquote"][data-align="right"] blockquote > .editor-rich-text p,
+.jk-block[data-type="core/pullquote"][data-align="right"] p,
+.jk-block[data-type="core/pullquote"][data-align="right"] .jk-block-pullquote__citation {
+  text-align: left;
+}
+
+@media only screen and (min-width: 768px) {
+  .jk-block[data-type="core/pullquote"][data-align="full"] .jk-block-pullquote blockquote {
+    max-width: calc(80% - 128px);
+  }
+}
+
+/** === File === */
+.jk-block-file {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+}
+
+.jk-block-file .jk-block-file__textlink {
+  text-decoration: underline;
+  color: #0073aa;
+}
+
+.jk-block-file .jk-block-file__textlink:hover {
+  color: #005177;
+  text-decoration: none;
+}
+
+.jk-block-file .jk-block-file__button {
+  display: table;
+  line-height: 1.8;
+  font-size: 0.88889em;
+  font-weight: bold;
+  background-color: #0073aa;
+  border-radius: 5px;
+}
+
+.jk-block-file .jk-block-file__button-richtext-wrapper {
+  display: block;
+  margin-top: calc(0.75 * 1rem);
+  margin-left: 0;
+}
+
+/** === Verse === */
+.jk-block-verse,
+.jk-block-verse pre {
+  padding: 0;
+}
+
+/** === Code === */
+.jk-block-code {
+  border-radius: 0;
+}
+
+/** === Table === */
+.jk-block-table td, .jk-block-table th {
+  border-color: #767676;
+}
+
+/** === Separator === */
+.jk-block-separator:not(.is-style-dots) {
+  background-color: #767676;
+  height: 2px;
+}
+
+.jk-block-separator:not(.is-style-wide):not(.is-style-dots) {
+  width: 2.25em;
+  margin-left: 0;
+}
+
+.jk-block-separator.is-style-dots {
+  color: #767676;
+}
+
+.jk-block-separator.is-style-dots:before {
+  font-size: 1.6875em;
+  letter-spacing: calc(2 * 1rem);
+  padding-left: calc(2 * 1rem);
+}
+
+.jk-block-separator.has-primary-background-color {
+  color: #0073aa;
+  background-color: #0073aa;
+}
+
+.jk-block-separator.has-secondary-background-color {
+  color: #005177;
+  background-color: #005177;
+}
+
+.jk-block-separator.has-dark-gray-background-color {
+  color: #111;
+  background-color: #111;
+}
+
+.jk-block-separator.has-light-gray-background-color {
+  color: #767676;
+  background-color: #767676;
+}
+
+.jk-block-separator.has-white-background-color {
+  color: #fff;
+  background-color: #fff;
+}
+
+/* Remove duplicate rule-line when a separator
+ * is followed by an H1, or H2 */
+.jk-block[data-type="core/separator"] + .jk-block[data-type="core/heading"] h1:before,
+.jk-block[data-type="core/separator"] + .jk-block[data-type="core/heading"] h2:before {
+  display: none;
+}
+
+/** === Latest Posts, Archives, Categories === */
+ul.jk-block-archives,
+.jk-block-categories,
+.jk-block-latest-posts {
+  padding: 0;
+  list-style-type: none;
+}
+
+ul.jk-block-archives ul,
+.jk-block-categories ul,
+.jk-block-latest-posts ul {
+  padding: 0;
+  list-style-type: none;
+}
+
+ul.jk-block-archives li > a,
+.jk-block-categories li > a,
+.jk-block-latest-posts li > a {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  font-size: calc(22px * 1.125);
+  font-weight: bold;
+  line-height: 1.2;
+  text-decoration: none;
+}
+
+ul.jk-block-archives li ul,
+.jk-block-categories li ul,
+.jk-block-latest-posts li ul {
+  padding-left: 1rem;
+}
+
+.jk-block-categories ul {
+  padding-top: 0.75rem;
+}
+
+.jk-block-categories ul ul {
+  counter-reset: submenu;
+}
+
+.jk-block-categories ul ul > li > a::before {
+  font-family: "NonBreakingSpaceOverride", "Hoefler Text", Garamond, "Times New Roman", serif;
+  font-weight: normal;
+  content: "– " counters(submenu, "– ", none);
+  counter-increment: submenu;
+}
+
+.jk-block-categories li ul {
+  list-style: none;
+  padding-left: 0;
+  margin-bottom: -0.75rem;
+}
+
+.jk-block[data-align="center"] > .jk-block-archives,
+.jk-block[data-align="center"] > .jk-block-categories {
+  text-align: center;
+}
+
+/** === Latest Posts === */
+.jk-block-latest-posts .jk-block-latest-posts__post-date {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  font-size: 0.71111em;
+  color: #767676;
+  line-height: 1.2;
+}
+
+.jk-block-latest-posts .jk-block-latest-posts__post-full-content,
+.jk-block-latest-posts .jk-block-latest-posts__post-excerpt {
+  margin-top: 22px;
+  margin-bottom: 22px;
+}
+
+.jk-block-latest-posts .jk-block-latest-posts__post-full-content > div > p:first-child,
+.jk-block-latest-posts .jk-block-latest-posts__post-excerpt > div > p:first-child {
+  margin-top: 22px;
+}
+
+.jk-block-latest-posts li {
+  padding-bottom: 0.5rem;
+}
+
+.jk-block-latest-posts li.menu-item-has-children, .jk-block-latest-posts li:last-child {
+  padding-bottom: 0;
+}
+
+.jk-block-latest-posts li :not(:last-child) .jk-block-latest-posts__post-excerpt {
+  padding-bottom: 0.5rem;
+}
+
+.jk-block-latest-posts.is-grid li {
+  border-top: 2px solid #ccc;
+  padding-top: 1rem;
+  margin-bottom: 2rem;
+}
+
+.jk-block-latest-posts.is-grid li a:after {
+  content: '';
+}
+
+.jk-block-latest-posts.is-grid li:last-child {
+  margin-bottom: auto;
+}
+
+.jk-block-latest-posts.is-grid li:last-child a:after {
+  content: '';
+}
+
+/** === Latest Comments === */
+.jk-block-latest-comments .jk-block-latest-comments__comment-meta {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  font-weight: bold;
+}
+
+.jk-block-latest-comments .jk-block-latest-comments__comment-meta .jk-block-latest-comments__comment-date {
+  font-weight: normal;
+}
+
+.jk-block-latest-comments .jk-block-latest-comments__comment,
+.jk-block-latest-comments .jk-block-latest-comments__comment-date,
+.jk-block-latest-comments .jk-block-latest-comments__comment-excerpt p {
+  font-size: inherit;
+}
+
+.jk-block-latest-comments .jk-block-latest-comments__comment-date {
+  font-size: 0.71111em;
+}
+
+/** === Classic Editor === */
+/* Properly center-align captions in the classic-editor block */
+.jk-caption dd {
+  color: #767676;
+  font-size: 0.71111em;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  line-height: 1.6;
+  margin: 0;
+  padding: 0.5rem;
+  text-align: left;
+  text-align: center;
+  -webkit-margin-start: 0;
+  margin-inline-start: 0;
+}
+
+.jk-block-freeform blockquote {
+  border-left: 2px solid #0073aa;
+}
+
+.jk-block-freeform blockquote cite {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  font-size: 0.71111em;
+  font-style: normal;
+  line-height: 1.6;
+  color: #767676;
+}
+
+/** === Group Block === */
+.jk-block-group > .jk-block-group__inner-container > .jk-block[data-align="full"],
+.jk-block-group > .jk-block-group__inner-container > .jk-block.alignfull {
+  margin-left: 0;
+  margin-right: 0;
+  left: 0;
+}
+
+.jk-block-group.has-background {
+  padding: 22px;
+}
+
+.jk-block-group.has-background > .jk-block-group__inner-container > .jk-block[data-align="full"],
+.jk-block-group.has-background > .jk-block-group__inner-container > .jk-block.alignfull {
+  margin-left: -22px;
+  width: calc(100% + 44px);
+  max-width: calc(100% + 44px);
+}
+
+@media only screen and (min-width: 768px) {
+  .jk-block[data-align="wide"] > .jk-block-group > .jk-block-group__inner-container > .jk-block:not([data-align="wide"]):not([data-align="full"]):not(.alignwide):not(.alignfull) {
+    width: calc(8 * (100vw / 12));
+  }
+}
+
+@media only screen and (min-width: 1168px) {
+  .jk-block[data-align="wide"] > .jk-block-group > .jk-block-group__inner-container > .jk-block:not([data-align="wide"]):not([data-align="full"]):not(.alignwide):not(.alignfull) {
+    width: calc(6 * (100vw / 12 ));
+  }
+}
+
+.jk-block[data-align="wide"] > .jk-block-group > .jk-block-group__inner-container > .jk-block[data-align="full"],
+.jk-block[data-align="wide"] > .jk-block-group > .jk-block-group__inner-container > .jk-block.alignfull {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+@media only screen and (min-width: 768px) {
+  .jk-block[data-align="wide"] > .jk-block-group.has-background > .jk-block-group__inner-container > .jk-block:not([data-align="wide"]):not([data-align="full"]):not(.alignwide):not(.alignfull) {
+    width: calc(8 * (100vw / 12) - 44px);
+  }
+}
+
+@media only screen and (min-width: 1168px) {
+  .jk-block[data-align="wide"] > .jk-block-group.has-background > .jk-block-group__inner-container > .jk-block:not([data-align="wide"]):not([data-align="full"]):not(.alignwide):not(.alignfull) {
+    width: calc(6 * (100vw / 12 ) - 44px);
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .jk-block[data-align="full"] > .jk-block-group > .jk-block-group__inner-container {
+    width: 80%;
+    margin-left: 10%;
+    margin-right: 10%;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .jk-block[data-align="full"] > .jk-block-group > .jk-block-group__inner-container > .jk-block:not([data-align="wide"]):not(.alignwide):not([data-align="full"]):not(.alignfull) {
+    max-width: calc(8 * (100vw / 12));
+  }
+}
+
+@media only screen and (min-width: 1168px) {
+  .jk-block[data-align="full"] > .jk-block-group > .jk-block-group__inner-container > .jk-block:not([data-align="wide"]):not(.alignwide):not([data-align="full"]):not(.alignfull) {
+    max-width: calc(6 * (100vw / 12));
+  }
+}
+
+.jk-block[data-align="full"] > .jk-block-group > .jk-block-group__inner-container > .jk-block:not([data-align="full"]):not(.alignfull) {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+@media only screen and (min-width: 768px) {
+  .jk-block[data-align="full"] > .jk-block-group > .jk-block-group__inner-container > .jk-block:not([data-align="full"]):not(.alignfull) {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .jk-block[data-align="full"] > .jk-block-group > .jk-block-group__inner-container > .jk-block[data-align="right"] {
+    max-width: 125%;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .jk-block[data-align="full"] > .jk-block-group > .jk-block-group__inner-container > .jk-block[data-align="wide"],
+  .jk-block[data-align="full"] > .jk-block-group > .jk-block-group__inner-container > .jk-block.alignwide {
+    width: 100%;
+    max-width: 100%;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .jk-block[data-align="full"] > .jk-block-group > .jk-block-group__inner-container > .jk-block[data-align=full],
+  .jk-block[data-align="full"] > .jk-block-group > .jk-block-group__inner-container > .jk-block.alignfull {
+    left: calc( -12.5% - 13px);
+    width: calc( 125% + 26px);
+    max-width: calc( 125% + 25px);
+  }
+}
+
+.jk-block[data-align="full"] > .jk-block-group.has-background {
+  padding: 22px 0;
+}
+
+@media only screen and (min-width: 600px) {
+  .jk-block[data-align="full"] > .jk-block-group.has-background {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+.jk-block[data-align="full"] > .jk-block-group.has-background > .jk-block-group__inner-container > .jk-block[data-align="full"],
+.jk-block[data-align="full"] > .jk-block-group.has-background > .jk-block-group__inner-container > .jk-block.alignfull {
+  margin-left: 0;
+  width: 100%;
+}
+
+@media only screen and (min-width: 600px) {
+  .jk-block[data-align="full"] > .jk-block-group.has-background > .jk-block-group__inner-container > .jk-block[data-align="full"],
+  .jk-block[data-align="full"] > .jk-block-group.has-background > .jk-block-group__inner-container > .jk-block.alignfull {
+    width: calc(100% + 92px);
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .jk-block[data-align="full"] > .jk-block-group.has-background > .jk-block-group__inner-container > .jk-block[data-align="full"],
+  .jk-block[data-align="full"] > .jk-block-group.has-background > .jk-block-group__inner-container > .jk-block.alignfull {
+    width: calc(125% + 120px);
+  }
+}
+
+.jk-block-post-template .jk-block[data-align="full"],
+.jk-block-post-template .jk-block.alignfull {
+  left: 0;
+  max-width: 100%;
+  padding-left: 0;
+  padding-right: 0;
+  width: 100%;
+}
+
+/** === Post Author Block === */
+.avatar,
+.jk-block-post-author__avatar img {
+  border-radius: 100%;
+}

@@ -1,0 +1,9 @@
+.jk-block-comments-pagination-numbers a{
+  text-decoration:underline;
+}
+.jk-block-comments-pagination-numbers .page-numbers{
+  margin-right:2px;
+}
+.jk-block-comments-pagination-numbers .page-numbers:last-child{
+  margin-right:0;
+}

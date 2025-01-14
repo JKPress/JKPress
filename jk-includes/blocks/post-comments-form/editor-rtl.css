@@ -1,0 +1,6 @@
+.jk-block-post-comments-form *{
+  pointer-events:none;
+}
+.jk-block-post-comments-form .block-editor-warning *{
+  pointer-events:auto;
+}

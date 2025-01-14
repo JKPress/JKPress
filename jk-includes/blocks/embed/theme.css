@@ -1,0 +1,12 @@
+.jk-block-embed :where(figcaption){
+  color:#555;
+  font-size:13px;
+  text-align:center;
+}
+.is-dark-theme .jk-block-embed :where(figcaption){
+  color:#ffffffa6;
+}
+
+.jk-block-embed{
+  margin:0 0 1em;
+}
