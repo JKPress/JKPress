@@ -6,4 +6,4 @@ If you'd like to support the project (or just say hello), please reach out at qu
 
 If you or someone you know is struggling with mental health challenges, support is available at [Mental Health America](https://mhanational.org).
 
-☑️ This project is not affiliated with WPEngine in any way, finanically or otherwise.
+☑️ This project is not affiliated with JKEngine in any way, finanically or otherwise.
